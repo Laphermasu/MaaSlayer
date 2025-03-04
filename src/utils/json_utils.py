@@ -1,11 +1,11 @@
 import json
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Union
 from pathlib import Path
 from dataclasses import asdict, is_dataclass
 
 class JsonUtils:
     @staticmethod
-    def load_json(file_path: str) -> Dict[str, Any] | List[Any]:
+    def load_json(file_path: str) -> Union[Dict[str, Any], List[Any]]:
         """
         加载 JSON 文件
         :param file_path: JSON 文件路径
@@ -25,7 +25,7 @@ class JsonUtils:
             return {}
 
     @staticmethod
-    def save_json(file_path: str, data: Dict[str, Any] | List[Any]) -> bool:
+    def save_json(file_path: str, data: Union[Dict[str, Any], List[Any]]) -> bool:
         """
         保存数据到 JSON 文件
         :param file_path: JSON 文件路径

@@ -1,189 +1,273 @@
 {
-<<<<<<< HEAD
-    "MyTask1": {},
-    "MyTask2": {},
-    "MyTask3": {}
-=======
     "startgame": {
         "recognition": "TemplateMatch",
-        "template":"开始游戏.png",
-        "action":"Click",
-        "next":["标准模式"]
-    },
-    "标准模式":{
-        "recognition": "OCR",
-        "expected":"标准模式",
+        "template": "开始游戏.png",
         "action": "Click",
-        "next":["选择铁甲战士"]
+        "next": [
+            "标准模式"
+        ]
     },
-    "选择铁甲战士":{
+    "标准模式": {
+        "recognition": "OCR",
+        "expected": "标准模式",
+        "action": "Click",
+        "next": [
+            "选择铁甲战士"
+        ]
+    },
+    "选择铁甲战士": {
         "recognition": "TemplateMatch",
-        "template":"铁甲战士.png",
+        "template": "铁甲战士.png",
         "action": "Click",
-        "next":["启程","选择铁甲战士"]
+        "next": [
+            "启程",
+            "选择铁甲战士"
+        ]
     },
-    "启程":{
+    "启程": {
         "recognition": "OCR",
-        "expected":"启程",
+        "expected": "启程",
         "action": "Click",
-        "next":["对话","启程"]
+        "next": [
+            "对话",
+            "启程"
+        ]
     },
-    "对话":{
+    "对话": {
         "recognition": "OCR",
-        "expected":"对话",
+        "expected": "对话",
         "action": "Click",
-        "next":["选择生命值","对话"]
+        "next": [
+            "选择生命值",
+            "对话"
+        ]
     },
-    "选择生命值":{
+    "选择生命值": {
         "recognition": "OCR",
-        "expected":"8",
+        "expected": "8",
         "action": "Click",
-        "next":["离开","选择生命值"]
+        "next": [
+            "离开",
+            "选择生命值"
+        ]
     },
-    "离开":{
+    "离开": {
         "recognition": "OCR",
-        "expected":"离开",
+        "expected": "离开",
         "action": "Click"
     },
-    "教程关闭_下一条":{
+    "教程关闭_下一条": {
         "recognition": "OCR",
-        "expected":"下一条",
+        "expected": "下一条",
         "action": "Click",
-        "next":["教程关闭_下一条","教程关闭_我准备好了"]
+        "next": [
+            "教程关闭_下一条",
+            "教程关闭_我准备好了"
+        ]
     },
-    "教程关闭_我准备好了":{
+    "教程关闭_我准备好了": {
         "recognition": "OCR",
-        "expected":"我准备好了！",
+        "expected": "我准备好了！",
         "action": "Click"
     },
-    "第一关":{
+    "第一关": {
         "recognition": "TemplateMatch",
-        "template":"第一关.png",
+        "template": "第一关.png",
         "action": "Click",
-        "next":["attack"]
+        "next": [
+            "attack"
+        ]
     },
     "attack": {
-        "next":["attack3","attack2","attack1","attack0"]
+        "next": [
+            "attack3",
+            "attack2",
+            "attack1",
+            "attack0"
+        ]
     },
-    "attack3":{
+    "attack3": {
         "recognition": "OCR",
-        "expected":"3/3",
-        "next":["痛击","打击","防御"]
+        "expected": "3/3",
+        "next": [
+            "痛击",
+            "打击",
+            "防御"
+        ]
     },
-    "attack2":{
+    "attack2": {
         "recognition": "OCR",
-        "expected":"2/3",
-        "next":["痛击","打击","防御"]
+        "expected": "2/3",
+        "next": [
+            "痛击",
+            "打击",
+            "防御"
+        ]
     },
-    "attack1":{
+    "attack1": {
         "recognition": "OCR",
-        "expected":"1/3",
-        "next":["打击","防御"]
+        "expected": "1/3",
+        "next": [
+            "打击",
+            "防御"
+        ]
     },
-    "attack0":{
+    "attack0": {
         "recognition": "OCR",
-        "expected":"0/3",
-        "next":["end"]
+        "expected": "0/3",
+        "next": [
+            "end"
+        ]
     },
-    "痛击":{
+    "痛击": {
         "recognition": "OCR",
-        "expected":"痛击",
-        "action":"Click",
-        "next":["大颚虫","红虱虫","红虱虫_蜷身","绿虱虫","绿虱虫_蜷身","尖刺史莱姆_小","尖刺史莱姆_中","酸液史莱姆_小","酸液史莱姆_中","邪教徒"]
+        "expected": "痛击",
+        "action": "Click",
+        "next": [
+            "大颚虫",
+            "红虱虫",
+            "红虱虫_蜷身",
+            "绿虱虫",
+            "绿虱虫_蜷身",
+            "尖刺史莱姆_小",
+            "尖刺史莱姆_中",
+            "酸液史莱姆_小",
+            "酸液史莱姆_中",
+            "邪教徒"
+        ]
     },
-    "打击":{
+    "打击": {
         "recognition": "OCR",
-        "expected":"打击",
-        "action":"Click",
-        "next":["大颚虫","红虱虫","红虱虫_蜷身","绿虱虫","绿虱虫_蜷身","尖刺史莱姆_小"]
+        "expected": "打击",
+        "action": "Click",
+        "next": [
+            "大颚虫",
+            "红虱虫",
+            "红虱虫_蜷身",
+            "绿虱虫",
+            "绿虱虫_蜷身",
+            "尖刺史莱姆_小"
+        ]
     },
-    "防御":{
+    "防御": {
         "recognition": "OCR",
-        "expected":"防御",
-        "action":"Click",
-        "next":["大颚虫","红虱虫","红虱虫_蜷身","绿虱虫","绿虱虫_蜷身","尖刺史莱姆_小"]
+        "expected": "防御",
+        "action": "Click",
+        "next": [
+            "大颚虫",
+            "红虱虫",
+            "红虱虫_蜷身",
+            "绿虱虫",
+            "绿虱虫_蜷身",
+            "尖刺史莱姆_小"
+        ]
     },
     "大颚虫": {
         "recognition": "TemplateMatch",
         "template": "/enemy/大颚虫.png",
-        "action":"Click",
-        "next":["attack"]
+        "action": "Click",
+        "next": [
+            "attack"
+        ]
     },
     "红虱虫": {
         "recognition": "TemplateMatch",
         "template": "/enemy/红虱虫.png",
-        "action":"Click",
-        "next":["attack"]
+        "action": "Click",
+        "next": [
+            "attack"
+        ]
     },
     "红虱虫_蜷身": {
         "recognition": "TemplateMatch",
         "template": "/enemy/红虱虫_蜷身.png",
-        "action":"Click",
-        "next":["attack"]
+        "action": "Click",
+        "next": [
+            "attack"
+        ]
     },
     "绿虱虫": {
         "recognition": "TemplateMatch",
         "template": "/enemy/绿虱虫.png",
-        "action":"Click",
-        "next":["attack"]
+        "action": "Click",
+        "next": [
+            "attack"
+        ]
     },
     "绿虱虫_蜷身": {
         "recognition": "TemplateMatch",
         "template": "/enemy/绿虱虫_蜷身.png",
-        "action":"Click",
-        "next":["attack"]
+        "action": "Click",
+        "next": [
+            "attack"
+        ]
     },
     "邪教徒": {
         "recognition": "TemplateMatch",
         "template": "/enemy/邪教徒.png",
-        "action":"Click",
-        "next":["attack"]
+        "action": "Click",
+        "next": [
+            "attack"
+        ]
     },
     "尖刺史莱姆_小": {
         "recognition": "TemplateMatch",
         "template": "/enemy/尖刺史莱姆_小.png",
-        "action":"Click",
-        "next":["attack"]
+        "action": "Click",
+        "next": [
+            "attack"
+        ]
     },
     "尖刺史莱姆_中": {
         "recognition": "TemplateMatch",
         "template": "/enemy/尖刺史莱姆_中.png",
-        "action":"Click",
-        "next":["attack"]
+        "action": "Click",
+        "next": [
+            "attack"
+        ]
     },
     "酸液史莱姆_小": {
         "recognition": "TemplateMatch",
         "template": "/enemy/酸液史莱姆_小.png",
-        "action":"Click",
-        "next":["attack"]
+        "action": "Click",
+        "next": [
+            "attack"
+        ]
     },
     "酸液史莱姆_中": {
         "recognition": "TemplateMatch",
         "template": "/enemy/酸液史莱姆_中.png",
-        "action":"Click",
-        "next":["attack"]
-    },
-    "end":{
-        "recognition": "OCR",
-        "expected":"结束回合",
-        "action":"Click",
-        "next":["enemyturn"]
-    },
-    "enemyturn":{
-        "recognition": "OCR",
-        "expected":"玩家回合",
-        "next":["attack"]
-    },
-    "教程关闭_知道了":{
-        "recognition": "OCR",
-        "expected":"知道了",
         "action": "Click",
-        "next":["attack"]        
-    } ,
-    "OCR测试":{
+        "next": [
+            "attack"
+        ]
+    },
+    "end": {
+        "recognition": "OCR",
+        "expected": "结束回合",
+        "action": "Click",
+        "next": [
+            "enemyturn"
+        ]
+    },
+    "enemyturn": {
+        "recognition": "OCR",
+        "expected": "玩家回合",
+        "next": [
+            "attack"
+        ]
+    },
+    "教程关闭_知道了": {
+        "recognition": "OCR",
+        "expected": "知道了",
+        "action": "Click",
+        "next": [
+            "attack"
+        ]
+    },
+    "OCR测试": {
         "recognition": "OCR",
         "expected": "游戏中心",
         "action": "Click"
     }
->>>>>>> gitee/master
 }

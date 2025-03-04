@@ -1,7 +1,6 @@
 {
     "controller": [
         {
-<<<<<<< HEAD
             "name": "安卓端",
             "type": "Adb"
         },
@@ -11,83 +10,19 @@
             "win32": {
                 "class_regex": ".*",
                 "window_regex": "Visual Studio"
-=======
-            "name": "移动端",
-            "type": "Adb",
-            "adb": {
-                "input": 1
->>>>>>> gitee/master
             }
         }
     ],
     "resource": [
         {
-<<<<<<< HEAD
-            "name": "官服",
-            "path": [
-                "{PROJECT_DIR}/resource"
-            ]
-        },
-        {
-            "name": "B 服",
-            "path": [
-                "{PROJECT_DIR}/resource",
-                "{PROJECT_DIR}/resource_bilibili"
-            ]
-=======
             "name": "默认",
             "path": [
                 "{PROJECT_DIR}/resource"
             ]
->>>>>>> gitee/master
         }
     ],
     "task": [
         {
-<<<<<<< HEAD
-            "name": "普通任务",
-            "entry": "MyTask1"
-        },
-        {
-            "name": "选项任务",
-            "entry": "MyTask2",
-            "option": [
-                "任务选项1"
-            ]
-        },
-        {
-            "name": "参数任务",
-            "entry": "MyTask3",
-            "option": [
-                "任务选项1"
-            ],
-            "pipeline_override": {}
-        }
-    ],
-    "option": {
-        "任务选项1": {
-            "cases": [
-                {
-                    "name": "文本1",
-                    "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本1"
-                        }
-                    }
-                },
-                {
-                    "name": "文本2",
-                    "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本2"
-                        }
-                    }
-                }
-            ]
-        }
-    }
-}
-=======
             "name": "启动游戏",
             "entry": "startgame"
         },
@@ -102,4 +37,3 @@
     ],
     "version": "v0.0.1"
 }
->>>>>>> gitee/master
