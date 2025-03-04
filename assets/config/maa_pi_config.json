@@ -1,0 +1,25 @@
+{
+    "controller": {
+        "name": "移动端"
+    },
+    "resource": "默认",
+    "task": [
+        {
+            "name": "OCR测试",
+            "option": []
+        }
+    ],
+    "adb": {
+        "adb_path": "D:/Program Files/NetEase/MuMu Player 12/shell/adb.exe",
+        "address": "127.0.0.1:16384",
+        "config": {
+            "extras": {
+                "mumu": {
+                    "enable": true,
+                    "index": 0,
+                    "path": "D:/Program Files/NetEase/MuMu Player 12"
+                }
+            }
+        }
+    }
+}

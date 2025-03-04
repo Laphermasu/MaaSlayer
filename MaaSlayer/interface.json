@@ -1,0 +1,30 @@
+{
+    "controller": [
+        {
+            "name": "移动端",
+            "type": "Adb",
+            "adb": {
+                "input": 1
+            }
+        }
+    ],
+    "resource": [
+        {
+            "name": "默认",
+            "path": [
+                "{PROJECT_DIR}/resource"
+            ]
+        }
+    ],
+    "task": [
+        {
+            "name": "启动游戏",
+            "entry": "startgame"
+        },
+        {
+            "name": "攻击回合1",
+            "entry": "第一关"
+        }
+    ],
+    "version": "v0.0.1"
+}

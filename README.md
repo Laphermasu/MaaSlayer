@@ -124,7 +124,11 @@ Win10 或者 Win11 系统自带了一份 "Python"，但它其实只是一个安�
 
 - MaaFW 本身及 MaaPiCli 的问题：[MaaFramework/issues](https://github.com/MaaXYZ/MaaFramework/issues)
 - MaaDebugger 的问题：[MaaDebugger/issues](https://github.com/MaaXYZ/MaaDebugger/issues)
+<<<<<<< HEAD
 - 不知道算是哪里的、其他疑问等：[讨论区](https://github.com/MaaXYZ/MaaFramework/discussions)
+=======
+- 不知道算是哪里的、其他疑问等：[讨论区](https://github.com/orgs/MaaXYZ/discussions)
+>>>>>>> gitee/master
 
 ### 5. OCR 文字识别一直没有识别结果，报错 "Failed to load det or rec", "ocrer_ is null"
 

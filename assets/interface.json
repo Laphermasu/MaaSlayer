@@ -1,6 +1,7 @@
 {
     "controller": [
         {
+<<<<<<< HEAD
             "name": "安卓端",
             "type": "Adb"
         },
@@ -10,11 +11,18 @@
             "win32": {
                 "class_regex": ".*",
                 "window_regex": "Visual Studio"
+=======
+            "name": "移动端",
+            "type": "Adb",
+            "adb": {
+                "input": 1
+>>>>>>> gitee/master
             }
         }
     ],
     "resource": [
         {
+<<<<<<< HEAD
             "name": "官服",
             "path": [
                 "{PROJECT_DIR}/resource"
@@ -26,10 +34,17 @@
                 "{PROJECT_DIR}/resource",
                 "{PROJECT_DIR}/resource_bilibili"
             ]
+=======
+            "name": "默认",
+            "path": [
+                "{PROJECT_DIR}/resource"
+            ]
+>>>>>>> gitee/master
         }
     ],
     "task": [
         {
+<<<<<<< HEAD
             "name": "普通任务",
             "entry": "MyTask1"
         },
@@ -72,3 +87,19 @@
         }
     }
 }
+=======
+            "name": "启动游戏",
+            "entry": "startgame"
+        },
+        {
+            "name": "攻击回合1",
+            "entry": "第一关"
+        },
+        {
+            "name": "OCR测试",
+            "entry": "OCR测试"
+        }
+    ],
+    "version": "v0.0.1"
+}
+>>>>>>> gitee/master

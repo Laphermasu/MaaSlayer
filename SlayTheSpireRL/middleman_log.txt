@@ -1,0 +1,6 @@
+2025-02-28 13:34:00 - Middleman process started and listening on port 9999.
+2025-02-28 13:58:02 - Middleman process started and listening on port 9999.
+2025-02-28 14:36:56 - Middleman process started and listening on port 9999.
+2025-02-28 14:37:51 - Accepted connection from ('127.0.0.1', 52181)
+2025-02-28 15:14:25 - Port 9999 is in use, trying next port...
+2025-02-28 15:14:25 - Middleman process started and listening on port 10000.

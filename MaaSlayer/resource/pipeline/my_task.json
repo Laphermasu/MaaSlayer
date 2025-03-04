@@ -1,9 +1,4 @@
 {
-<<<<<<< HEAD
-    "MyTask1": {},
-    "MyTask2": {},
-    "MyTask3": {}
-=======
     "startgame": {
         "recognition": "TemplateMatch",
         "template":"开始游戏.png",
@@ -179,11 +174,5 @@
         "expected":"知道了",
         "action": "Click",
         "next":["attack"]        
-    } ,
-    "OCR测试":{
-        "recognition": "OCR",
-        "expected": "游戏中心",
-        "action": "Click"
-    }
->>>>>>> gitee/master
+    } 
 }
