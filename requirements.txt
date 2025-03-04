@@ -1,5 +1,6 @@
 maafw
 matplotlib
+opencv-python
 absl-py==2.1.0
 ale-py==0.9.1
 alembic==1.13.2

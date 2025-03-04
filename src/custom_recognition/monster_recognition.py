@@ -1,9 +1,6 @@
-from ..utils.json_utils import JsonUtils
-from maa.resource import Resource
-from maa.context import Context
-from maa.custom_recognition import CustomRecognition
 import matplotlib.pyplot as plt
 import numpy as np
+from maa.custom_recognition import CustomRecognition
 from ..utils.json_utils import JsonUtils
 from ..core.data_models import Monster
 
@@ -62,29 +59,37 @@ class MonsterRecognition(CustomRecognition):
 
             # 根据最佳匹配结果确定怪物种类
             if best_match["template_index"] != -1:
+                # 新建怪物实例
                 monster = Monster()
+                # 根据匹配索引获得怪物名称
                 template_index = best_match["template_index"]
                 monster.type = monster_type.get(str(template_index), "Unknown")
 
+                # 获得怪物图像区域
                 x, y, w, h = best_match["box"]
 
                 # 获得怪物的血量
-                # reco_detail = context.run_recognition(
-                #     "识别怪物_血量识别",  # 流水线名称
-                #     img,  # 输入图像
-                #     pipeline_override={
-                #         "识别怪物_血量识别": {
-                #             "recognition": "OCR",
-                #             "roi": [x, y, w, h],
-                #             "roi_offset": [0, h - y, 0, 40]
-                #         }
-                #     }
-                # )
+                health_detail = context.run_recognition(
+                    "识别怪物_血量识别",  # 流水线名称
+                    img,  # 输入图像
+                    pipeline_override={
+                        "识别怪物_血量识别": {
+                            "recognition": "OCR",
+                            "roi": [x, y, w, h],
+                            "roi_offset": [0, 0, 0, 40],
+                            "only_rec": True
+                        }
+                    }
+                )
+
+                best_score = 0
+                # for result in health_detail.all_results:
+                #     if reslut.
+                #     monster.health = health_detail.best_result.text
 
                 monsters.append(monster)
 
                 # 去掉匹配区域
-
                 img[y:y+h, x:x+w] = 0  # 将匹配区域设置为黑色
                 # plt.imshow(img, cmap='gray' if len(img.shape) == 2 else None)
                 # plt.axis('off')  # 关闭坐标轴

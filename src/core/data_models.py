@@ -4,7 +4,7 @@ from typing import List, Dict
 @dataclass
 class Monster:
     type: str = "default"
-    health: int = 0
+    health: str = "default"
     action: str = "default"
     buffs: List[str] = field(default_factory=list)
 
