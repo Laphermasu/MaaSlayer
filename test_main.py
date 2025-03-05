@@ -53,10 +53,10 @@ def main():
     # 测试图片检测输出
     pipeline_override = {
         "MyCustomEntry": {"action": "custom", "custom_action": "MonsterRecognitionAction"},
-        "MyRecongitionEntry": {"recognition": "custom", "custom_recognition": "MonsterRecognition"},
+        "MyRecognitionEntry": {"recognition": "custom", "custom_recognition": "MonsterRecognition"},
     }
     print("开始执行流水线")
-    task_detail = tasker.post_task("MyRecongitionEntry", pipeline_override).wait().get()
+    task_detail = tasker.post_task("MyRecognitionEntry", pipeline_override).wait().get()
     detail = JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail)
     monsters = JsonUtils.deserialize_from_str(detail, Monster)
     print(monsters)

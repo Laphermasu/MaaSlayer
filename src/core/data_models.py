@@ -34,3 +34,9 @@ class GameState:
     player: Player
     current_node: MapNode
     shop: Shop
+
+@dataclass
+class Relic:
+    name: str = "default"
+    id: str = "default"
+    counter: int = -1
