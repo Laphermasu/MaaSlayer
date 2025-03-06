@@ -4,15 +4,11 @@ class CmdPerformer:
 
         def __init__(self, tasker: Tasker):
             self.tasker = tasker
-            self.cmd
-
 
         # 解析输入指令
-        def setCmd(self, cmd):
-            self.cmd = cmd
+        def setCmd(self, cmd: str):
             a = b =c =1
             return a, b, c
-
 
         def performCmd(self, cmd: str):
             a ,b ,c = self.setCmd(cmd)
