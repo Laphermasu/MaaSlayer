@@ -1,0 +1,752 @@
+[
+    {
+        "name": "Defend",
+        "rarity": "BASIC",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Eruption",
+        "rarity": "BASIC",
+        "type": "Attack",
+        "cost": "2(1)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Strike",
+        "rarity": "BASIC",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Vigilance",
+        "rarity": "BASIC",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Bowling Bash",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Consecrate",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Crescendo",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Crush Joints",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Cut Through Fate",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Empty Body",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Empty Fist",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Evaluate",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Flurry of Blows",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Flying Sleeves",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Follow-Up",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Halt",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Just Lucky",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Pressure Points",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Prostrate",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Protect",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Sash Whip",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Third Eye",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Tranquility",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Battle Hymn",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Carve Reality",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Collect",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "X",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Conclude",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Deceive Reality",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Empty Mind",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Fasting",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Fear No Evil",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Foreign Influence",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Foresight",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Indignation",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Inner Peace",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Like Water",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Meditate",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Mental Fortress",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Nirvana",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Perseverance",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Pray",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Reach Heaven",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Rushdown",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1(0)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Sanctity",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Sands of Time",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "4",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Signature Move",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Simmering Fury",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Study",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "2(1)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Swivel",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Talk to the Hand",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Tantrum",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Wallop",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Wave of the Hand",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Weave",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Wheel Kick",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Windmill Strike",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Worship",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Wreath of Flame",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Alpha",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Blasphemy",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Brilliance",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Conjure Blade",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "X",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Deus Ex Machina",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "Unplayable",
+        "exhausts": true,
+        "is_playable": false,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Deva Form",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "3",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": true,
+        "upgrades": 0
+    },
+    {
+        "name": "Devotion",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Establishment",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Judgment",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Lesson Learned",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Master Reality",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "1(0)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Omniscience",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "4(3)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Ragnarok",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "3",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Scrawl",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Spirit Shield",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Vault",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "3(2)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Wish",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "3",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    }
+]

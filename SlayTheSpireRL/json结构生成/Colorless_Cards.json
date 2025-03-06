@@ -1,0 +1,482 @@
+[
+    {
+        "name": "Bandage Up",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Blind",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Dark Shackles",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Deep Breath",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Discovery",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Dramatic Entrance",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Enlightenment",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Finesse",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Flash of Steel",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Forethought",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Good Instincts",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Impatience",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Jack Of All Trades",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Madness",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Mind Blast",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2(1)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Panacea",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Panic Button",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Purity",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Swift Strike",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Trip",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Apotheosis",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "2(1)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Chrysalis",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Hand of Greed",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Magnetism",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "2(1)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Master Of Strategy",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Mayhem",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "2(1)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Metamorphosis",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Panache",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Sadistic Nature",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Secret Technique",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Secret Weapon",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "The Bomb",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Thinking Ahead",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Transmutation",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "X",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Violence",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Apparition",
+        "rarity": "Special",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": true,
+        "upgrades": 0
+    },
+    {
+        "name": "Beta",
+        "rarity": "Special",
+        "type": "Skill",
+        "cost": "2(1)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Bite",
+        "rarity": "Special",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Expunger",
+        "rarity": "Special",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Insight",
+        "rarity": "Special",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "J.A.X.",
+        "rarity": "Special",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Miracle",
+        "rarity": "Special",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Omega",
+        "rarity": "Special",
+        "type": "Power",
+        "cost": "3",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Ritual Dagger",
+        "rarity": "Special",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Safety",
+        "rarity": "Special",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Shiv",
+        "rarity": "Special",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Smite",
+        "rarity": "Special",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Through Violence",
+        "rarity": "Special",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    }
+]

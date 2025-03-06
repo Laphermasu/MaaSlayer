@@ -1,0 +1,752 @@
+[
+    {
+        "name": "Defend",
+        "rarity": "BASIC",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Neutralize",
+        "rarity": "BASIC",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Strike",
+        "rarity": "BASIC",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Survivor",
+        "rarity": "BASIC",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Acrobatics",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Backflip",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Bane",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Blade Dance",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Cloak And Dagger",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Dagger Spray",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Dagger Throw",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Deadly Poison",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Deflect",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Dodge and Roll",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Flying Knee",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Outmaneuver",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Piercing Wail",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Poisoned Stab",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Prepared",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Quick Slash",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Slice",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Sneaky Strike",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Sucker Punch",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Accuracy",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "All-Out Attack",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Backstab",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Blur",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Bouncing Flask",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Calculated Gamble",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Caltrops",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Catalyst",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Choke",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Concentrate",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Crippling Cloud",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Dash",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Distraction",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Endless Agony",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Escape Plan",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Eviscerate",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "3",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Expertise",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Finisher",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Flechettes",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Footwork",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Heel Hook",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Infinite Blades",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Leg Sweep",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Masterful Stab",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Noxious Fumes",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Predator",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Reflex",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "",
+        "exhausts": false,
+        "is_playable": false,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Riddle With Holes",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Setup",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Skewer",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "X",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Tactician",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "",
+        "exhausts": false,
+        "is_playable": false,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Terror",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Well-Laid Plans",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "A Thousand Cuts",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Adrenaline",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "After Image",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Alchemize",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Bullet Time",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "3(2)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Burst",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Corpse Explosion",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Die Die Die",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Doppelganger",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "X",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Envenom",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "2(1)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Glass Knife",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Grand Finale",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Malaise",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "X",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Nightmare",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "3(2)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Phantasmal Killer",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Storm of Steel",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Tools of the Trade",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "1(0)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Unload",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Wraith Form",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "3",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    }
+]

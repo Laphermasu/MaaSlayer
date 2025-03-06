@@ -1,0 +1,752 @@
+[
+    {
+        "name": "Defend",
+        "rarity": "BASIC",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Dualcast",
+        "rarity": "BASIC",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Strike",
+        "rarity": "BASIC",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Zap",
+        "rarity": "BASIC",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Ball Lightning",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Barrage",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Beam Cell",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Charge Battery",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Claw",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Cold Snap",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Compile Driver",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Coolheaded",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Go for the Eyes",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Hologram",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Leap",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Rebound",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Recursion",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Stack",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Steam Barrier",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Streamline",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Sweeping Beam",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "TURBO",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Aggregate",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Auto-Shields",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Blizzard",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Boot Sequence",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Bullseye",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Capacitor",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Chaos",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Chill",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Consume",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Darkness",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Defragment",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Doom and Gloom",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Double Energy",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Equilibrium",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "FTL",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Force Field",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "4",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Fusion",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2(1)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Genetic Algorithm",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Glacier",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Heatsinks",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Hello World",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Loop",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Melter",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Overclock",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Recycle",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Reinforced Body",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "X",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Reprogram",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Rip and Tear",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Scrape",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Self Repair",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Skim",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Static Discharge",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Storm",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Sunder",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "3",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Tempest",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "X",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "White Noise",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "All for One",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Amplify",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Biased Cognition",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Buffer",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Core Surge",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Creative AI",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "3(2)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Echo Form",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "3",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": true,
+        "upgrades": 0
+    },
+    {
+        "name": "Electrodynamics",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Fission",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Hyperbeam",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Machine Learning",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Meteor Strike",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "5",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Multi-Cast",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "X",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Rainbow",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Reboot",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Seek",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Thunder Strike",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "3",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    }
+]

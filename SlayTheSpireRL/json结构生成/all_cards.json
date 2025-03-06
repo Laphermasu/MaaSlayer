@@ -1,0 +1,2438 @@
+[
+    {
+        "name": "Bandage Up",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Heal 4(6) HP.Exhaust."
+    },
+    {
+        "name": "Blind",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Apply 2Weak(to ALL enemies)."
+    },
+    {
+        "name": "Dark Shackles",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Enemy loses 9(15)Strengthfor the rest of this turn.Exhaust."
+    },
+    {
+        "name": "Deep Breath",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Shuffle your discard pile into your draw pile.Draw 1(2) card(s)."
+    },
+    {
+        "name": "Discovery",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Choose 1 of 3 random cards to add to your hand. It costs 0 this turn.Exhaust. (Don'tExhaust.)"
+    },
+    {
+        "name": "Dramatic Entrance",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Innate.Deal 8(12) damage to ALL enemies.Exhaust."
+    },
+    {
+        "name": "Enlightenment",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Reduce the cost of cards in your hand to 1 this turn(combat)."
+    },
+    {
+        "name": "Finesse",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Gain 2(4)Block.Draw 1 card."
+    },
+    {
+        "name": "Flash of Steel",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Deal 3(6) damage.Draw 1 card."
+    },
+    {
+        "name": "Forethought",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Place a card(any number of cards) from your hand on the bottom of your draw pile. It (They) costs 0 until played."
+    },
+    {
+        "name": "Good Instincts",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Gain 6(9)Block."
+    },
+    {
+        "name": "Impatience",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "If you have noAttackcards in your hand, draw 2(3) cards."
+    },
+    {
+        "name": "Jack Of All Trades",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Add 1(2) random Colorless card(s) to your hand.Exhaust."
+    },
+    {
+        "name": "Madness",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "A random card in your hand costs 0 for the rest of combat.Exhaust."
+    },
+    {
+        "name": "Mind Blast",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2(1)",
+        "description": "Innate.Deal damage equal to the number of cards in your draw pile."
+    },
+    {
+        "name": "Panacea",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Gain 1(2)Artifact.Exhaust."
+    },
+    {
+        "name": "Panic Button",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Gain 30(40)Block. You cannot gainBlockfrom cards for the next 2 turns.Exhaust."
+    },
+    {
+        "name": "Purity",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Choose andExhaust3(5) cards in your hand.Exhaust."
+    },
+    {
+        "name": "Swift Strike",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Deal 7(10) damage."
+    },
+    {
+        "name": "Trip",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Apply 2Vulnerable(to ALL enemies)."
+    },
+    {
+        "name": "Apotheosis",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "2(1)",
+        "description": "UpgradeALL of your cards for the rest of combat.Exhaust."
+    },
+    {
+        "name": "Chrysalis",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "2",
+        "description": "Add 3(5) randomSkillsinto your Draw Pile. They cost 0 this combat.Exhaust."
+    },
+    {
+        "name": "Hand of Greed",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 20(25) damage. If this kills a non-minion enemy, gain 20(25) Gold."
+    },
+    {
+        "name": "Magnetism",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "2(1)",
+        "description": "At the start of each turn, add a random colorless card to your hand."
+    },
+    {
+        "name": "Master Of Strategy",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Draw 3(4) cards.Exhaust."
+    },
+    {
+        "name": "Mayhem",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "2(1)",
+        "description": "At the start of your turn, play the top card of your draw pile."
+    },
+    {
+        "name": "Metamorphosis",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "2",
+        "description": "Add 3(5) randomAttacksinto your Draw Pile. They cost 0 this combat.Exhaust."
+    },
+    {
+        "name": "Panache",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "0",
+        "description": "Every time you play 5 cards in a single turn, deal 10(14) damage to ALL enemies."
+    },
+    {
+        "name": "Sadistic Nature",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "0",
+        "description": "Whenever you apply aDebuffto an enemy, they take 5(7) damage."
+    },
+    {
+        "name": "Secret Technique",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Choose aSkillfrom your draw pile and place it into your hand.Exhaust. (Don'tExhaust)"
+    },
+    {
+        "name": "Secret Weapon",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Choose anAttackfrom your draw pile and place it into your hand.Exhaust. (Don'tExhaust)"
+    },
+    {
+        "name": "The Bomb",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "2",
+        "description": "At the end of 3 turns, deal 40(50) damage to ALL enemies."
+    },
+    {
+        "name": "Thinking Ahead",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Draw 2 cards. Place a card from your hand on top of your draw pile.Exhaust.(Don'tExhaust)"
+    },
+    {
+        "name": "Transmutation",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "X",
+        "description": "Add X random (Upgraded) colorless cards into your hand. They cost 0 this turn.Exhaust."
+    },
+    {
+        "name": "Violence",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Place 3(4) randomAttackcards from your draw pile into your hand.Exhaust."
+    },
+    {
+        "name": "Apparition",
+        "rarity": "Special",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 1Intangible.Exhaust.Ethereal. (no longerEthereal.)(Obtained from event:Council of Ghosts)."
+    },
+    {
+        "name": "Beta",
+        "rarity": "Special",
+        "type": "Skill",
+        "cost": "2(1)",
+        "description": "Shuffle anOmegainto your draw pile.Exhaust.(Obtained fromAlpha)."
+    },
+    {
+        "name": "Bite",
+        "rarity": "Special",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 7(8) damage. Heal 2(3) HP.(Obtained from event:Vampires(?))."
+    },
+    {
+        "name": "Expunger",
+        "rarity": "Special",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 9(15) damage X times.(Obtained fromConjure Blade)."
+    },
+    {
+        "name": "Insight",
+        "rarity": "Special",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Retain. Draw 2(3) cards.Exhaust.(Obtained fromEvaluate,PrayandStudy)."
+    },
+    {
+        "name": "J.A.X.",
+        "rarity": "Special",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Lose 3 HP.Gain 2(3)Strength.(Obtained from event:Augmenter)."
+    },
+    {
+        "name": "Miracle",
+        "rarity": "Special",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Retain. Gain (2)Energy.Exhaust.(Obtained fromCollect,Deus Ex Machina,Pure Water, andHoly Water)."
+    },
+    {
+        "name": "Omega",
+        "rarity": "Special",
+        "type": "Power",
+        "cost": "3",
+        "description": "At the end of your turn deal 50(60) damage to ALL enemies.(Obtained fromBeta)."
+    },
+    {
+        "name": "Ritual Dagger",
+        "rarity": "Special",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 15 damage. If this kills an enemy then permanently increase this card's damage by 3(5).Exhaust.(Obtained during event:The Nest)"
+    },
+    {
+        "name": "Safety",
+        "rarity": "Special",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Retain. Gain 12(16)Block.Exhaust.(Obtained fromDeceive Reality)."
+    },
+    {
+        "name": "Shiv",
+        "rarity": "Special",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Deal 4(6) damage.Exhaust.(Obtained fromBlade Dance,Cloak and Dagger,Infinite Blades,Storm of Steel, andNinja Scroll)."
+    },
+    {
+        "name": "Smite",
+        "rarity": "Special",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Retain. Deal 12(16) damage.Exhaust.(Obtained fromCarve RealityandBattle Hymn)."
+    },
+    {
+        "name": "Through Violence",
+        "rarity": "Special",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Retain. Deal 20(30) damage.Exhaust.(Obtained fromReach Heaven)."
+    },
+    {
+        "name": "Defend",
+        "rarity": "Starter",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 5(8)Block."
+    },
+    {
+        "name": "Eruption",
+        "rarity": "Starter",
+        "type": "Attack",
+        "cost": "2(1)",
+        "description": "Deal 9 damage. EnterWrath."
+    },
+    {
+        "name": "Strike",
+        "rarity": "Starter",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 6(9) damage."
+    },
+    {
+        "name": "Vigilance",
+        "rarity": "Starter",
+        "type": "Skill",
+        "cost": "2",
+        "description": "Enter Calm. Gain 8(12)Block."
+    },
+    {
+        "name": "Bowling Bash",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 7(10) damage for each enemy in combat."
+    },
+    {
+        "name": "Consecrate",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Deal 5(8) damage to ALL enemies."
+    },
+    {
+        "name": "Crescendo",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "Retain. EnterWrath.Exhaust."
+    },
+    {
+        "name": "Crush Joints",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 8(10) damage. If the previous card played was a skill, apply 1(2)Vulnerable."
+    },
+    {
+        "name": "Cut Through Fate",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 7(9) damage.Scry2(3). Draw 1 card."
+    },
+    {
+        "name": "Empty Body",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 7(10)Block. Exit yourStance."
+    },
+    {
+        "name": "Empty Fist",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 9(14) damage. Exit yourStance."
+    },
+    {
+        "name": "Evaluate",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 6(10)Block. Shuffle anInsightinto your draw pile."
+    },
+    {
+        "name": "Flurry of Blows",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Deal 4(6) damage. OnStancechange, returns from the Discard Pile into your hand."
+    },
+    {
+        "name": "Flying Sleeves",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Retain. Deal 4(6) damage twice."
+    },
+    {
+        "name": "Follow-Up",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 7(11) damage. If the previous card played was an Attack, gain 1Energy."
+    },
+    {
+        "name": "Halt",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Gain 3(4)Block.Wrath: Gain 9(14) additionalBlock."
+    },
+    {
+        "name": "Just Lucky",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Scry1(2). Gain 2(3)Block. Deal 3(4) damage."
+    },
+    {
+        "name": "Pressure Points",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Apply 8(11) Mark. ALL enemies lose HP equal to their Mark."
+    },
+    {
+        "name": "Prostrate",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Gain 2(3)Mantra. Gain 4Block."
+    },
+    {
+        "name": "Protect",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "2",
+        "description": "Retain. Gain 12(16)Block."
+    },
+    {
+        "name": "Sash Whip",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 8(10) damage. If the last card played this combat was an Attack, apply 1(2)Weak."
+    },
+    {
+        "name": "Third Eye",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 7(9)Block.Scry3(5)."
+    },
+    {
+        "name": "Tranquility",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "Retain. EnterCalm.Exhaust."
+    },
+    {
+        "name": "Battle Hymn",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "(Innate.) At the start of each turn add aSmiteinto your hand."
+    },
+    {
+        "name": "Carve Reality",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 6(10) damage. Add aSmiteinto your hand."
+    },
+    {
+        "name": "Collect",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "X",
+        "description": "Put anMiracle+into your hand at the start of your next X(+1) turns.Exhaust."
+    },
+    {
+        "name": "Conclude",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 12(16) damage to ALL enemies. End your turn."
+    },
+    {
+        "name": "Deceive Reality",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 4(7)Block. Add aSafetyto your hand."
+    },
+    {
+        "name": "Empty Mind",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Exit yourStance. Draw 2(3) cards."
+    },
+    {
+        "name": "Fasting",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "2",
+        "description": "Gain 3(4)Strength. Gain 3(4)Dexterity. Gain 1 lessEnergyat the start of each turn."
+    },
+    {
+        "name": "Fear No Evil",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 8(11) damage. If the enemy intends to Attack, enterCalm."
+    },
+    {
+        "name": "Foreign Influence",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Choose 1 of 3 Attacks of any color to add to your hand. (It costs 0 this turn.)Exhaust."
+    },
+    {
+        "name": "Foresight",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "At the start of your turn,Scry3(4)."
+    },
+    {
+        "name": "Indignation",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "If you are inWrath, apply 3(5)Vulnerableto ALL enemies, otherwise enterWrath."
+    },
+    {
+        "name": "Inner Peace",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "If you are inCalm, draw 3(4) cards, otherwise EnterCalm."
+    },
+    {
+        "name": "Like Water",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "At the end of your turn, if you are inCalm, gain 5(7)Block."
+    },
+    {
+        "name": "Meditate",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Put 1(2) card(s) from your discard pile into your hand andRetainit. EnterCalm. End your turn."
+    },
+    {
+        "name": "Mental Fortress",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "Whenever you switchStances, gain 4(6)Block."
+    },
+    {
+        "name": "Nirvana",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "Whenever youScry, gain 3(4)Block."
+    },
+    {
+        "name": "Perseverance",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Retain. Gain 5(7)Block. Whenever this card isRetained, increase itsBlockby 2(3)."
+    },
+    {
+        "name": "Pray",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 3(4)Mantra. Shuffle anInsightinto your draw pile."
+    },
+    {
+        "name": "Reach Heaven",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 10(15) damage. Shuffle aThrough Violenceinto your draw pile."
+    },
+    {
+        "name": "Rushdown",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1(0)",
+        "description": "Whenever you enterWrath, draw 2 cards."
+    },
+    {
+        "name": "Sanctity",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 6(9)Block. If the previous card played was a Skill, draw 2 card."
+    },
+    {
+        "name": "Sands of Time",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "4",
+        "description": "Retain. Deal 20(26) damage. Whenever this card isRetained, lower its cost by 1."
+    },
+    {
+        "name": "Signature Move",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Can only be played if this is the only attack in your hand. Deal 30(40) damage."
+    },
+    {
+        "name": "Simmering Fury",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "At the start of your next turn, enterWrathand draw 2(3) cards."
+    },
+    {
+        "name": "Study",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "2(1)",
+        "description": "At the end of your turn, shuffle anInsightinto your draw pile."
+    },
+    {
+        "name": "Swivel",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "description": "Gain 8(11)Block. The next Attack you play costs 0."
+    },
+    {
+        "name": "Talk to the Hand",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 5(7) damage. Whenever you attack this enemy, gain 2(3)Block.Exhaust."
+    },
+    {
+        "name": "Tantrum",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 3 damage 3(4) times. EnterWrath. Shuffle this card into your draw pile."
+    },
+    {
+        "name": "Wallop",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 9(12) damage. GainBlockequal to unblocked damage dealt."
+    },
+    {
+        "name": "Wave of the Hand",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Whenever you gainBlockthis turn, apply 1(2)Weakto ALL enemies."
+    },
+    {
+        "name": "Weave",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Deal 4(6) damage. Whenever youScry, return this from the discard pile to your Hand."
+    },
+    {
+        "name": "Wheel Kick",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 15(20) damage. Draw 2 cards."
+    },
+    {
+        "name": "Windmill Strike",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Retain. Deal 7(10) damage. Whenever this card isRetained, increase its damage by 4(5)."
+    },
+    {
+        "name": "Worship",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "description": "(Retain.) Gain 5Mantra."
+    },
+    {
+        "name": "Wreath of Flame",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Your next Attack deals 5(8) additional damage."
+    },
+    {
+        "name": "Alpha",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1",
+        "description": "(Innate.) Shuffle aBetainto your draw pile.Exhaust."
+    },
+    {
+        "name": "Blasphemy",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1",
+        "description": "(Retain.) EnterDivinity. Die next turn.Exhaust."
+    },
+    {
+        "name": "Brilliance",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 12(16) damage. Deals additional damage for allMantragained this combat."
+    },
+    {
+        "name": "Conjure Blade",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "X",
+        "description": "Shuffle anExpungerwith X(+1) into your draw pile.Exhaust."
+    },
+    {
+        "name": "Deus Ex Machina",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "Unplayable",
+        "description": "Unplayable. When you draw this card, add 2(3)Miraclesinto your hand.Exhaust."
+    },
+    {
+        "name": "Deva Form",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "3",
+        "description": "Ethereal. At the start of your turn, gainEnergyand increase this gain by 1. (notEthereal.)"
+    },
+    {
+        "name": "Devotion",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "1",
+        "description": "At the start of your turn, gain 2(3)Mantra."
+    },
+    {
+        "name": "Establishment",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "1",
+        "description": "(Innate.) Whenever a card isRetained, lower its cost by 1."
+    },
+    {
+        "name": "Judgment",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1",
+        "description": "If the enemy has 30(40) or less HP, set their HP to 0."
+    },
+    {
+        "name": "Lesson Learned",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 10(13) damage. IfFatal,Upgradea random card in your deck.Exhaust."
+    },
+    {
+        "name": "Master Reality",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "1(0)",
+        "description": "Whenever a card is created during combat,Upgradeit."
+    },
+    {
+        "name": "Omniscience",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "4(3)",
+        "description": "Choose a card in your draw pile. Play the chosen card twice and Exhaust it. Exhaust."
+    },
+    {
+        "name": "Ragnarok",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "3",
+        "description": "Deal 5(6) damage to a random enemy 5(6) times."
+    },
+    {
+        "name": "Scrawl",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "Draw cards until your hand is full.Exhaust."
+    },
+    {
+        "name": "Spirit Shield",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "2",
+        "description": "Gain 3(4)Blockfor each card in your hand."
+    },
+    {
+        "name": "Vault",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "3(2)",
+        "description": "Take an extra turn after this one. End your turn.Exhaust."
+    },
+    {
+        "name": "Wish",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "3",
+        "description": "Choose one: Gain 6(8)Plated Armor, 3(4)Strength, or 25(30) Gold.Exhaust."
+    },
+    {
+        "name": "Defend",
+        "rarity": "Starter",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 5(8)Block."
+    },
+    {
+        "name": "Neutralize",
+        "rarity": "Starter",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Deal 3(4) damage. Apply 1(2)Weak."
+    },
+    {
+        "name": "Strike",
+        "rarity": "Starter",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 6(9) damage."
+    },
+    {
+        "name": "Survivor",
+        "rarity": "Starter",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 8(11)Block. Discard a card."
+    },
+    {
+        "name": "Acrobatics",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Draw 3(4) cards. Discard 1 card."
+    },
+    {
+        "name": "Backflip",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 5(8)Block. Draw 2 cards."
+    },
+    {
+        "name": "Bane",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 7(10) damage. If the enemy isPoisoned, deal 7(10) damage again."
+    },
+    {
+        "name": "Blade Dance",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Add 3(4)Shivsto your hand."
+    },
+    {
+        "name": "Cloak And Dagger",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 6Block. Add 1(2)Shiv(s)to your hand."
+    },
+    {
+        "name": "Dagger Spray",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 4(6) damage to ALL enemies twice."
+    },
+    {
+        "name": "Dagger Throw",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 9(12) damage. Draw 1 card. Discard 1 card."
+    },
+    {
+        "name": "Deadly Poison",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Apply 5(7)Poison."
+    },
+    {
+        "name": "Deflect",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Gain 4(7)Block."
+    },
+    {
+        "name": "Dodge and Roll",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 4(6)Block. Next turn, gain 4(6)Block."
+    },
+    {
+        "name": "Flying Knee",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 8(11) damage. Next turn, gain 1Energy."
+    },
+    {
+        "name": "Outmaneuver",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Next turn, gain 2(3)Energy."
+    },
+    {
+        "name": "Piercing Wail",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "ALL enemies lose 6(8)Strengthfor 1 turn.Exhaust."
+    },
+    {
+        "name": "Poisoned Stab",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 6(8) damage. Apply 3(4)Poison."
+    },
+    {
+        "name": "Prepared",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Draw 1(2) card(s). Discard 1(2) card(s)."
+    },
+    {
+        "name": "Quick Slash",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 8(12) damage. Draw 1 card."
+    },
+    {
+        "name": "Slice",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Deal 6(9) damage."
+    },
+    {
+        "name": "Sneaky Strike",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 12(16) damage. If you have discarded a card this turn, gain 2Energy."
+    },
+    {
+        "name": "Sucker Punch",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 7(9) damage. Apply 1(2)Weak."
+    },
+    {
+        "name": "Accuracy",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "Shivsdeal 4(6) additional damage."
+    },
+    {
+        "name": "All-Out Attack",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 10(14) damage to ALL enemies. Discard 1 card at random."
+    },
+    {
+        "name": "Backstab",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Deal 11(15) damage.Innate.Exhaust."
+    },
+    {
+        "name": "Blur",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 5(8)Block.Blockis not removed at the start of your next turn."
+    },
+    {
+        "name": "Bouncing Flask",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "description": "Apply 3Poisonto a random enemy 3(4) times."
+    },
+    {
+        "name": "Calculated Gamble",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Discard your hand, then draw that many cards.Exhaust. (Don't exhaust)"
+    },
+    {
+        "name": "Caltrops",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "Whenever you are attacked, deal 3(5) damage back."
+    },
+    {
+        "name": "Catalyst",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Double(Triple) an enemy'sPoison.Exhaust."
+    },
+    {
+        "name": "Choke",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 12 damage. Whenever you play a card this turn, the targeted enemy loses 3(5) HP."
+    },
+    {
+        "name": "Concentrate",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Discard 3(2) cards. Gain 2Energy."
+    },
+    {
+        "name": "Crippling Cloud",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "description": "Apply 4(7)Poisonand 2Weakto ALL enemies.Exhaust."
+    },
+    {
+        "name": "Dash",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Gain 10(13)Block. Deal 10(13) damage."
+    },
+    {
+        "name": "Distraction",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "Add a randomSkillto your hand. It costs 0 this turn.Exhaust."
+    },
+    {
+        "name": "Endless Agony",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Whenever you draw this card, add a copy of it to your hand. Deal 4(6) damage.Exhaust."
+    },
+    {
+        "name": "Escape Plan",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Draw 1 card. If you draw aSkill, gain 3(5)Block."
+    },
+    {
+        "name": "Eviscerate",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "3",
+        "description": "Costs 1 lessEnergyfor each card discarded this turn. Deal 7(9) damage three times."
+    },
+    {
+        "name": "Expertise",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Draw cards until you have 6(7) in your hand."
+    },
+    {
+        "name": "Finisher",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 6(8) damage for eachAttackplayed this turn."
+    },
+    {
+        "name": "Flechettes",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 4(6) damage for eachSkillin your hand."
+    },
+    {
+        "name": "Footwork",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "Gain 2(3)Dexterity."
+    },
+    {
+        "name": "Heel Hook",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 5(8) damage. If the enemy isWeak, Gain 1Energyand draw 1 card."
+    },
+    {
+        "name": "Infinite Blades",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "(Innate.)At the start of your turn, add aShivto your hand."
+    },
+    {
+        "name": "Leg Sweep",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "description": "Apply 2(3)Weak. Gain 11(14)Block."
+    },
+    {
+        "name": "Masterful Stab",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Costs 1 additionalEnergyfor each time you lose HP this combat. Deal 12(16) damage."
+    },
+    {
+        "name": "Noxious Fumes",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "At the start of your turn, apply 2(3)Poisonto ALL enemies."
+    },
+    {
+        "name": "Predator",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 15(20) damage. Draw 2 more cards next turn."
+    },
+    {
+        "name": "Reflex",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "",
+        "description": "Unplayable. If this card is discarded from your hand, draw 2(3) cards."
+    },
+    {
+        "name": "Riddle With Holes",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 3(4) damage 5 times."
+    },
+    {
+        "name": "Setup",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "Place a card in your hand on top of your draw pile. It costs 0 until it is played."
+    },
+    {
+        "name": "Skewer",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "X",
+        "description": "Deal 7(10) damage X times."
+    },
+    {
+        "name": "Tactician",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "",
+        "description": "Unplayable. If this card is discarded from your hand, gain 1(2)Energy."
+    },
+    {
+        "name": "Terror",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "Apply 99Vulnerable.Exhaust."
+    },
+    {
+        "name": "Well-Laid Plans",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "At the end of your turn,Retainup to 1(2) card(s)."
+    },
+    {
+        "name": "A Thousand Cuts",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "2",
+        "description": "Whenever you play a card, deal 1(2) damage to ALL enemies."
+    },
+    {
+        "name": "Adrenaline",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Gain 1(2)Energy. Draw 2 cards.Exhaust."
+    },
+    {
+        "name": "After Image",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "1",
+        "description": "(Innate.)Whenever you play a card, gain 1Block."
+    },
+    {
+        "name": "Alchemize",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "Obtain a random potion.Exhaust."
+    },
+    {
+        "name": "Bullet Time",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "3(2)",
+        "description": "You cannot draw additional cards this turn. Reduce the cost of all cards in your hand to 0 this turn."
+    },
+    {
+        "name": "Burst",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1",
+        "description": "This turn, your next 1(2)Skill(s) is(are) played twice."
+    },
+    {
+        "name": "Corpse Explosion",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "2",
+        "description": "Apply 6(9)Poison. When the enemy dies, deal damage equal to its max HP to ALL enemies."
+    },
+    {
+        "name": "Die Die Die",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 13(17) damage to ALL enemies.Exhaust."
+    },
+    {
+        "name": "Doppelganger",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "X",
+        "description": "Next turn, draw X(+1) cards and gain X(+1)Energy."
+    },
+    {
+        "name": "Envenom",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "2(1)",
+        "description": "Whenever an attack deals unblocked damage, apply 1Poison."
+    },
+    {
+        "name": "Glass Knife",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 8(12) damage twice. Decrease the damage of this card by 2 this combat."
+    },
+    {
+        "name": "Grand Finale",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Can only be played if there are no cards in your draw pile. Deal 50(60) damage to ALL enemies."
+    },
+    {
+        "name": "Malaise",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "X",
+        "description": "Enemy loses X(+1)Strength. Apply X(+1)Weak.Exhaust."
+    },
+    {
+        "name": "Nightmare",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "3(2)",
+        "description": "Choose a card.Next turn, add 3 copies of that card into your hand.Exhaust."
+    },
+    {
+        "name": "Phantasmal Killer",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "On your next turn, yourAttacksdeal double damage."
+    },
+    {
+        "name": "Storm of Steel",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Discard your hand. Add 1Shiv(+)into your hand for each card discarded."
+    },
+    {
+        "name": "Tools of the Trade",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "1(0)",
+        "description": "At the start of your turn, draw 1 card and discard 1 card."
+    },
+    {
+        "name": "Unload",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 14(18) damage. Discard all non-Attackcards in your hand."
+    },
+    {
+        "name": "Wraith Form",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "3",
+        "description": "Gain 2(3)Intangible. At the end of your turn, lose 1Dexterity."
+    },
+    {
+        "name": "Defend",
+        "rarity": "Starter",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 5(8)Block."
+    },
+    {
+        "name": "Dualcast",
+        "rarity": "Starter",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "Evokeyour next Orb twice."
+    },
+    {
+        "name": "Strike",
+        "rarity": "Starter",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 6(9) damage."
+    },
+    {
+        "name": "Zap",
+        "rarity": "Starter",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "Channel1Lightning."
+    },
+    {
+        "name": "Ball Lightning",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 7(10) damage.Channel1Lightning."
+    },
+    {
+        "name": "Barrage",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 4(6) damage for eachChanneledOrb."
+    },
+    {
+        "name": "Beam Cell",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Deal 3(4) damage and apply 1(2)Vulnerable."
+    },
+    {
+        "name": "Charge Battery",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 7(10)Block.Next turn, gain 1Energy."
+    },
+    {
+        "name": "Claw",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Deal 3(5) damage.Increase the damage of ALL Claw cards by 2 this combat."
+    },
+    {
+        "name": "Cold Snap",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 6(9) damage.Channel1Frost."
+    },
+    {
+        "name": "Compile Driver",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 7(10) damage. Draw 1 card for each unique Orb you have."
+    },
+    {
+        "name": "Coolheaded",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Channel1Frost.Draw 1(2) card(s)."
+    },
+    {
+        "name": "Go for the Eyes",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Deal 3(4) damage. If the enemy intends to attack, apply 1(2)Weak."
+    },
+    {
+        "name": "Hologram",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 3(5)Block.Return a card from your discard pile to your hand.Exhaust(does not Exhaust)."
+    },
+    {
+        "name": "Leap",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 9(12)Block."
+    },
+    {
+        "name": "Rebound",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 9(12) damage.Put the next card you play this turn on top of your draw pile."
+    },
+    {
+        "name": "Recursion",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "Evokeyour next Orb.Channelthe Orb that was justEvoked."
+    },
+    {
+        "name": "Stack",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "GainBlockequal to the number of cards in your discard pile (+3)."
+    },
+    {
+        "name": "Steam Barrier",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Gain 6(8)Block. Decrease this card's Block by 1 this combat."
+    },
+    {
+        "name": "Streamline",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 15(20) damage.Whenever you play this card, reduce its cost by 1 for this combat."
+    },
+    {
+        "name": "Sweeping Beam",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 6(9) damage to ALL enemies.Draw 1 card."
+    },
+    {
+        "name": "TURBO",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Gain 2(3)Energy.Add aVoidinto your discard pile."
+    },
+    {
+        "name": "Aggregate",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 1Energyfor every 4(3) cards in your draw pile."
+    },
+    {
+        "name": "Auto-Shields",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "If you have noBlock, gain 11(15)Block."
+    },
+    {
+        "name": "Blizzard",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal damage equal to 2(3) times the number ofFrostChanneledthis combat to ALL enemies."
+    },
+    {
+        "name": "Boot Sequence",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Innate.Gain 10(13)Block.Exhaust."
+    },
+    {
+        "name": "Bullseye",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 8(11) damage.Apply 2(3)Lock-On."
+    },
+    {
+        "name": "Capacitor",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "Gain 2(3) Orb slots."
+    },
+    {
+        "name": "Chaos",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Channel1(2) random Orb(s)."
+    },
+    {
+        "name": "Chill",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "(Innate.)Channel1Frostfor each enemy in combat (per enemy in combat).Exhaust."
+    },
+    {
+        "name": "Consume",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "description": "Gain 2(3)Focus.Lose 1 Orb Slot."
+    },
+    {
+        "name": "Darkness",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Channel1Dark. (Trigger the passive ability of allDarkorbs.)"
+    },
+    {
+        "name": "Defragment",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "Gain 1(2)Focus."
+    },
+    {
+        "name": "Doom and Gloom",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 10(14) damage to ALL enemies.Channel1Dark."
+    },
+    {
+        "name": "Double Energy",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "Double yourEnergy.Exhaust."
+    },
+    {
+        "name": "Equilibrium",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "description": "Gain 13(16)Block.Retainyour hand this turn."
+    },
+    {
+        "name": "FTL",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Deal 5(6) damage. If you have played less than 3(4) cards this turn, draw 1 card."
+    },
+    {
+        "name": "Force Field",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "4",
+        "description": "Costs 1 lessEnergyfor each Power card played this combat.Gain 12(16)Block."
+    },
+    {
+        "name": "Fusion",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2(1)",
+        "description": "Channel1Plasma."
+    },
+    {
+        "name": "Genetic Algorithm",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 1Block. Permanently increase this card'sBlockby 2(3).Exhaust."
+    },
+    {
+        "name": "Glacier",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "description": "Gain 7(10)Block.Channel2Frost."
+    },
+    {
+        "name": "Heatsinks",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "Whenever you play a Power card, draw 1(2) card(s)."
+    },
+    {
+        "name": "Hello World",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "(Innate.)At the start of your turn, add a random Common card into your hand."
+    },
+    {
+        "name": "Loop",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "At the start of your turn, trigger the passive ability of your next Orb (2 times)."
+    },
+    {
+        "name": "Melter",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Remove allBlockfrom an enemy.Deal 10(14) damage."
+    },
+    {
+        "name": "Overclock",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Draw 2(3) cards.Add aBurninto your discard pile."
+    },
+    {
+        "name": "Recycle",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "Exhausta card.GainEnergyequal to its cost."
+    },
+    {
+        "name": "Reinforced Body",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "X",
+        "description": "Gain 7(9)BlockX times."
+    },
+    {
+        "name": "Reprogram",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Lose 1(2)Focus. Gain 1(2)Strength. Gain 1(2)Dexterity."
+    },
+    {
+        "name": "Rip and Tear",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 7(9) damage to a random enemy 2 times."
+    },
+    {
+        "name": "Scrape",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 7(10) damage.Draw 4(5) cards.Discard all cards drawn this way that do not cost 0."
+    },
+    {
+        "name": "Self Repair",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "At the end of combat, heal 7(10) HP."
+    },
+    {
+        "name": "Skim",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Draw 3(4) cards."
+    },
+    {
+        "name": "Static Discharge",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "Whenever you take attack damage,Channel1(2)Lightning."
+    },
+    {
+        "name": "Storm",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "(Innate.)Whenever you play a Power card,Channel1Lightning."
+    },
+    {
+        "name": "Sunder",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "3",
+        "description": "Deal 24(32) damage.If this kills an enemy, gain 3Energy."
+    },
+    {
+        "name": "Tempest",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "X",
+        "description": "ChannelX(+1)Lightning.Exhaust."
+    },
+    {
+        "name": "White Noise",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "Add a random Power to your hand.It costs 0 this turn.Exhaust."
+    },
+    {
+        "name": "All for One",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 10(14) damage. Put all cost 0 cards from your discard pile into your hand."
+    },
+    {
+        "name": "Amplify",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1",
+        "description": "This turn, your next 1(2) Power(s) is (are) played twice."
+    },
+    {
+        "name": "Biased Cognition",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "1",
+        "description": "Gain 4(5)Focus.At the start of each turn, lose 1Focus."
+    },
+    {
+        "name": "Buffer",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "2",
+        "description": "Prevent the next (1(2)) time(s) you would lose HP."
+    },
+    {
+        "name": "Core Surge",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 11(15) damage.Gain 1Artifact.Exhaust."
+    },
+    {
+        "name": "Creative AI",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "3(2)",
+        "description": "At the start of each turn, add a random Power card to your hand."
+    },
+    {
+        "name": "Echo Form",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "3",
+        "description": "Ethereal. (not Ethereal.) The first card you play each turn is played twice."
+    },
+    {
+        "name": "Electrodynamics",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "2",
+        "description": "Lightningnow hits ALL enemies.Channel2(3)Lightning."
+    },
+    {
+        "name": "Fission",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Remove (Evoke) ALL of your Orbs. Gain 1Energyand draw 1 card for each Orb removed(Evoked).Exhaust."
+    },
+    {
+        "name": "Hyperbeam",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 26(34) damage to ALL enemies.Lose 3Focus."
+    },
+    {
+        "name": "Machine Learning",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "1",
+        "description": "(Innate.)At the start of your turn, draw 1 additional card."
+    },
+    {
+        "name": "Meteor Strike",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "5",
+        "description": "Deal 24(30) damage.Channel3Plasma."
+    },
+    {
+        "name": "Multi-Cast",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "X",
+        "description": "Evokeyour next Orb X (X+1) times."
+    },
+    {
+        "name": "Rainbow",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "2",
+        "description": "Channel1Lightning, 1Frost, and 1Dark.Exhaust. (does not Exhaust.)"
+    },
+    {
+        "name": "Reboot",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Shuffle all of your cards into your draw pile, then draw 4(6) cards.Exhaust."
+    },
+    {
+        "name": "Seek",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Choose a (2) card(s) from your draw pile and place it (them) into your hand.Exhaust."
+    },
+    {
+        "name": "Thunder Strike",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "3",
+        "description": "Deal 7(9) damage to a random enemy for eachLightningChanneledthis combat."
+    },
+    {
+        "name": "Bash",
+        "rarity": "Starter",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 8(10) damage. Apply 2(3)Vulnerable."
+    },
+    {
+        "name": "Defend",
+        "rarity": "Starter",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 5(8)Block."
+    },
+    {
+        "name": "Strike",
+        "rarity": "Starter",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 6(9) damage."
+    },
+    {
+        "name": "Anger",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Deal 6(8) damage. Add a copy of this card to your discard pile."
+    },
+    {
+        "name": "Armaments",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 5Block. Upgrade a(ALL) card(s) in your hand for the rest of combat."
+    },
+    {
+        "name": "Body Slam",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1(0)",
+        "description": "Deal damage equal to your currentBlock."
+    },
+    {
+        "name": "Clash",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Can only be played if every card in your hand is an Attack. Deal 14(18) damage."
+    },
+    {
+        "name": "Cleave",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 8(11) damage to ALL enemies."
+    },
+    {
+        "name": "Clothesline",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 12(14) damage. Apply 2(3)Weak."
+    },
+    {
+        "name": "Flex",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Gain 2(4)Strength. At the end of your turn, lose 2(4)Strength."
+    },
+    {
+        "name": "Havoc",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "Play the top card of your draw pile andExhaustit."
+    },
+    {
+        "name": "Headbutt",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 9(12) damage. Place a card from your discard pile on top of your draw pile."
+    },
+    {
+        "name": "Heavy Blade",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 14 damage.Strengthaffects Heavy Blade 3(5) times."
+    },
+    {
+        "name": "Iron Wave",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Gain 5(7)Block. Deal 5(7) damage."
+    },
+    {
+        "name": "Perfected Strike",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 6 damage. Deals an additional 2(3) damage for ALL of your cards containing \"Strike\"."
+    },
+    {
+        "name": "Pommel Strike",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 9(10) damage. Draw 1(2) card(s)."
+    },
+    {
+        "name": "Shrug it Off",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 8(11)Block. Draw 1 card."
+    },
+    {
+        "name": "Sword Boomerang",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 3 damage to a random enemy 3(4) times."
+    },
+    {
+        "name": "Thunderclap",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 4(7) damage and apply 1Vulnerableto ALL enemies."
+    },
+    {
+        "name": "True Grit",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 7(9)Block.Exhausta random(not random) card from your hand."
+    },
+    {
+        "name": "Twin Strike",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 5(7) damage twice."
+    },
+    {
+        "name": "Warcry",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Draw 1(2) card(s). Place a card from your hand on top of your draw pile.Exhaust."
+    },
+    {
+        "name": "Wild Strike",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 12(17) damage. Shuffle aWoundinto your draw pile."
+    },
+    {
+        "name": "Battle Trance",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Draw 3(4) cards. You cannot draw additional cards this turn."
+    },
+    {
+        "name": "Blood for Blood",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "4(3)",
+        "description": "Costs 1 less energy for each time you lose HP in combat. Deal 18(22) damage."
+    },
+    {
+        "name": "Bloodletting",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Lose 3 HP. Gain 2(3) Energy."
+    },
+    {
+        "name": "Burning Pact",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Exhaust1 card. Draw 2(3) cards."
+    },
+    {
+        "name": "Carnage",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Ethereal. Deal 20(28) damage."
+    },
+    {
+        "name": "Combust",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "At the end of your turn, lose 1 HP and deal 5(7) damage to ALL enemies."
+    },
+    {
+        "name": "Dark Embrace",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "2(1)",
+        "description": "Whenever a card isExhausted, draw 1 card."
+    },
+    {
+        "name": "Disarm",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Enemy loses 2(3)Strength.Exhaust."
+    },
+    {
+        "name": "Dropkick",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 5(8) damage. If the enemy isVulnerable, gain 1 energy and draw 1 card."
+    },
+    {
+        "name": "Dual Wield",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Create a(2) copy(s) of an Attack or Power card in your hand."
+    },
+    {
+        "name": "Entrench",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2(1)",
+        "description": "Double your currentBlock."
+    },
+    {
+        "name": "Evolve",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "Whenever you draw a Status card, draw 1(2) card(s)."
+    },
+    {
+        "name": "Feel No Pain",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "Whenever a card isExhausted, gain 3(4)Block."
+    },
+    {
+        "name": "Fire Breathing",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "Whenever you draw aStatusorCursecard,  deal 6(10) damage to all enemies."
+    },
+    {
+        "name": "Flame Barrier",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "description": "Gain 12(16)Block. Whenever you are attacked this turn, deal 4(6) damage to the attacker."
+    },
+    {
+        "name": "Ghostly Armor",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Ethereal.Gain 10(13) Block."
+    },
+    {
+        "name": "Hemokinesis",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Lose 2 HP. Deal 15(20) damage."
+    },
+    {
+        "name": "Infernal Blade",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "Add a random Attack to your hand. It costs 0 this turn.Exhaust."
+    },
+    {
+        "name": "Inflame",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "Gain 2(3)Strength."
+    },
+    {
+        "name": "Intimidate",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Apply 1(2)Weakto ALL enemies.Exhaust."
+    },
+    {
+        "name": "Metallicize",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "At the end of your turn, gain 3(4)Block."
+    },
+    {
+        "name": "Power Through",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Add 2Woundsto your hand. Gain 15(20)Block."
+    },
+    {
+        "name": "Pummel",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 2 damage 4(5) times.Exhaust."
+    },
+    {
+        "name": "Rage",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Whenever you play an Attack this turn, gain 3(5)Block."
+    },
+    {
+        "name": "Rampage",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 8 damage. Increase this card's damage by 5(8) this combat."
+    },
+    {
+        "name": "Reckless Charge",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "description": "Deal 7(10) damage. Shuffle aDazedinto your draw pile."
+    },
+    {
+        "name": "Rupture",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "description": "Whenever you lose HP from a card, gain 1(2)Strength."
+    },
+    {
+        "name": "Searing Blow",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 12(16) damage. Can be upgraded any number of times."
+    },
+    {
+        "name": "Second Wind",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Exhaustall non-Attack cards in your hand and gain 5(7)Blockfor each cardExhausted."
+    },
+    {
+        "name": "Seeing Red",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "Gain 2 energy.Exhaust."
+    },
+    {
+        "name": "Sentinel",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Gain 5(8)Block. If this card isExhausted, gain 2(3) energy."
+    },
+    {
+        "name": "Sever Soul",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Exhaustall non-Attack cards in your hand. Deal 16(22) damage."
+    },
+    {
+        "name": "Shockwave",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "description": "Apply 3(5)WeakandVulnerableto ALL enemies.Exhaust."
+    },
+    {
+        "name": "Spot Weakness",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "description": "If the enemy intends to attack, gain 3(4)Strength."
+    },
+    {
+        "name": "Uppercut",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 13 damage. Apply 1(2)Weak. Apply 1(2)Vulnerable."
+    },
+    {
+        "name": "Whirlwind",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "X",
+        "description": "Deal 5(8) damage to ALL enemies X times."
+    },
+    {
+        "name": "Barricade",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "3(2)",
+        "description": "Blockis not removed at the start of your turn."
+    },
+    {
+        "name": "Berserk",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "0",
+        "description": "Gain 2(1)Vulnerable. At the start of your turn, gain 1Energy."
+    },
+    {
+        "name": "Bludgeon",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "3",
+        "description": "Deal 32(42) damage."
+    },
+    {
+        "name": "Brutality",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "0",
+        "description": "(Innate.) At the start of your turn, lose 1 HP and draw 1 card."
+    },
+    {
+        "name": "Corruption",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "3(2)",
+        "description": "Skills cost 0. Whenever you play a Skill,Exhaustit."
+    },
+    {
+        "name": "Demon Form",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "3",
+        "description": "At the start of each turn, gain 2(3)Strength."
+    },
+    {
+        "name": "Double Tap",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1",
+        "description": "This turn, your next (2) Attack(s) is(are) played twice."
+    },
+    {
+        "name": "Exhume",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1(0)",
+        "description": "Put a card from yourExhaustpile into your hand.Exhaust."
+    },
+    {
+        "name": "Feed",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "1",
+        "description": "Deal 10(12) damage. If this kills a non-minion enemy, gain 3(4) permanent Max HP.Exhaust."
+    },
+    {
+        "name": "Fiend Fire",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Exhaustall cards in your hand. Deal 7(10) damage for eachExhausted card.Exhaust."
+    },
+    {
+        "name": "Immolate",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 21(28) damage to ALL enemies. Add aBurninto your discard pile."
+    },
+    {
+        "name": "Impervious",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "2",
+        "description": "Gain 30(40)Block.Exhaust."
+    },
+    {
+        "name": "Juggernaut",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "2",
+        "description": "Whenever you gainBlock, deal 5(7) damage to a random enemy."
+    },
+    {
+        "name": "Limit Break",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1",
+        "description": "Double yourStrength.Exhaust(Don'tExhaust)."
+    },
+    {
+        "name": "Offering",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "description": "Lose 6 HP. Gain 2 energy. Draw 3(5) cards.Exhaust."
+    },
+    {
+        "name": "Reaper",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "2",
+        "description": "Deal 4(5) damage to ALL enemies. Heal HP equal to unblocked damage.Exhaust."
+    }
+]

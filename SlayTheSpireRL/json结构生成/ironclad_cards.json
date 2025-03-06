@@ -1,0 +1,752 @@
+[
+    {
+        "name": "Bash",
+        "rarity": "BASIC",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Defend",
+        "rarity": "BASIC",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Strike",
+        "rarity": "BASIC",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Anger",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Armaments",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Body Slam",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1(0)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Clash",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Cleave",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Clothesline",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Flex",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Havoc",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Headbutt",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Heavy Blade",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Iron Wave",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Perfected Strike",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Pommel Strike",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Shrug it Off",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Sword Boomerang",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Thunderclap",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "True Grit",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Twin Strike",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Warcry",
+        "rarity": "Common",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Wild Strike",
+        "rarity": "Common",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Battle Trance",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Blood for Blood",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "4(3)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Bloodletting",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Burning Pact",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Carnage",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": true,
+        "upgrades": 0
+    },
+    {
+        "name": "Combust",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Dark Embrace",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "2(1)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Disarm",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Dropkick",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Dual Wield",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Entrench",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2(1)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Evolve",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Feel No Pain",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Fire Breathing",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Flame Barrier",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Ghostly Armor",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": true,
+        "upgrades": 0
+    },
+    {
+        "name": "Hemokinesis",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Infernal Blade",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Inflame",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Intimidate",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Metallicize",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Power Through",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Pummel",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Rage",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Rampage",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Reckless Charge",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Rupture",
+        "rarity": "Uncommon",
+        "type": "Power",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Searing Blow",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Second Wind",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Seeing Red",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Sentinel",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Sever Soul",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Shockwave",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Spot Weakness",
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Uppercut",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Whirlwind",
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "cost": "X",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Barricade",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "3(2)",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Berserk",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Bludgeon",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "3",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Brutality",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "0",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Corruption",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "3(2)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Demon Form",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "3",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Double Tap",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Exhume",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1(0)",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Feed",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Fiend Fire",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Immolate",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Impervious",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "2",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Juggernaut",
+        "rarity": "Rare",
+        "type": "Power",
+        "cost": "2",
+        "exhausts": false,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Limit Break",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "1",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Offering",
+        "rarity": "Rare",
+        "type": "Skill",
+        "cost": "0",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    },
+    {
+        "name": "Reaper",
+        "rarity": "Rare",
+        "type": "Attack",
+        "cost": "2",
+        "exhausts": true,
+        "is_playable": true,
+        "ethereal": false,
+        "upgrades": 0
+    }
+]
