@@ -55,8 +55,10 @@ def main():
         "MyCustomEntry": {"action": "custom", "custom_action": "MonsterRecognitionAction"},
         "MyRecognitionEntry": {"recognition": "custom", "custom_recognition": "MonsterRecognition"},
     }
+    # 执行流水线中选择的任务
     print("开始执行流水线")
     task_detail = tasker.post_task("MyRecognitionEntry", pipeline_override).wait().get()
+    # 反序列化两次结果获得对象List
     detail = JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail)
     monsters = JsonUtils.deserialize_from_str(detail, Monster)
     print(monsters)
