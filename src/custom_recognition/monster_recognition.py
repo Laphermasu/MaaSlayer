@@ -43,7 +43,6 @@ class MonsterRecognition(CustomRecognition):
                         "识别怪物_图片识别": {
                             "recognition": "FeatureMatch",
                             "template": [template],  # 每次只匹配一个模板
-                            # "green_mask": True
                         }
                     }
                 )
@@ -69,16 +68,8 @@ class MonsterRecognition(CustomRecognition):
                 # 获得怪物图像区域
                 x, y, w, h = best_match["box"]
 
-                
                 # 获得怪物的血量
                 health_img = img[y+h:y+h+30, x:x+w]
-                # # 将图像转换为灰度图像
-                # gray_img = cv2.cvtColor(health_img, cv2.COLOR_BGR2GRAY)
-
-                # # 应用阈值处理，将白色部分保留，暗色调部分变为黑色
-                # # 调整阈值参数以实现你想要的效果
-                # _, thresholded_img = cv2.threshold(gray_img, 200, 255, cv2.THRESH_BINARY)
-
                 health_detail = context.run_recognition(
                     "识别怪物_血量识别",  # 流水线名称
                     health_img,  # 输入图像
@@ -89,21 +80,16 @@ class MonsterRecognition(CustomRecognition):
                         }
                     }
                 )
-                
+
+                monster.health = health_detail.best_result.text
                 
                 # 显示处理后的图像（用于调试）
-                cv2.imshow("Thresholded Image", health_img)
-                cv2.waitKey(0)
-                cv2.destroyAllWindows()
+                # cv2.imshow("Thresholded Image", health_img)
+                # cv2.waitKey(0)
+                # cv2.destroyAllWindows()
                 # plt.imshow(health_img, cmap='gray' if len(img.shape) == 2 else None)
                 # plt.axis('off')  # 关闭坐标轴
                 # plt.show()
-
-                # 获得置信度最高的结果
-                # best_score = 0
-                # for result in health_detail.all_results:
-                #     if reslut.
-                #     monster.health = health_detail.best_result.text
 
                 monsters.append(monster)
 
@@ -117,10 +103,6 @@ class MonsterRecognition(CustomRecognition):
                 monster_type = "Unknown"
                 monster_exist = False
 
-        # monsters = [
-        #     Monster(type="Dragon", health=100, action="Fire Breath", buffs=["Fire Resistance"]),
-        #     Monster(type="Goblin", health=20, action="Steal", buffs=["Stealth"]),
-        # ]
         monsters_str =  JsonUtils.serialize_to_str(monsters)
         # print(monsters_str)
         return CustomRecognition.AnalyzeResult(
