@@ -3,10 +3,19 @@ from typing import List, Dict
 
 @dataclass
 class Monster:
-    type: str = "default"
-    health: str = "default"
-    action: str = "default"
-    buffs: List[str] = field(default_factory=list)
+    is_gone: bool = False,
+    move_hits:int = 1,
+    move_base_damage:int = 1,
+    half_dead:bool = False,
+    move_adjusted_damage: int = -1,
+    max_hp:str = "default",
+    intent:str = "DEBUG",
+    move_id:int = 1,
+    name:str = "Spike Slime (S)",
+    current_hp:int = 1,
+    block:int = 0,
+    id:str = "SpikeSlime_S",
+    powers:List[str] = field(default_factory=list) # 怪物buff
 
 @dataclass
 class Player:

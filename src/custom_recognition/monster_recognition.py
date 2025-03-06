@@ -63,26 +63,80 @@ class MonsterRecognition(CustomRecognition):
                 monster = Monster()
                 # 根据匹配索引获得怪物名称
                 template_index = best_match["template_index"]
-                monster.type = monster_type.get(str(template_index), "Unknown")
+                monster.name = monster_type.get(str(template_index), "Unknown")
 
                 # 获得怪物图像区域
                 x, y, w, h = best_match["box"]
 
                 # 获得怪物的血量
-                health_img = img[y+h:y+h+30, x:x+w]
                 health_detail = context.run_recognition(
                     "识别怪物_血量识别",  # 流水线名称
-                    health_img,  # 输入图像
+                    img,  # 输入图像
                     pipeline_override={
                         "识别怪物_血量识别": {
                             "recognition": "OCR",
-                            "only_rec": True
+                            "roi": [x, y, w, h+40],
                         }
                     }
                 )
-
-                monster.health = health_detail.best_result.text
                 
+                best_result = {
+                    "best_score": 0,
+                    "health": ""
+                }
+                for index, result in enumerate(health_detail.all_results):
+                    if best_result["best_score"] < health_detail.all_results[index].score:
+                        best_result = {
+                            "best_score": health_detail.all_results[index].score,
+                            "health": health_detail.all_results[index].text
+                        }
+                current_health, max_health = best_result["health"].split('/')
+                monster.current_hp = int(current_health)
+                monster.max_hp = int(max_health)
+
+                
+                # 动作识别
+                action_img = img[y-80:y, x:x+w]
+
+                # 模板列表
+                action_list = JsonUtils.load_json("./assets/resource/image/action/action_list.json")
+                action_type = JsonUtils.load_json("./assets/resource/image/action/action_type.json")
+
+                # 初始化最佳匹配结果
+                best_match = {
+                    "template_index": -1,  # 匹配的模板索引
+                    "count": 0,  # 匹配点数
+                    "box": (0, 0, 0, 0)  # 匹配区域
+                }
+
+                # 遍历模板列表，逐个匹配
+                for index, template in enumerate(action_list):
+                    # 调用识别流水线
+                    reco_detail = context.run_recognition(
+                        "识别怪物_动作识别",  # 流水线名称
+                        action_img,  # 输入图像
+                        pipeline_override={
+                            "识别怪物_图片识别": {
+                                "recognition": "FeatureMatch",
+                                "template": [template],  # 每次只匹配一个模板
+                            }
+                        }
+                    )
+
+                    # 解析识别结果
+                    if reco_detail and reco_detail.best_result:
+                        current_count = reco_detail.best_result.count  # 当前模板的匹配点数
+                        if current_count > best_match["count"]:
+                            best_match = {
+                                "template_index": index,
+                                "count": current_count,
+                                "box": reco_detail.box
+                            }
+
+                    # 根据最佳匹配结果确定动作种类
+                    if best_match["template_index"] != -1:
+                        monster.action = action_type.get(str(best_match["template_index"]), "Unknown")
+
                 # 显示处理后的图像（用于调试）
                 # cv2.imshow("Thresholded Image", health_img)
                 # cv2.waitKey(0)
