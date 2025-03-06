@@ -2,9 +2,10 @@
 from maa.tasker import Tasker
 class CmdPerformer:
 
-        def __init__(self, tasker: Tasker, cmd: str):
+        def __init__(self, tasker: Tasker):
             self.tasker = tasker
-            self.cmd = cmd
+            self.cmd
+
 
         # 解析输入指令
         def setCmd(self, cmd):
@@ -13,8 +14,8 @@ class CmdPerformer:
             return a, b, c
 
 
-        def performCmd(self):
-            a ,b ,c = self.setCmd(self.cmd)
+        def performCmd(self, cmd: str):
+            a ,b ,c = self.setCmd(cmd)
             # 这里可以进行一个判断，看是类型的指令再重写pipeline_override
             pipeline_override = {
                 "第一次点击": {
