@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import cv2
 import numpy as np
 from maa.custom_recognition import CustomRecognition
 from ..utils.json_utils import JsonUtils
@@ -13,7 +12,6 @@ class MonsterRecognition(CustomRecognition):
         context,
         argv: CustomRecognition.AnalyzeArg,
     ) -> CustomRecognition.AnalyzeResult:
-        
         # 模板列表
         monster_list = JsonUtils.load_json("./assets/resource/image/monster/monster_list.json")
         monster_type = JsonUtils.load_json("./assets/resource/image/monster/monster_type.json")
@@ -67,22 +65,34 @@ class MonsterRecognition(CustomRecognition):
 
                 # 获得怪物图像区域
                 x, y, w, h = best_match["box"]
-
                 # 获得怪物的血量
                 health_img = img[y+h:y+h+30, x:x+w]
+                # health_detail = context.run_recognition(
+                #     "识别怪物_血量识别",  # 流水线名称
+                #     img,  # 输入图像
+                #     pipeline_override={
+                #         "识别怪物_血量识别": {
+                #             "recognition": "OCR",
+                #             "roi": [x, y, w, h],
+                #             "roi_offset": [0, 0, 0, 40],
+                #             "only_rec": True
+                #         }
+                #     }
+                # )
                 health_detail = context.run_recognition(
                     "识别怪物_血量识别",  # 流水线名称
-                    health_img,  # 输入图像
+                    img,  # 输入图像
                     pipeline_override={
                         "识别怪物_血量识别": {
                             "recognition": "OCR",
-                            "only_rec": True
+                            "expected": "",
+                            "roi": [x, y, w, h+40],
                         }
                     }
                 )
 
-                monster.health = health_detail.best_result.text
-                
+                monster.health = [result.text for result in health_detail.all_results]
+                print(health_detail)
                 # 显示处理后的图像（用于调试）
                 # cv2.imshow("Thresholded Image", health_img)
                 # cv2.waitKey(0)
@@ -90,7 +100,10 @@ class MonsterRecognition(CustomRecognition):
                 # plt.imshow(health_img, cmap='gray' if len(img.shape) == 2 else None)
                 # plt.axis('off')  # 关闭坐标轴
                 # plt.show()
-
+                best_score = 0
+                # for result in health_detail.all_results:
+                #     if reslut.
+                #     monster.health = health_detail.best_result.text
                 monsters.append(monster)
 
                 # 去掉匹配区域
@@ -104,6 +117,7 @@ class MonsterRecognition(CustomRecognition):
                 monster_exist = False
 
         monsters_str =  JsonUtils.serialize_to_str(monsters)
+        print(monsters)
         # print(monsters_str)
         return CustomRecognition.AnalyzeResult(
             box=best_match["box"], detail=monsters_str

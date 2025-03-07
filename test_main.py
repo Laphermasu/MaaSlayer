@@ -5,7 +5,9 @@ from maa.resource import Resource
 from maa.controller import AdbController
 from maa.custom_action import CustomAction
 from src.core.data_models import Monster
+from src.core.data_models import Player
 from src.custom_recognition.monster_recognition import MonsterRecognition
+from src.custom_recognition.player_recognition import PlayerRecognition
 from src.utils.json_utils import JsonUtils
 
 resource = Resource()
@@ -48,20 +50,20 @@ def main():
         exit()
     print("tasker初始化完成")
 
-    resource.register_custom_recognition("MonsterRecognition", MonsterRecognition())
+    resource.register_custom_recognition("monsterRecognition", MonsterRecognition())
     
     # 测试图片检测输出
     pipeline_override = {
-        "MyCustomEntry": {"action": "custom", "custom_action": "MonsterRecognitionAction"},
-        "MyRecognitionEntry": {"recognition": "custom", "custom_recognition": "MonsterRecognition"},
+        "MyCustomEntry": {"action": "custom", "custom_action": "monsterRecognitionAction"},
+        "MyRecongitionEntry": {"recognition": "custom", "custom_recognition": "monsterRecognition"},
     }
     # 执行流水线中选择的任务
     print("开始执行流水线")
-    task_detail = tasker.post_task("MyRecognitionEntry", pipeline_override).wait().get()
+    task_detail = tasker.post_task("MyRecongitionEntry", pipeline_override).wait().get()
     # 反序列化两次结果获得对象List
     detail = JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail)
-    monsters = JsonUtils.deserialize_from_str(detail, Monster)
-    print(monsters)
+    cards = JsonUtils.deserialize_from_str(detail, Player)
+    print(cards)
 
     # 主循环
     # while True:

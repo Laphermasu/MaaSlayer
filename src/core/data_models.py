@@ -10,12 +10,12 @@ class Monster:
 
 @dataclass
 class Player:
-    health: int
-    energy: int
-    buffs: List[str]
-    hand_cards: List[str]
-    relics: List[str]
-    potions: List[str]
+    health: int = "deflult"
+    energy: int = "deflult"
+    buffs: List[str]= field(default_factory=list)
+    hand_cards: List[str]= field(default_factory=list)
+    relics: List[str]= field(default_factory=list)
+    potions: List[str]= field(default_factory=list)
 
 @dataclass
 class MapNode:
