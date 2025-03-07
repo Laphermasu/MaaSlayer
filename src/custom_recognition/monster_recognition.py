@@ -70,7 +70,7 @@ class MonsterRecognition(CustomRecognition):
 
                 # 获得怪物其他信息
                 monster.current_hp, monster.max_hp = self.recognize_health(context, img, best_match["box"])
-                monster.intent = self.recognize_intent(context, img, best_match["box"])
+                monster.intent, monster.move_base_damage, monster.move_hits = self.recognize_intent(context, img, best_match["box"])
                     
                 # 显示处理后的图像（用于调试）
                 # cv2.imshow("Thresholded Image", health_img)
@@ -200,6 +200,67 @@ class MonsterRecognition(CustomRecognition):
         # 根据最佳匹配结果确定动作种类
         if best_match["template_index"] != -1:
             intent = intent_type.get(str(best_match["template_index"]), "DEBUG")
-            return intent
+            if intent == "ATTACK":
+                x, y, w, h = best_match["box"]
+                attack_detail = context.run_recognition(
+                    "攻击伤害识别",  # 流水线名称
+                    img,  # 输入图像
+                    pipeline_override={
+                        "攻击伤害识别": {
+                            "recognition": "OCR",
+                            "roi": [x, y, w, h],
+                            "roi_offset": [-10, -10, 20, 20]
+                        }
+                    }
+                )
+                # 初始化最佳结果
+                best_result = {
+                    "best_score": 0,
+                    "attack": ""
+                }
+
+                # 遍历所有结果，找到最佳匹配
+                if attack_detail and attack_detail.all_results:
+                    for result in attack_detail.all_results:
+                        if best_result["best_score"] < result.score:
+                            best_result = {
+                                "best_score": result.score,
+                                "attack": result.text
+                            }
+
+                # 解析攻击
+                damage, count = self.parse_attack_string(best_result["attack"])
+                return intent, damage, count
+            else:
+                return intent, 0, 0
         else:
-            return "DEBUG"
+            return "DEBUG", 0, 0  # 如果识别失败，返回默认值
+
+    def parse_attack_string(attack_str):
+        """
+        解析攻击字符串为攻击伤害和攻击次数。
+        
+        :param attack_str: 包含攻击信息的字符串，例如 '11' 或 '2×5'
+        :return: (damage, count)，分别是攻击伤害和攻击次数
+        """
+        attack_str = attack_str.replace('×', '*')  # 将乘号替换为星号，便于计算
+        attack_str = attack_str.replace('x', '*')  # 考虑可能的其他乘号形式
+        
+        if '*' in attack_str:
+            # 如果字符串包含乘号，分割并计算
+            parts = attack_str.split('*')
+            try:
+                damage = int(parts[0].strip())
+                count = int(parts[1].strip())
+                return damage, count
+            except (ValueError, IndexError):
+                print(f"Error parsing attack string: {attack_str}")
+                return 0, 0
+        else:
+            # 只包含一个数字，攻击次数默认为1
+            try:
+                damage = int(attack_str.strip())
+                return damage, 1
+            except ValueError:
+                print(f"Error parsing attack string: {attack_str}")
+                return 0, 0
