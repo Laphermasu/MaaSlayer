@@ -15,7 +15,7 @@ class Monster:
     current_hp:int = 1,
     block:int = 0,
     id:str = "SpikeSlime_S",
-    powers:List[str] = field(default_factory=list) # 怪物buff
+    powers:List[str] = field(default_factory=list)# 怪物buff
 
 @dataclass
 class Player:
@@ -28,8 +28,8 @@ class Player:
 
 @dataclass
 class MapNode:
-    node_type: str  # 如战斗、商店、事件等
-    details: Dict[str, str]  # 节点详细信息
+    details: dict[str, str] = field(default_factory=dict)  # 节点详细信息
+    node_type:str = "default" # 如战斗、商店、事件等
 
 @dataclass
 class Shop:

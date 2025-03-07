@@ -8,6 +8,7 @@ from src.core.data_models import Monster
 from src.core.data_models import Player
 from src.custom_recognition.monster_recognition import MonsterRecognition
 from src.custom_recognition.player_recognition import PlayerRecognition
+from src.custom_recognition.event_recognition import EventRecognition
 from src.utils.json_utils import JsonUtils
 
 resource = Resource()
@@ -50,7 +51,7 @@ def main():
         exit()
     print("tasker初始化完成")
 
-    resource.register_custom_recognition("monsterRecognition", MonsterRecognition())
+    resource.register_custom_recognition("monsterRecognition", EventRecognition())
     
     # 测试图片检测输出
     pipeline_override = {
