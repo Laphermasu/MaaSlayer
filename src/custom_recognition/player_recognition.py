@@ -23,8 +23,8 @@ class PlayerRecognition(CustomRecognition):
             "box": (0, 0, 0, 0)  # 匹配区域
         }
         # 当没有识别到怪物时停止匹配
-        cards_exist = True
-        while cards_exist:
+        hp_exist = True
+        while hp_exist:
             reco_detail = context.run_recognition(
                     "卡牌识别_ocr",  # 流水线名称
                     img,  # 输入图像
@@ -51,6 +51,19 @@ class PlayerRecognition(CustomRecognition):
                 }
             )
 
+            health1_detail = context.run_recognition(
+                "玩家_最大血量识别",  # 流水线名称
+                img,  # 输入图像
+                pipeline_override={
+                    "玩家_最大血量识别": {
+                        "recognition": "OCR",
+                        "expected": "",
+                        # "roi": [888,399,181,133]
+                        "roi": [320, 500, 30, 30]
+                    }
+                }
+            )
+
             energy_detail = context.run_recognition(
                 "玩家_体力识别",  # 流水线名称
                 img,  # 输入图像
@@ -63,6 +76,18 @@ class PlayerRecognition(CustomRecognition):
                 }
             )
 
+            block_detail = context.run_recognition(
+                "玩家_格挡识别",  # 流水线名称
+                img,  # 输入图像
+                pipeline_override={
+                    "玩家_格挡识别": {
+                        "recognition": "OCR",
+                        "expected": "",
+                        "roi": [205, 500, 30, 30]
+                    }
+                }
+            )
+
             # 解析识别结果
             if reco_detail and reco_detail.best_result:
                 best_match = {
@@ -70,21 +95,30 @@ class PlayerRecognition(CustomRecognition):
                     "box": reco_detail.box
                 }
 
+
+            player.block = 0
             if best_match["card"]:
                 filtered_list = [item for item in best_match["card"] if not item.isdigit()]
-                player.hand_cards = filtered_list
                 if health_detail and health_detail.best_result:
                     current_health = health_detail.all_results[0].text
                     current_health = re.sub(r'\D', '', current_health)
-                    player.health = current_health
+                    player.current_hp = current_health
+                if health1_detail and health1_detail.best_result:
+                    max_health = health1_detail.all_results[0].text
+                    max_health = re.sub(r'\D', '', max_health)
+                    player.max_hp = max_health
                 if energy_detail and energy_detail.best_result:
                     current_energy = energy_detail.all_results[0].text
                     current_energy = re.sub(r'\D', '', current_energy)
                     player.energy = current_energy
+                if block_detail and block_detail.best_result:
+                    if block_detail.all_results[0].text.isdigit():
+                        player.block = block_detail.all_results[0].text
+                print(player)
                 break
 
             else:
-                cards_exist = False
+                hp_exist = False
 
         # monsters = [
         #     Monster(type="Dragon", health=100, action="Fire Breath", buffs=["Fire Resistance"]),

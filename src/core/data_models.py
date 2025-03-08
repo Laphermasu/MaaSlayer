@@ -19,12 +19,26 @@ class Monster:
 
 @dataclass
 class Player:
-    health: int = "deflult"
-    energy: int = "deflult"
-    buffs: List[str]= field(default_factory=list)
-    hand_cards: List[str]= field(default_factory=list)
-    relics: List[str]= field(default_factory=list)
-    potions: List[str]= field(default_factory=list)
+    current_hp: int = 0
+    max_hp: int = 0
+    block: int = 0
+    energy: int = 0
+    orbs: List[str] = field(default_factory=list)
+    powers: List[str] = field(default_factory=list)
+
+
+@dataclass
+class Cards:
+    name: str = ""
+    rarity: str = ""
+    type: str = ""
+    cost: int = 0
+    exhausts: bool = False
+    is_playable: bool = False
+    ethereal: bool = False
+    upgrades: int = 0
+    has_target: bool = False
+
 
 @dataclass
 class MapNode:

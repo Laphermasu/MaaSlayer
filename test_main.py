@@ -4,11 +4,12 @@ from maa.context import Context
 from maa.resource import Resource
 from maa.controller import AdbController
 from maa.custom_action import CustomAction
-from src.core.data_models import Monster
+from src.core.data_models import Monster, Cards
 from src.core.data_models import Player
 from src.custom_recognition.monster_recognition import MonsterRecognition
 from src.custom_recognition.player_recognition import PlayerRecognition
 from src.custom_recognition.event_recognition import EventRecognition
+from src.custom_recognition.cards_recogntion import CardRecognition
 from src.utils.json_utils import JsonUtils
 
 resource = Resource()
@@ -51,7 +52,7 @@ def main():
         exit()
     print("tasker初始化完成")
 
-    resource.register_custom_recognition("monsterRecognition", EventRecognition())
+    resource.register_custom_recognition("monsterRecognition", CardRecognition())
     
     # 测试图片检测输出
     pipeline_override = {
@@ -63,7 +64,7 @@ def main():
     task_detail = tasker.post_task("MyRecongitionEntry", pipeline_override).wait().get()
     # 反序列化两次结果获得对象List
     detail = JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail)
-    cards = JsonUtils.deserialize_from_str(detail, Player)
+    cards = JsonUtils.deserialize_from_str(detail, Cards)
     print(cards)
 
     # 主循环
