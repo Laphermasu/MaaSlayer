@@ -53,6 +53,7 @@ def main():
     print("tasker初始化完成")
 
     resource.register_custom_recognition("monsterRecognition", CardRecognition())
+    resource.register_custom_recognition("monsterRecognition", MonsterRecognition())
     
     # 测试图片检测输出
     pipeline_override = {

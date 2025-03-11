@@ -5,50 +5,39 @@ class ScreenState:
     def __init__(self, data):
         self.data = data
 
-    # def __str__(self):
-    #     return f"{self.__class__.__name__}: {self.data}"
+    @classmethod
+    def from_data(cls, data):
+        return cls(data)
 
-@dataclass
 class ShopScreenState(ScreenState):
-    pass
+    @classmethod
+    def from_data(cls, data):
+        shop_data = data.get('shop_items', [])
+        return cls(shop_data)
 
-@dataclass
 class RestScreenState(ScreenState):
-    has_rested: bool = True
-    rest_options: List[str] = ["SMITH", "REST"]
-
+    @classmethod
+    def from_data(cls, data):
+        rest_data = data.get('rest_options', [])
+        return cls(rest_data)
 
 class MapScreenState(ScreenState):
-    pass
-
+    @classmethod
+    def from_data(cls, data):
+        map_data = data.get('map_details', {})
+        return cls(map_data)
 
 class HandSelectScreenState(ScreenState):
-    pass
-
+    @classmethod
+    def from_data(cls, data):
+        hand_data = data.get('hand_options', [])
+        return cls(hand_data)
 
 class EventScreenState(ScreenState):
-    pass
-
-
-class ChestScreenState(ScreenState):
-    pass
-
-
-class CombatRewardScreenState(ScreenState):
-    pass
-
-
-class CardRewardScreenState(ScreenState):
-    pass
-
-
-class BossRewardScreenState(ScreenState):
-    pass
-
-
-class GridScreenState(ScreenState):
-    pass
-
+    @classmethod
+    def from_data(cls, data):
+        event_data = data.get('event_details', {})
+        return cls(event_data)
 
 class ScreenManager:
     def __init__(self, screen_type="NONE", screen_state_data=None):
@@ -63,19 +52,12 @@ class ScreenManager:
             "MAP": MapScreenState,
             "HAND_SELECT": HandSelectScreenState,
             "EVENT": EventScreenState,
-            "CHEST": ChestScreenState,
-            "COMBAT_REWARD": CombatRewardScreenState,
-            "CARD_REWARD": CardRewardScreenState,
-            "BOSS_REWARD": BossRewardScreenState,
-            "GRID": GridScreenState,
         }
 
         # 获取对应的状态类，如果没有匹配，返回一个默认状态
         state_class = screen_state_classes.get(self.screen_type, ScreenState)
-        return state_class(data)
+        return state_class.from_data(data)
 
-    def update_screen_type(self, new_type, new_data):
-        """更新 screen_type 并重新设置 screen_state。"""
-        self.screen_type = new_type
-        self.screen_state = self.create_screen_state(new_data)
-
+    def update_screen_state(self, screen_type: str, screen_state_data):
+        self.screen_type = screen_type
+        self.screen_state = self.create_screen_state(screen_state_data)
