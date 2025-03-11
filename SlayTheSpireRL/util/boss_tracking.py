@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from db.models import Game
-from db.session import SessionLocal
+from SlayTheSpireRL.db.models import Game
+from SlayTheSpireRL.db.session import SessionLocal
 
 def update_boss_count(game_state, game_id):
     """

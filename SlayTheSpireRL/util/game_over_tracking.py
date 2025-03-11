@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from datetime import datetime
-from db.models import Game
-from db.session import SessionLocal
+from SlayTheSpireRL.db.models import Game
+from SlayTheSpireRL.db.session import SessionLocal
 
 def update_game_stats_on_game_over(game_state, game_id, total_reward):
     """

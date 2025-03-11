@@ -1,5 +1,5 @@
 import numpy as np
-from util.tokenizers import screen_type_tokenizer
+from SlayTheSpireRL.util.tokenizers import screen_type_tokenizer
 
 def get_extra_info_observation(game_state):
     # Retrieve screen_type, deck size, floor, gold, and ascension level from the game state

@@ -3,15 +3,15 @@ import socket
 import os
 from collections import deque
 from sb3_contrib.ppo_mask import MaskablePPO
-from slay_the_spire_env import SlayTheSpireEnv
-from model.custom_rollout_buffer import CustomRolloutBuffer
-from util.communication import receive_full_json, handle_end_of_episode
-from util.plotting import plot_performance_metrics
-from util.data_processor import process_game_state
+from SlayTheSpireRL.slay_the_spire_env import SlayTheSpireEnv
+from SlayTheSpireRL.model.custom_rollout_buffer import CustomRolloutBuffer
+from SlayTheSpireRL.util.communication import receive_full_json, handle_end_of_episode
+from SlayTheSpireRL.util.plotting import plot_performance_metrics
+from SlayTheSpireRL.util.data_processor import process_game_state
 import json
-from util.data_processor import process_game_state, get_next_game_id
-from util.game_over_tracking import update_game_stats_on_game_over
-from util.card_tracking import track_card_performance
+from SlayTheSpireRL.util.data_processor import process_game_state, get_next_game_id
+from SlayTheSpireRL.util.game_over_tracking import update_game_stats_on_game_over
+from SlayTheSpireRL.util.card_tracking import track_card_performance
 
 def run_environment(env_id, port, experience_queue, n_steps=2048):
     """

@@ -1,11 +1,11 @@
 import numpy as np
-from util.tokenizers import power_tokenizer
+from SlayTheSpireRL.util.tokenizers import power_tokenizer
 import sys
 import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(current_dir)
 
-from observations.observation_processing import tokenize_powers
+from SlayTheSpireRL.observations.observation_processing import tokenize_powers
 
 def get_player_observation(game_state):
     current_hp = game_state.get("current_hp", 0)

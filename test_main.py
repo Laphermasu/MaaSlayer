@@ -11,8 +11,116 @@ from src.custom_recognition.player_recognition import PlayerRecognition
 from src.custom_recognition.event_recognition import EventRecognition
 from src.custom_recognition.cards_recogntion import CardRecognition
 from src.utils.json_utils import JsonUtils
+from sb3_contrib.ppo_mask import MaskablePPO
+from SlayTheSpireRL.slay_the_spire_env import SlayTheSpireEnv
+import json
+import threading
+import torch as th
+from func import (
+    get_available_commands,
+    get_screen,
+    get_hand,
+    get_monsters,
+    get_player,
+    get_deck,
+    get_relics,
+    get_potions,
+    get_map,
+    get_info
+)
 
 resource = Resource()
+
+def generate_json(monsters, cards):
+    available_commands = get_available_commands()
+    screen = get_screen()
+    combat_state = {
+        "monsters": [monster.__dict__ for monster in monsters],
+        # "monsters": get_monsters(),
+        "hand": [card.__dict__ for card in cards],
+        # "hand": get_hand(),
+        # "player": [player.__dict__ for player in players],
+        "player": get_player(),
+    }
+    deck = get_deck()
+    relics = get_relics()
+    max_hp, gold, current_hp, floor, room_type = get_info()
+    potions = get_potions()
+    game_map = get_map()
+
+    game_state = {
+        "screen_type": screen['type'],
+        "screen_state": screen['state'],
+        "combat_state": combat_state,
+        "deck": deck,
+        "relics": relics,
+        "max_hp": max_hp,
+        "gold": gold,
+        "potions": potions,
+        "current_hp": current_hp,
+        "floor": floor,
+        "map": game_map,
+        "room_type": room_type,
+    }
+
+    json_data = {
+        "available_commands": available_commands,
+        "ready_for_command": True,
+        "in_game": True,
+        "game_state": game_state
+    }
+
+
+    json_result = json.dumps(json_data)
+
+    return json_result
+def recognize_monsters(tasker, result_dict):
+    print("开始识别怪物")
+    pipeline_override = {
+        "MyRecongitionEntry": {"recognition": "custom", "custom_recognition": "monsterRecognition"},
+    }
+    task_detail = tasker.post_task("MyRecongitionEntry", pipeline_override).wait().get()
+    monsters = JsonUtils.deserialize_from_str(
+        JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail),Monster
+    )
+    result_dict["monsters"] = monsters  # 存储到共享字典
+    print(f"识别到的怪物: {monsters}")
+
+def recognize_players(tasker, result_dict):
+    print("开始识别玩家")
+    pipeline_override = {
+        "MyRecongitionEntry": {"recognition": "custom", "custom_recognition": "playerRecognition"},
+    }
+    task_detail = tasker.post_task("MyRecongitionEntry", pipeline_override).wait().get()
+    players = JsonUtils.deserialize_from_str(
+        JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail)
+    )
+    result_dict["players"] = players
+    print(f"识别到的玩家: {players}")
+
+def recognize_events(tasker, result_dict):
+    print("开始识别事件")
+    pipeline_override = {
+        "MyRecongitionEntry": {"recognition": "custom", "custom_recognition": "eventRecognition"},
+    }
+    task_detail = tasker.post_task("MyRecongitionEntry", pipeline_override).wait().get()
+    events = JsonUtils.deserialize_from_str(
+        JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail)
+    )
+    result_dict["events"] = events
+    print(f"识别到的事件: {events}")
+
+def recognize_cards(tasker, result_dict):
+    print("开始识别卡牌")
+    pipeline_override = {
+        "MyRecongitionEntry": {"recognition": "custom", "custom_recognition": "cardRecognition"},
+    }
+    task_detail = tasker.post_task("MyRecongitionEntry", pipeline_override).wait().get()
+    cards = JsonUtils.deserialize_from_str(
+        JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail),Cards
+    )
+    result_dict["cards"] = cards
+    print(f"识别到的卡牌: {cards}")
 
 def main():
     # 初始化 MaaFramework
@@ -52,22 +160,61 @@ def main():
         exit()
     print("tasker初始化完成")
 
-    resource.register_custom_recognition("monsterRecognition", CardRecognition())
+    # 注册自定义识别器
     resource.register_custom_recognition("monsterRecognition", MonsterRecognition())
-    
-    # 测试图片检测输出
-    pipeline_override = {
-        "MyCustomEntry": {"action": "custom", "custom_action": "monsterRecognitionAction"},
-        "MyRecongitionEntry": {"recognition": "custom", "custom_recognition": "monsterRecognition"},
-    }
-    # 执行流水线中选择的任务
-    print("开始执行流水线")
-    task_detail = tasker.post_task("MyRecongitionEntry", pipeline_override).wait().get()
-    # 反序列化两次结果获得对象List
-    detail = JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail)
-    cards = JsonUtils.deserialize_from_str(detail, Cards)
-    print(cards)
+    # resource.register_custom_recognition("playerRecognition", PlayerRecognition())
+    # resource.register_custom_recognition("eventRecognition", EventRecognition())
+    resource.register_custom_recognition("cardRecognition", CardRecognition())
 
+
+    # 共享字典存储识别结果
+    result_dict = {}
+
+    # 创建线程并执行
+    threads = [
+        threading.Thread(target=recognize_monsters, args=(tasker, result_dict)),
+        # threading.Thread(target=recognize_players, args=(tasker, result_dict)),
+        # threading.Thread(target=recognize_events, args=(tasker, result_dict)),
+        threading.Thread(target=recognize_cards, args=(tasker, result_dict))
+    ]
+
+    for thread in threads:
+        thread.start()
+
+    for thread in threads:
+        thread.join()
+
+    print("所有识别任务完成")
+
+    # 解析 JSON
+    monsters = result_dict.get("monsters", [])
+    # players = result_dict.get("players", [])
+    # events = result_dict.get("events", [])
+    cards = result_dict.get("cards", [])
+
+    game_state = json.loads(generate_json(monsters,cards))
+    print(game_state)
+    env = SlayTheSpireEnv({})
+    device = th.device("cuda" if th.cuda.is_available() else "cpu")
+    model = MaskablePPO.load("maskable_ppo_slay_the_spire1.zip", env=env, device=device)
+
+    # 解析 JSON，转换为环境可用的格式
+    env.update_game_state(game_state)
+    obs = env.flatten_observation(game_state)
+    obs_tensor = {key: th.tensor(value, dtype=th.float32).unsqueeze(0).to(device) for key, value in obs.items()}
+
+    action_mask = env.get_invalid_action_mask(game_state)
+    action_mask_tensor = th.tensor(action_mask, dtype=th.bool).unsqueeze(0).to(device)
+    obs_numpy = {key: value.cpu().numpy() for key, value in obs_tensor.items()}
+    action_mask_numpy = action_mask_tensor.cpu().numpy()
+
+    action, _states = model.predict(obs_numpy, action_masks=action_mask_numpy)
+    action = int(action)
+    chosen_command = env.actions[action]
+
+    print(f"Action: {chosen_command}")
+
+    env.close()
     # 主循环
     # while True:
     #     game_state_manager.update_state()

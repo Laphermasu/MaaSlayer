@@ -3,18 +3,18 @@ from typing import List, Dict
 
 @dataclass
 class Monster:
-    is_gone: bool = False,
-    move_hits:int = 1,
-    move_base_damage:int = 1,
-    half_dead:bool = False,
-    move_adjusted_damage: int = 0,
-    max_hp:int = 1,
-    intent:str = "DEBUG",
-    move_id:int = 1,
-    name:str = "Spike Slime (S)",
-    current_hp:int = 1,
-    block:int = 0,
-    id:str = "SpikeSlime_S",
+    is_gone: bool = False
+    move_hits:int = 1
+    move_base_damage:int = 1
+    half_dead:bool = False
+    move_adjusted_damage: int = 0
+    max_hp:int = 1
+    intent:str = "DEBUG"
+    move_id:int = 1
+    name:str = "Spike Slime (S)"
+    current_hp:int = 1
+    block:int = 0
+    id:str = "SpikeSlime_S"
     powers:List[str] = field(default_factory=list)# 怪物buff
 
 @dataclass

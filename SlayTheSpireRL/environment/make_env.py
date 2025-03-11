@@ -3,8 +3,8 @@ import socket
 import os
 from collections import deque
 from sb3_contrib.ppo_mask import MaskablePPO
-from slay_the_spire_env import SlayTheSpireEnv
-from model.custom_rollout_buffer import CustomRolloutBuffer
+from SlayTheSpireRL.slay_the_spire_env import SlayTheSpireEnv
+from SlayTheSpireRL.model.custom_rollout_buffer import CustomRolloutBuffer
 
 def make_env(env_id, rank, seed=0):
     """

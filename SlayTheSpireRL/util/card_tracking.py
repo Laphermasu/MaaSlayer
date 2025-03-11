@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from db.models import CardPicked, CardPerformance
-from db.session import SessionLocal
+from SlayTheSpireRL.db.models import CardPicked, CardPerformance
+from SlayTheSpireRL.db.session import SessionLocal
 import json
 import math
 

@@ -2,18 +2,18 @@ import gymnasium as gym
 import copy
 import numpy as np
 from gymnasium import spaces
-from util.tokenizers import screen_type_tokenizer
+from SlayTheSpireRL.util.tokenizers import screen_type_tokenizer
 import random
 
-from observations.player_observations import get_player_observation
-from observations.hand_observations import get_hand_observation
-from observations.monster_observations import get_monster_observation
-from observations.map_observations import get_map_observation
-from observations.potion_observations import get_potion_observation
-from observations.relic_observations import get_relic_observation
-from observations.extra_info_observations import get_extra_info_observation
-from observations.deck_observations import get_deck_observation
-from observations.screen_observations import get_screen_observation
+from SlayTheSpireRL.observations.player_observations import get_player_observation
+from SlayTheSpireRL.observations.hand_observations import get_hand_observation
+from SlayTheSpireRL.observations.monster_observations import get_monster_observation
+from SlayTheSpireRL.observations.map_observations import get_map_observation
+from SlayTheSpireRL.observations.potion_observations import get_potion_observation
+from SlayTheSpireRL.observations.relic_observations import get_relic_observation
+from SlayTheSpireRL.observations.extra_info_observations import get_extra_info_observation
+from SlayTheSpireRL.observations.deck_observations import get_deck_observation
+from SlayTheSpireRL.observations.screen_observations import get_screen_observation
 
 class SlayTheSpireEnv(gym.Env):
     def __init__(self, initial_state):

@@ -1,5 +1,5 @@
 import numpy as np
-from util.tokenizers import screen_type_tokenizer, map_symbol_tokenizer, relic_tokenizer, potion_tokenizer, card_tokenizer, rest_tokenizer, reward_type_tokenizer, event_id_tokenizer, card_tokenizer, card_type_tokenizer, card_rarity_tokenizer
+from SlayTheSpireRL.util.tokenizers import screen_type_tokenizer, map_symbol_tokenizer, relic_tokenizer, potion_tokenizer, card_tokenizer, rest_tokenizer, reward_type_tokenizer, event_id_tokenizer, card_tokenizer, card_type_tokenizer, card_rarity_tokenizer
 from observation_processing import tokenize_card
 
 import numpy as np

@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from datetime import datetime
-from db.models import Game
-from db.session import SessionLocal
+from SlayTheSpireRL.db.models import Game
+from SlayTheSpireRL.db.session import SessionLocal
 
 def track_favorite_class(action, game_id):
     """

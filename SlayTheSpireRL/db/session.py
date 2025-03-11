@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from db.models import Base 
+from SlayTheSpireRL.db.models import Base
 
 load_dotenv()
 

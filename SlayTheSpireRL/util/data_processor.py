@@ -1,9 +1,9 @@
-from util.card_tracking import track_card_pick
-from util.class_tracking import track_favorite_class
-from util.boss_tracking import update_boss_count
+from SlayTheSpireRL.util.card_tracking import track_card_pick
+from SlayTheSpireRL.util.class_tracking import track_favorite_class
+from SlayTheSpireRL.util.boss_tracking import update_boss_count
 from sqlalchemy.orm import Session
-from db.session import SessionLocal
-from db.models import Game
+from SlayTheSpireRL.db.session import SessionLocal
+from SlayTheSpireRL.db.models import Game
 
 def process_game_state(game_state, action, game_id):
     """

@@ -1,5 +1,5 @@
 import numpy as np
-from util.tokenizers import map_symbol_tokenizer
+from SlayTheSpireRL.util.tokenizers import map_symbol_tokenizer
 
 def get_map_observation(game_state):
     map_state = game_state.get("map", [])
