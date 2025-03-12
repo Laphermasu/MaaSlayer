@@ -28,17 +28,21 @@ from func import (
 resource = Resource()
 
 
-def generate_json(screen_type ,monsters = None,events = None,cards= None,players=None):
+def generate_json(screen_type ,monsters = None,events = None,cards= None,player=None):
     if screen_type == "NONE":
         available_commands = get_available_commands()
         combat_state = {
             "monsters": [monster.__dict__ for monster in monsters],
             "hand": [card.__dict__ for card in cards],
-            "player": [player.__dict__ for player in players],
+            "player": {
+                "block": player.block,
+                "energy": player.energy,
+                "powers": player.powers
+            }
         }
         deck = get_deck()
         relics = get_relics()
-        max_hp, gold, current_hp, floor, room_type = get_info()
+        _, gold, _, floor, _ = get_info()
         potions = get_potions()
         game_map = get_map()
 
@@ -48,13 +52,13 @@ def generate_json(screen_type ,monsters = None,events = None,cards= None,players
             "combat_state": combat_state,
             "deck": deck,
             "relics": relics,
-            "max_hp": max_hp,
+            "max_hp": player.max_hp,
             "gold": gold,
             "potions": potions,
-            "current_hp": current_hp,
+            "current_hp": player.current_hp,
             "floor": floor,
             "map": game_map,
-            "room_type": room_type,
+            "ascension_level": 0,
         }
 
         json_data = {
