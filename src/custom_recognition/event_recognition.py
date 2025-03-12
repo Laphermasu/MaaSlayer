@@ -7,19 +7,22 @@ import matplotlib.pyplot as plt
 import numpy as np
 from ..utils.json_utils import JsonUtils
 from ..core.data_models import Player
-from ..core.data_models import MapNode
+from ..core.data_models import Event
 from collections import defaultdict
+
 
 def fill_index(input_list):
     pattern = re.compile(r'^[\[［【](.*?)[\]］】](.*)$')
-    result_dict = {}
+    result_list = []
     for item in input_list:
         match = pattern.match(item)
         if match:
             key = match.group(1)
             value = match.group(2).strip()  # 去除前后空格，根据需要可以去掉这行
-            result_dict[key] = value if value else ''
-    return result_dict
+            list = key if key else ''
+            result_list.append(list)
+    return result_list
+
 
 class EventRecognition(CustomRecognition):
     def analyze(
@@ -27,28 +30,39 @@ class EventRecognition(CustomRecognition):
             context,
             argv: CustomRecognition.AnalyzeArg,
     ) -> CustomRecognition.AnalyzeResult:
-        # 获取当前屏幕图片
         img = context.tasker.controller.post_screencap().wait().get()
-        player = Player()
-        event = MapNode()
+        event = Event()
         best_match = {
-            "card": [],  # 匹配的模板索引
-            "count": 0,  # 匹配点数
-            "box": (0, 0, 0, 0)  # 匹配区域
+            "card": [],
+            "count": 0,
+            "box": (0, 0, 0, 0)
         }
         # 当没有识别到怪物时停止匹配
         event_exist = True
         while event_exist:
             reco_detail = context.run_recognition(
-                    "事件识别_ocr",  # 流水线名称
-                    img,  # 输入图像
-                    pipeline_override={
-                        "事件识别_ocr": {
-                            "recognition": "OCR",
-                            "expected": "祈祷",  # 每次只匹配一个模板
-                            # "green_mask": True
-                        }
+                "事件识别_ocr",  # 流水线名称
+                img,  # 输入图像
+                pipeline_override={
+                    "事件识别_ocr": {
+                        "recognition": "OCR",
+                        "expected": "",  # 每次只匹配一个模板
+                        # "green_mask": True
                     }
+                }
+            )
+
+            eventname_detail = context.run_recognition(
+                "事件名称识别_ocr",  # 流水线名称
+                img,  # 输入图像
+                pipeline_override={
+                    "事件名称识别_ocr": {
+                        "recognition": "OCR",
+                        "expected": "",  # 每次只匹配一个模板
+                        "roi":[200,150,400,50]
+                        # "green_mask": True
+                    }
+                }
             )
 
             bracket_pattern = re.compile(r'^[\[【［]')
@@ -81,15 +95,18 @@ class EventRecognition(CustomRecognition):
                 combined_text = ''.join([item.text for item in bracket_sorted + non_bracket_sorted])
                 result_list.append(combined_text)
 
-            event.node_type = "事件"
-            event.details = fill_index(result_list)
+            list0 = fill_index(result_list)
+            event.event_id = eventname_detail.all_results[0].text
+            i = 0
+            for r in list0:
+                if r == "Locked" or r == "Unavailable" or r == "Unreachable" or r == "Deactivated" or r == "Expired" \
+                        or r == "Pending" or r == "Restricted" or r == "Prohibited" or r == "Blocked" or r == "Disabled" \
+                        or r == "Invalid":
+                    event.options.append({"choice_index": i, "disabled": False})
+                else:
+                    event.options.append({"choice_index": i, "disabled": True})
+                i = i + 1
             break
-
-        # monsters = [
-        #     Monster(type="Dragon", health=100, action="Fire Breath", buffs=["Fire Resistance"]),
-        #     Monster(type="Goblin", health=20, action="Steal", buffs=["Stealth"]),
-        # ]
-        # print(monsters_str)
         event_str = JsonUtils.serialize_to_str(event)
         return CustomRecognition.AnalyzeResult(
             box=best_match["box"], detail=str(event_str)

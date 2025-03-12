@@ -160,11 +160,20 @@ def main():
         exit()
     print("tasker初始化完成")
 
-    # 注册自定义识别器
-    resource.register_custom_recognition("monsterRecognition", MonsterRecognition())
-    # resource.register_custom_recognition("playerRecognition", PlayerRecognition())
-    # resource.register_custom_recognition("eventRecognition", EventRecognition())
-    resource.register_custom_recognition("cardRecognition", CardRecognition())
+    resource.register_custom_recognition("monsterRecognition", EventRecognition())
+    
+    # 测试图片检测输出
+    pipeline_override = {
+        "MyCustomEntry": {"action": "custom", "custom_action": "monsterRecognitionAction"},
+        "MyRecongitionEntry": {"recognition": "custom", "custom_recognition": "monsterRecognition"},
+    }
+    # 执行流水线中选择的任务
+    print("开始执行流水线")
+    task_detail = tasker.post_task("MyRecongitionEntry", pipeline_override).wait().get()
+    # 反序列化两次结果获得对象List
+    detail = JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail)
+    cards = JsonUtils.deserialize_from_str(detail, Cards)
+    print(cards)
 
 
     # 共享字典存储识别结果

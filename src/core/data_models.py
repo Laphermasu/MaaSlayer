@@ -41,14 +41,18 @@ class Cards:
 
 
 @dataclass
-class MapNode:
-    details: dict[str, str] = field(default_factory=dict)  # 节点详细信息
-    node_type:str = "default" # 如战斗、商店、事件等
+class Event:
+    options: List[Dict[str, any]] = field(default_factory=list)
+    event_id: str = "default"
 
 @dataclass
 class Shop:
     items: Dict[str, int]  # 商品名称和价格
     gold: int
+
+@dataclass
+class MapNode:
+    None_type:str = ""
 
 @dataclass
 class GameState:

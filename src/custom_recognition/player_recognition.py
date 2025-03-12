@@ -14,26 +14,24 @@ class PlayerRecognition(CustomRecognition):
             context,
             argv: CustomRecognition.AnalyzeArg,
     ) -> CustomRecognition.AnalyzeResult:
-        # 获取当前屏幕图片
         img = context.tasker.controller.post_screencap().wait().get()
         player = Player()
         best_match = {
-            "card": [],  # 匹配的模板索引
-            "count": 0,  # 匹配点数
-            "box": (0, 0, 0, 0)  # 匹配区域
+            "card": [],
+            "count": 0,
+            "box": (0, 0, 0, 0)
         }
         # 当没有识别到怪物时停止匹配
         hp_exist = True
         while hp_exist:
             reco_detail = context.run_recognition(
-                    "卡牌识别_ocr",  # 流水线名称
-                    img,  # 输入图像
+                    "卡牌识别_ocr",
+                    img,
                     pipeline_override={
                         "卡牌识别_ocr": {
                             "recognition": "OCR",
-                            "expected": "",  # 每次只匹配一个模板
+                            "expected": "",
                             "roi":[285,549,700,100]
-                            # "green_mask": True
                         }
                     }
             )
@@ -98,7 +96,6 @@ class PlayerRecognition(CustomRecognition):
 
             player.block = 0
             if best_match["card"]:
-                filtered_list = [item for item in best_match["card"] if not item.isdigit()]
                 if health_detail and health_detail.best_result:
                     current_health = health_detail.all_results[0].text
                     current_health = re.sub(r'\D', '', current_health)
@@ -120,11 +117,6 @@ class PlayerRecognition(CustomRecognition):
             else:
                 hp_exist = False
 
-        # monsters = [
-        #     Monster(type="Dragon", health=100, action="Fire Breath", buffs=["Fire Resistance"]),
-        #     Monster(type="Goblin", health=20, action="Steal", buffs=["Stealth"]),
-        # ]
-        # print(monsters_str)
         player_str = JsonUtils.serialize_to_str(player)
         return CustomRecognition.AnalyzeResult(
             box=best_match["box"], detail=str(player_str)
