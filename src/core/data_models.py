@@ -16,6 +16,7 @@ class Monster:
     block:int = 0
     id:str = "SpikeSlime_S"
     powers:List[str] = field(default_factory=list)# 怪物buff
+    box: tuple = (0, 0, 0, 0)
 
 @dataclass
 class Player:

@@ -65,6 +65,7 @@ class MonsterRecognition(CustomRecognition):
                 template_index = best_match["template_index"]
                 monster.name = monster_type.get(str(template_index), "Unknown")
                 monster.id = monster_type.get(str(template_index), "Unknown")
+                monster.box = best_match["box"]
 
                 # 获得怪物图像区域
                 x, y, w, h = best_match["box"]
