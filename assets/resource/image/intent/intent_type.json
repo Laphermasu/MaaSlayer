@@ -1,10 +1,10 @@
 {
-    "0": "AttACK",
-    "1": "AttACK",
-    "2": "AttACK",
-    "3": "AttACK",
-    "4": "AttACK",
-    "5": "AttACK",
-    "6": "defensive",
-    "7": "strategic"
+    "0": "ATTACK",
+    "1": "ATTACK",
+    "2": "ATTACK",
+    "3": "ATTACK",
+    "4": "ATTACK",
+    "5": "ATTACK",
+    "6": "DEFEND",
+    "7": "STRATEGIC"
 }

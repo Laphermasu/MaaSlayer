@@ -42,6 +42,7 @@ class MonsterRecognition(CustomRecognition):
                         "识别怪物_图片识别": {
                             "recognition": "FeatureMatch",
                             "template": [template],  # 每次只匹配一个模板
+                            "green_mask": True
                         }
                     }
                 )
@@ -182,7 +183,8 @@ class MonsterRecognition(CustomRecognition):
                         "recognition": "FeatureMatch",
                         "template": [template],  # 每次只匹配一个模板
                         "roi": [x, y, w, h],
-                        "roi_offset": [0, -80, 0, -h+80]
+                        "roi_offset": [0, -80, 0, -h+80],
+                        "green_mask": True
                     }
                 }
             )
