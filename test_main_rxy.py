@@ -4,7 +4,7 @@ from maa.context import Context
 from maa.resource import Resource
 from maa.controller import AdbController
 from maa.custom_action import CustomAction
-from src.core.data_models import Monster, Cards
+from src.core.data_models import Monster, Cards ,Event
 from src.core.data_models import Player
 from src.custom_recognition.monster_recognition import MonsterRecognition
 from src.custom_recognition.player_recognition import PlayerRecognition
@@ -18,10 +18,6 @@ import threading
 import torch as th
 from func import (
     get_available_commands,
-    get_screen,
-    get_hand,
-    get_monsters,
-    get_player,
     get_deck,
     get_relics,
     get_potions,
@@ -31,49 +27,61 @@ from func import (
 
 resource = Resource()
 
-def generate_json(monsters,players,events,cards):
-    available_commands = get_available_commands()
-    screen = get_screen()
-    combat_state = {
-        "monsters": [monster.__dict__ for monster in monsters],
-        # "monsters": get_monsters(),
-        "hand": [card.__dict__ for card in cards],
-        # "hand": get_hand(),
-        "player": [player.__dict__ for player in players],
-        # "player": get_player(),
-    }
-    deck = get_deck()
-    relics = get_relics()
-    max_hp, gold, current_hp, floor, room_type = get_info()
-    potions = get_potions()
-    game_map = get_map()
 
-    game_state = {
-        "screen_type": screen['type'],
-        "screen_state": screen['state'],
-        "combat_state": combat_state,
-        "deck": deck,
-        "relics": relics,
-        "max_hp": max_hp,
-        "gold": gold,
-        "potions": potions,
-        "current_hp": current_hp,
-        "floor": floor,
-        "map": game_map,
-        "room_type": room_type,
-    }
+def generate_json(screen_type ,monsters = None,events = None,cards= None,players=None):
+    if screen_type == "NONE":
+        available_commands = get_available_commands()
+        combat_state = {
+            "monsters": [monster.__dict__ for monster in monsters],
+            "hand": [card.__dict__ for card in cards],
+            "player": [player.__dict__ for player in players],
+        }
+        deck = get_deck()
+        relics = get_relics()
+        max_hp, gold, current_hp, floor, room_type = get_info()
+        potions = get_potions()
+        game_map = get_map()
 
-    json_data = {
-        "available_commands": available_commands,
-        "ready_for_command": True,
-        "in_game": True,
-        "game_state": game_state
-    }
+        game_state = {
+            "screen_type": screen_type,
+            "screen_state": {},
+            "combat_state": combat_state,
+            "deck": deck,
+            "relics": relics,
+            "max_hp": max_hp,
+            "gold": gold,
+            "potions": potions,
+            "current_hp": current_hp,
+            "floor": floor,
+            "map": game_map,
+            "room_type": room_type,
+        }
 
+        json_data = {
+            "available_commands": available_commands,
+            "ready_for_command": True,
+            "in_game": True,
+            "game_state": game_state
+        }
 
-    json_result = json.dumps(json_data)
+        json_result = json.dumps(json_data)
+    elif screen_type == "Event":
+        game_state = {
+            "screen_type": screen_type,
+            "screen_state": {
+                "event_id": events.event_id,
+                "options": events.options
+            }
+        }
 
+        json_data = {
+            "game_state": game_state
+        }
+
+        json_result = json.dumps(json_data)
     return json_result
+
+
 def recognize_monsters(tasker, result_dict):
     print("开始识别怪物")
     pipeline_override = {
@@ -81,10 +89,11 @@ def recognize_monsters(tasker, result_dict):
     }
     task_detail = tasker.post_task("MyRecongitionEntry", pipeline_override).wait().get()
     monsters = JsonUtils.deserialize_from_str(
-        JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail),Monster
+        JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail), Monster
     )
     result_dict["monsters"] = monsters  # 存储到共享字典
     print(f"识别到的怪物: {monsters}")
+
 
 def recognize_players(tasker, result_dict):
     print("开始识别玩家")
@@ -93,10 +102,11 @@ def recognize_players(tasker, result_dict):
     }
     task_detail = tasker.post_task("MyRecongitionEntry", pipeline_override).wait().get()
     players = JsonUtils.deserialize_from_str(
-        JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail)
+        JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail), Player
     )
     result_dict["players"] = players
     print(f"识别到的玩家: {players}")
+
 
 def recognize_events(tasker, result_dict):
     print("开始识别事件")
@@ -105,10 +115,11 @@ def recognize_events(tasker, result_dict):
     }
     task_detail = tasker.post_task("MyRecongitionEntry", pipeline_override).wait().get()
     events = JsonUtils.deserialize_from_str(
-        JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail)
+        JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail), Event
     )
     result_dict["events"] = events
     print(f"识别到的事件: {events}")
+
 
 def recognize_cards(tasker, result_dict):
     print("开始识别卡牌")
@@ -117,10 +128,11 @@ def recognize_cards(tasker, result_dict):
     }
     task_detail = tasker.post_task("MyRecongitionEntry", pipeline_override).wait().get()
     cards = JsonUtils.deserialize_from_str(
-        JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail),Cards
+        JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail), Cards
     )
     result_dict["cards"] = cards
     print(f"识别到的卡牌: {cards}")
+
 
 def main():
     # 初始化 MaaFramework
@@ -160,20 +172,10 @@ def main():
         exit()
     print("tasker初始化完成")
 
-    resource.register_custom_recognition("monsterRecognition", EventRecognition())
-    
-    # 测试图片检测输出
-    pipeline_override = {
-        "MyCustomEntry": {"action": "custom", "custom_action": "monsterRecognitionAction"},
-        "MyRecongitionEntry": {"recognition": "custom", "custom_recognition": "monsterRecognition"},
-    }
-    # 执行流水线中选择的任务
-    print("开始执行流水线")
-    task_detail = tasker.post_task("MyRecongitionEntry", pipeline_override).wait().get()
-    # 反序列化两次结果获得对象List
-    detail = JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail)
-    cards = JsonUtils.deserialize_from_str(detail, Cards)
-    print(cards)
+    resource.register_custom_recognition("monsterRecognition", MonsterRecognition())
+    resource.register_custom_recognition("playerRecognition", PlayerRecognition())
+    resource.register_custom_recognition("eventRecognition", EventRecognition())
+    resource.register_custom_recognition("cardRecognition", CardRecognition())
 
 
     # 共享字典存储识别结果
@@ -200,8 +202,7 @@ def main():
     players = result_dict.get("players", [])
     events = result_dict.get("events", [])
     cards = result_dict.get("cards", [])
-
-    game_state = json.loads(generate_json(monsters,players,events,cards))
+    game_state = json.loads(generate_json(screen_type="Event",monsters=monsters,events=events,cards=cards,players=players))
     print(game_state)
     env = SlayTheSpireEnv({})
     device = th.device("cuda" if th.cuda.is_available() else "cpu")
@@ -223,7 +224,7 @@ def main():
 
     print(f"Action: {chosen_command}")
 
-    env.close()
+    # env.close()
     # 主循环
     # while True:
     #     game_state_manager.update_state()
@@ -248,19 +249,20 @@ class MonsterRecognitionAction(CustomAction):
         img = context.tasker.controller.post_screencap().wait().get()
         # 获得识别区域与结果
         reco_detail = context.run_recognition(
-                "识别怪物_图片识别",  # 流水线名称
-                img,  # 输入图像
-                pipeline_override={
-                    "识别怪物_图片识别": {
-                        "recognition": "FeatureMatch",
-                        "template": "monster\\大颚虫.png",  # 每次只匹配一个模板
-                    }
+            "识别怪物_图片识别",  # 流水线名称
+            img,  # 输入图像
+            pipeline_override={
+                "识别怪物_图片识别": {
+                    "recognition": "FeatureMatch",
+                    "template": "monster\\大颚虫.png",  # 每次只匹配一个模板
                 }
-            )
+            }
+        )
         # 排除识别区域后再次进行多次识别确认怪物数量
-        
+
         print("识别完成")
         return True
+
 
 if __name__ == "__main__":
     main()

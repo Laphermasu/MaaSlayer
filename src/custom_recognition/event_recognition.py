@@ -30,6 +30,7 @@ class EventRecognition(CustomRecognition):
             context,
             argv: CustomRecognition.AnalyzeArg,
     ) -> CustomRecognition.AnalyzeResult:
+        print("11111111111111111111111111111111111111111111111")
         img = context.tasker.controller.post_screencap().wait().get()
         event = Event()
         best_match = {
@@ -102,12 +103,12 @@ class EventRecognition(CustomRecognition):
                 if r == "Locked" or r == "Unavailable" or r == "Unreachable" or r == "Deactivated" or r == "Expired" \
                         or r == "Pending" or r == "Restricted" or r == "Prohibited" or r == "Blocked" or r == "Disabled" \
                         or r == "Invalid":
-                    event.options.append({"choice_index": i, "disabled": False})
-                else:
                     event.options.append({"choice_index": i, "disabled": True})
+                else:
+                    event.options.append({"choice_index": i, "disabled": False})
                 i = i + 1
             break
         event_str = JsonUtils.serialize_to_str(event)
         return CustomRecognition.AnalyzeResult(
-            box=best_match["box"], detail=str(event_str)
+            box=best_match["box"], detail=event_str
         )
