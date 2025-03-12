@@ -2,7 +2,10 @@
     "controller": [
         {
             "name": "安卓端",
-            "type": "Adb"
+            "type": "Adb",
+            "adb": {
+                "input": 1
+            }
         },
         {
             "name": "桌面端",
@@ -33,6 +36,18 @@
         {
             "name": "OCR测试",
             "entry": "OCR测试"
+        },
+        {
+            "name": "选择地图节点",
+            "entry": "地图节点点击"
+        },
+        {
+            "name": "商店跳过",
+            "entry": "商人界面操作"
+        },
+        {
+            "name": "点击跳过",
+            "entry": "点击跳过"
         }
     ],
     "version": "v0.0.1"
