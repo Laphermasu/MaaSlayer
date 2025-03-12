@@ -20,19 +20,20 @@ from func import (
     get_available_commands,
     get_deck,
     get_relics,
-    get_potions,
-    get_map,
-    get_info
+    get_map
 )
 
 resource = Resource()
 
 
 def generate_json(screen_type ,monsters = None,events = None,cards= None,player=None):
+    deck = get_deck()
+    relics = get_relics()
+    game_map = get_map()
     if screen_type == "NONE":
         available_commands = get_available_commands()
         combat_state = {
-            "monsters": [monster.__dict__ for monster in monsters],
+            "monsters": [{k: v for k, v in monster.__dict__.items() if k != "box"} for monster in monsters],
             "hand": [card.__dict__ for card in cards],
             "player": {
                 "block": player.block,
@@ -40,12 +41,6 @@ def generate_json(screen_type ,monsters = None,events = None,cards= None,player=
                 "powers": player.powers
             }
         }
-        deck = get_deck()
-        relics = get_relics()
-        _, gold, _, floor, _ = get_info()
-        potions = get_potions()
-        game_map = get_map()
-
         game_state = {
             "screen_type": screen_type,
             "screen_state": {},
@@ -53,10 +48,10 @@ def generate_json(screen_type ,monsters = None,events = None,cards= None,player=
             "deck": deck,
             "relics": relics,
             "max_hp": player.max_hp,
-            "gold": gold,
-            "potions": potions,
+            "gold": player.gold,
+            "potions": [],
             "current_hp": player.current_hp,
-            "floor": floor,
+            "floor": player.floor,
             "map": game_map,
             "ascension_level": 0,
         }
@@ -67,14 +62,22 @@ def generate_json(screen_type ,monsters = None,events = None,cards= None,player=
             "in_game": True,
             "game_state": game_state
         }
-
         json_result = json.dumps(json_data)
     elif screen_type == "Event":
         game_state = {
             "screen_type": screen_type,
             "screen_state": {
                 "event_id": events.event_id,
-                "options": events.options
+                "options": events.options,
+                "deck": deck,
+                "relics": relics,
+                "max_hp": player.max_hp,
+                "gold": player.gold,
+                "potions": [],
+                "current_hp": player.current_hp,
+                "floor": player.floor,
+                "map": game_map,
+                "ascension_level": 0,
             }
         }
 
@@ -208,64 +211,28 @@ def main():
     cards = result_dict.get("cards", [])
     game_state = json.loads(generate_json(screen_type="Event",monsters=monsters,events=events,cards=cards,players=players))
     print(game_state)
-    env = SlayTheSpireEnv({})
-    device = th.device("cuda" if th.cuda.is_available() else "cpu")
-    model = MaskablePPO.load("maskable_ppo_slay_the_spire1.zip", env=env, device=device)
-
-    # 解析 JSON，转换为环境可用的格式
-    env.update_game_state(game_state)
-    obs = env.flatten_observation(game_state)
-    obs_tensor = {key: th.tensor(value, dtype=th.float32).unsqueeze(0).to(device) for key, value in obs.items()}
-
-    action_mask = env.get_invalid_action_mask(game_state)
-    action_mask_tensor = th.tensor(action_mask, dtype=th.bool).unsqueeze(0).to(device)
-    obs_numpy = {key: value.cpu().numpy() for key, value in obs_tensor.items()}
-    action_mask_numpy = action_mask_tensor.cpu().numpy()
-
-    action, _states = model.predict(obs_numpy, action_masks=action_mask_numpy)
-    action = int(action)
-    chosen_command = env.actions[action]
-
-    print(f"Action: {chosen_command}")
-
+    # env = SlayTheSpireEnv({})
+    # device = th.device("cuda" if th.cuda.is_available() else "cpu")
+    # model = MaskablePPO.load("maskable_ppo_slay_the_spire1.zip", env=env, device=device)
+    #
+    # # 解析 JSON，转换为环境可用的格式
+    # env.update_game_state(game_state)
+    # obs = env.flatten_observation(game_state)
+    # obs_tensor = {key: th.tensor(value, dtype=th.float32).unsqueeze(0).to(device) for key, value in obs.items()}
+    #
+    # action_mask = env.get_invalid_action_mask(game_state)
+    # action_mask_tensor = th.tensor(action_mask, dtype=th.bool).unsqueeze(0).to(device)
+    # obs_numpy = {key: value.cpu().numpy() for key, value in obs_tensor.items()}
+    # action_mask_numpy = action_mask_tensor.cpu().numpy()
+    #
+    # action, _states = model.predict(obs_numpy, action_masks=action_mask_numpy)
+    # action = int(action)
+    # chosen_command = env.actions[action]
+    #
+    # print(f"Action: {chosen_command}")
+    #
     # env.close()
-    # 主循环
-    # while True:
-    #     game_state_manager.update_state()
-    #     current_state = game_state_manager.get_state()
-    #     print("Current Game State:", current_state)
-    #     # 这里可以根据游戏状态执行相应的策略
 
-
-@resource.custom_action("MonsterRecognitionAction")
-class MonsterRecognitionAction(CustomAction):
-
-    def run(self, context: Context, argv: CustomAction.RunArg) -> bool:
-        """
-        Perform custom action to recognize bounty monsters.
-        :param argv: Custom arguments
-        :param context: Running context
-        :return: True if executed successfully, otherwise False.
-        """
-        print("开始执行自定义动作：识别怪物类别")
-
-        # 识别怪物
-        img = context.tasker.controller.post_screencap().wait().get()
-        # 获得识别区域与结果
-        reco_detail = context.run_recognition(
-            "识别怪物_图片识别",  # 流水线名称
-            img,  # 输入图像
-            pipeline_override={
-                "识别怪物_图片识别": {
-                    "recognition": "FeatureMatch",
-                    "template": "monster\\大颚虫.png",  # 每次只匹配一个模板
-                }
-            }
-        )
-        # 排除识别区域后再次进行多次识别确认怪物数量
-
-        print("识别完成")
-        return True
 
 
 if __name__ == "__main__":
