@@ -4,7 +4,7 @@
 # from bs4 import BeautifulSoup
 #
 # def get_buffs():
-#     url = "https://slay-the-spire.fandom.com/wiki/Buffs"
+#     url = "https://slay-the-spire.fandom.com/wiki/Debuff"
 #     headers = {"User-Agent": "Mozilla/5.0"}
 #     response = requests.get(url, headers=headers)
 #
@@ -47,11 +47,11 @@
 #     return buff_data
 #
 # def save_buffs(buff_data):
-#     if not os.path.exists("powers"):  # 创建存储目录
-#         os.makedirs("powers")
+#     if not os.path.exists("debuff"):  # 创建存储目录
+#         os.makedirs("debuff")
 #
 #     # 保存 JSON 数据
-#     with open("powers/powers.json", "w", encoding="utf-8") as f:
+#     with open("debuff/powers.json", "w", encoding="utf-8") as f:
 #         json.dump(buff_data, f, ensure_ascii=False, indent=4)
 #
 #     # 下载图片
@@ -61,7 +61,7 @@
 #             print(f"Skipping {buff['name']} due to missing image URL")
 #             continue
 #
-#         img_name = f"powers/{buff['name'].replace(' ', '_')}.png"
+#         img_name = f"debuff/{buff['name'].replace(' ', '_')}.png"
 #
 #         try:
 #             img_data = requests.get(img_url, headers={"User-Agent": "Mozilla/5.0"}).content
@@ -76,12 +76,12 @@
 #     if powers:
 #         save_buffs(powers)
 #         print("All powers saved successfully!")
-
+#
 import os
 import json
 
 
-def rename_potion_files(directory="powers"):
+def rename_potion_files(directory="debuff"):
     if not os.path.exists(directory):
         print("Directory not found!")
         return
