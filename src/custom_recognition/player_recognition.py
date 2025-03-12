@@ -44,7 +44,7 @@ class PlayerRecognition(CustomRecognition):
                         "recognition": "OCR",
                         "expected": "",
                         #"roi": [888,399,181,133]
-                        "roi": [262,500,50,50]
+                        "roi": [200,15,35,25]
                     }
                 }
             )
@@ -57,7 +57,7 @@ class PlayerRecognition(CustomRecognition):
                         "recognition": "OCR",
                         "expected": "",
                         # "roi": [888,399,181,133]
-                        "roi": [320, 500, 30, 30]
+                        "roi": [240, 15, 30, 30]
                     }
                 }
             )
@@ -69,7 +69,7 @@ class PlayerRecognition(CustomRecognition):
                     "玩家_体力识别": {
                         "recognition": "OCR",
                         "expected": "",
-                        "roi": [100, 575, 40, 40]
+                        "roi": [90, 575, 50, 40]
                     }
                 }
             )
@@ -145,6 +145,7 @@ class PlayerRecognition(CustomRecognition):
             else:
                 hp_exist = False
 
+        print(player)
         player_str = JsonUtils.serialize_to_str(player)
         return CustomRecognition.AnalyzeResult(
             box=best_match["box"], detail=str(player_str)
