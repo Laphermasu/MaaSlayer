@@ -1,0 +1,25 @@
+{
+    "地图节点点击": {
+        "recognition": "TemplateMatch",
+        "action": "Click",
+        "template": [
+            "/map/宝箱.png",
+            "/map/商店.png",
+            "/map/问号.png",
+            "/map/小怪.png",
+            "/map/休息.png"
+        ]
+    },
+    "商人界面操作": {
+        "recognition": "FeatureMatch",
+        "template": "/map/商人.png",
+        "next": "点击跳过"
+    },
+    "点击跳过": {
+        "recognition": "OCR",
+        "expected": [
+            "Skip",
+            "Proceed"
+        ]
+    }
+}
