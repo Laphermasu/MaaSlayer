@@ -24,6 +24,8 @@ class Player:
     max_hp: int = 0
     block: int = 0
     energy: int = 0
+    gold: int = 0
+    floor: int = 0
     orbs: List[str] = field(default_factory=list)
     powers: List[str] = field(default_factory=list)
 

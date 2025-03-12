@@ -30,7 +30,6 @@ class EventRecognition(CustomRecognition):
             context,
             argv: CustomRecognition.AnalyzeArg,
     ) -> CustomRecognition.AnalyzeResult:
-        print("11111111111111111111111111111111111111111111111")
         img = context.tasker.controller.post_screencap().wait().get()
         event = Event()
         best_match = {

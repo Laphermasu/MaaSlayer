@@ -85,6 +85,28 @@ class PlayerRecognition(CustomRecognition):
                     }
                 }
             )
+            gold_detail = context.run_recognition(
+                "玩家_金钱识别",  # 流水线名称
+                img,  # 输入图像
+                pipeline_override={
+                    "玩家_金钱识别": {
+                        "recognition": "OCR",
+                        "expected": "",
+                        "roi": [315, 15, 30, 30]
+                    }
+                }
+            )
+            floor_detail = context.run_recognition(
+                "玩家_楼层识别",  # 流水线名称
+                img,  # 输入图像
+                pipeline_override={
+                    "玩家_楼层识别": {
+                        "recognition": "OCR",
+                        "expected": "",
+                        "roi": [625, 15, 30, 30]
+                    }
+                }
+            )
 
             # 解析识别结果
             if reco_detail and reco_detail.best_result:
@@ -111,6 +133,12 @@ class PlayerRecognition(CustomRecognition):
                 if block_detail and block_detail.best_result:
                     if block_detail.all_results[0].text.isdigit():
                         player.block = block_detail.all_results[0].text
+                if gold_detail and gold_detail.best_result:
+                    if gold_detail.all_results[0].text.isdigit():
+                        player.block = gold_detail.all_results[0].text
+                if floor_detail and floor_detail.best_result:
+                    if floor_detail.all_results[0].text.isdigit():
+                        player.block = floor_detail.all_results[0].text
                 print(player)
                 break
 
