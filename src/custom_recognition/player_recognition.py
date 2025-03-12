@@ -135,10 +135,10 @@ class PlayerRecognition(CustomRecognition):
                         player.block = block_detail.all_results[0].text
                 if gold_detail and gold_detail.best_result:
                     if gold_detail.all_results[0].text.isdigit():
-                        player.block = gold_detail.all_results[0].text
+                        player.gold = gold_detail.all_results[0].text
                 if floor_detail and floor_detail.best_result:
                     if floor_detail.all_results[0].text.isdigit():
-                        player.block = floor_detail.all_results[0].text
+                        player.floor = floor_detail.all_results[0].text
                 print(player)
                 break
 
