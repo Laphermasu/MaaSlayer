@@ -48,7 +48,7 @@ class ImageProcessor:
     #     # 使用图像识别获取玩家信息
     #     result = self.context.run_recognition("PlayerRecognition")
     #     # 解析识别结果并返回 Player 对象
-    #     return Player(health=0, energy=0, buffs=[], hand_cards=[], relics=[], potions=[])
+    #     return Player(health=0, energy=0, powers=[], hand_cards=[], relics=[], potions=[])
     #
     # def recognize_current_node(self) -> MapNode:
     #     # 使用图像识别获取当前节点信息

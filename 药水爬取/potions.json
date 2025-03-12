@@ -1,0 +1,128 @@
+[
+    {
+        "name": "Ambrosia"
+    },
+    {
+        "name": "Ancient Potion"
+    },
+    {
+        "name": "Attack Potion"
+    },
+    {
+        "name": "Blessing of the Forge"
+    },
+    {
+        "name": "Block Potion"
+    },
+    {
+        "name": "Blood Potion"
+    },
+    {
+        "name": "Bottled Miracle"
+    },
+    {
+        "name": "Colorless Potion"
+    },
+    {
+        "name": "Cultist Potion"
+    },
+    {
+        "name": "Cunning Potion"
+    },
+    {
+        "name": "Dexterity Potion"
+    },
+    {
+        "name": "Distilled Chaos"
+    },
+    {
+        "name": "Duplication Potion"
+    },
+    {
+        "name": "Elixir"
+    },
+    {
+        "name": "Energy Potion"
+    },
+    {
+        "name": "Entropic Brew"
+    },
+    {
+        "name": "Essence of Darkness"
+    },
+    {
+        "name": "Essence of Steel"
+    },
+    {
+        "name": "Explosive Potion"
+    },
+    {
+        "name": "Fairy in a Bottle"
+    },
+    {
+        "name": "Fear Potion"
+    },
+    {
+        "name": "Fire Potion"
+    },
+    {
+        "name": "Flex Potion"
+    },
+    {
+        "name": "Focus Potion"
+    },
+    {
+        "name": "Fruit Juice"
+    },
+    {
+        "name": "Gambler's Brew"
+    },
+    {
+        "name": "Ghost In A Jar"
+    },
+    {
+        "name": "Heart of Iron"
+    },
+    {
+        "name": "Liquid Bronze"
+    },
+    {
+        "name": "Liquid Memories"
+    },
+    {
+        "name": "Poison Potion"
+    },
+    {
+        "name": "Potion of Capacity"
+    },
+    {
+        "name": "Power Potion"
+    },
+    {
+        "name": "Regen Potion"
+    },
+    {
+        "name": "Skill Potion"
+    },
+    {
+        "name": "Smoke Bomb"
+    },
+    {
+        "name": "Snecko Oil"
+    },
+    {
+        "name": "Speed Potion"
+    },
+    {
+        "name": "Stance Potion"
+    },
+    {
+        "name": "Strength Potion"
+    },
+    {
+        "name": "Swift Potion"
+    },
+    {
+        "name": "Weak Potion"
+    }
+]

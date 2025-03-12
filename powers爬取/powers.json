@@ -1,0 +1,326 @@
+[
+    {
+        "name": "Accuracy"
+    },
+    {
+        "name": "After Image"
+    },
+    {
+        "name": "Amplify"
+    },
+    {
+        "name": "Angry"
+    },
+    {
+        "name": "Artifact"
+    },
+    {
+        "name": "Back Attack"
+    },
+    {
+        "name": "Barricade"
+    },
+    {
+        "name": "Battle Hymn"
+    },
+    {
+        "name": "Beat of Death"
+    },
+    {
+        "name": "Berserk"
+    },
+    {
+        "name": "Blasphemer"
+    },
+    {
+        "name": "Blur"
+    },
+    {
+        "name": "Brutality"
+    },
+    {
+        "name": "Buffer"
+    },
+    {
+        "name": "Burst"
+    },
+    {
+        "name": "Charge Battery"
+    },
+    {
+        "name": "Collect"
+    },
+    {
+        "name": "Combust"
+    },
+    {
+        "name": "Corruption"
+    },
+    {
+        "name": "Creative AI"
+    },
+    {
+        "name": "Curiosity"
+    },
+    {
+        "name": "Curl Up"
+    },
+    {
+        "name": "Dark Embrace"
+    },
+    {
+        "name": "Demon Form"
+    },
+    {
+        "name": "Deva"
+    },
+    {
+        "name": "Devotion"
+    },
+    {
+        "name": "Dexterity"
+    },
+    {
+        "name": "Double Damage"
+    },
+    {
+        "name": "Double Tap"
+    },
+    {
+        "name": "Draw Card"
+    },
+    {
+        "name": "Duplication"
+    },
+    {
+        "name": "Echo Form"
+    },
+    {
+        "name": "Electro"
+    },
+    {
+        "name": "Energized"
+    },
+    {
+        "name": "Enrage"
+    },
+    {
+        "name": "Envenom"
+    },
+    {
+        "name": "Equilibrium"
+    },
+    {
+        "name": "Establishment"
+    },
+    {
+        "name": "Evolve"
+    },
+    {
+        "name": "Explosive"
+    },
+    {
+        "name": "Fading"
+    },
+    {
+        "name": "Feel No Pain"
+    },
+    {
+        "name": "Fire Breathing"
+    },
+    {
+        "name": "Flame Barrier"
+    },
+    {
+        "name": "Focus"
+    },
+    {
+        "name": "Foresight"
+    },
+    {
+        "name": "Free Attack Power"
+    },
+    {
+        "name": "Heatsink"
+    },
+    {
+        "name": "Hello"
+    },
+    {
+        "name": "Infinite Blades"
+    },
+    {
+        "name": "Intangible"
+    },
+    {
+        "name": "Invincible"
+    },
+    {
+        "name": "Juggernaut"
+    },
+    {
+        "name": "Life Link"
+    },
+    {
+        "name": "Like Water"
+    },
+    {
+        "name": "Loop"
+    },
+    {
+        "name": "Machine Learning"
+    },
+    {
+        "name": "Magnetism"
+    },
+    {
+        "name": "Malleable"
+    },
+    {
+        "name": "Mantra"
+    },
+    {
+        "name": "Master Reality"
+    },
+    {
+        "name": "Mayhem"
+    },
+    {
+        "name": "Mental Fortress"
+    },
+    {
+        "name": "Metallicize"
+    },
+    {
+        "name": "Minion"
+    },
+    {
+        "name": "Mode Shift"
+    },
+    {
+        "name": "Next Turn Block"
+    },
+    {
+        "name": "Nightmare"
+    },
+    {
+        "name": "Nirvana"
+    },
+    {
+        "name": "Noxious Fumes"
+    },
+    {
+        "name": "Omega"
+    },
+    {
+        "name": "Painful Stabs"
+    },
+    {
+        "name": "Panache"
+    },
+    {
+        "name": "Pen Nib"
+    },
+    {
+        "name": "Phantasmal"
+    },
+    {
+        "name": "Plated Armor"
+    },
+    {
+        "name": "Rage"
+    },
+    {
+        "name": "Reactive"
+    },
+    {
+        "name": "Rebound"
+    },
+    {
+        "name": "Regenerate"
+    },
+    {
+        "name": "Regeneration"
+    },
+    {
+        "name": "Repair"
+    },
+    {
+        "name": "Ritual"
+    },
+    {
+        "name": "Rupture"
+    },
+    {
+        "name": "Rushdown"
+    },
+    {
+        "name": "Sadistic"
+    },
+    {
+        "name": "Sharp Hide"
+    },
+    {
+        "name": "Shifting"
+    },
+    {
+        "name": "Simmering Rage"
+    },
+    {
+        "name": "Split"
+    },
+    {
+        "name": "Spore Cloud"
+    },
+    {
+        "name": "Stasis"
+    },
+    {
+        "name": "Static Discharge"
+    },
+    {
+        "name": "Storm"
+    },
+    {
+        "name": "Strength"
+    },
+    {
+        "name": "Strength Up"
+    },
+    {
+        "name": "Study"
+    },
+    {
+        "name": "Surrounded"
+    },
+    {
+        "name": "The Bomb"
+    },
+    {
+        "name": "Thievery"
+    },
+    {
+        "name": "Thorns"
+    },
+    {
+        "name": "Thousand Cuts"
+    },
+    {
+        "name": "Time Warp"
+    },
+    {
+        "name": "Tools of the Trade"
+    },
+    {
+        "name": "Unawakened"
+    },
+    {
+        "name": "Vigor"
+    },
+    {
+        "name": "Wave of the Hand"
+    },
+    {
+        "name": "Well-Laid Plans"
+    }
+]
