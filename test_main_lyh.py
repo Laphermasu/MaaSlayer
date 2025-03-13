@@ -11,8 +11,10 @@ from src.custom_recognition.player_recognition import PlayerRecognition
 from src.custom_recognition.event_recognition import EventRecognition
 from src.custom_recognition.cards_recogntion import CardRecognition
 from src.utils.json_utils import JsonUtils
+from collections import defaultdict
 from sb3_contrib.ppo_mask import MaskablePPO
-from SlayTheSpireRL.slay_the_spire_env import SlayTheSpireEnv
+from src.AI_model.SlayTheSpireRL.slay_the_spire_env import SlayTheSpireEnv
+import re
 import json
 import threading
 import torch as th
@@ -213,28 +215,30 @@ def main():
     players = result_dict.get("players", [])
     events = result_dict.get("events", [])
     cards = result_dict.get("cards", [])
-    game_state = json.loads(generate_json(screen_type="EVENT",monsters=monsters,events=events,cards=cards,player=players))
+    game_state = json.loads(generate_json(screen_type="NONE",monsters=monsters,events=events,cards=cards,player=players))
+    print(game_state)
 
+    env = SlayTheSpireEnv({})
+    device = th.device("cuda" if th.cuda.is_available() else "cpu")
+    model = MaskablePPO.load("src/AI_model/maskable_ppo_slay_the_spire.zip", env=env, device=device)
 
-    # env = SlayTheSpireEnv({})
-    # device = th.device("cuda" if th.cuda.is_available() else "cpu")
-    # model = MaskablePPO.load("maskable_ppo_slay_the_spire1.zip", env=env, device=device)
-    #
-    # # 解析 JSON，转换为环境可用的格式
-    # env.update_game_state(game_state)
-    # obs = env.flatten_observation(game_state)
-    # obs_tensor = {key: th.tensor(value, dtype=th.float32).unsqueeze(0).to(device) for key, value in obs.items()}
-    #
-    # action_mask = env.get_invalid_action_mask(game_state)
-    # action_mask_tensor = th.tensor(action_mask, dtype=th.bool).unsqueeze(0).to(device)
-    # obs_numpy = {key: value.cpu().numpy() for key, value in obs_tensor.items()}
-    # action_mask_numpy = action_mask_tensor.cpu().numpy()
-    #
-    # action, _states = model.predict(obs_numpy, action_masks=action_mask_numpy)
-    # action = int(action)
-    # chosen_command = env.actions[action]
-    # print(f"Action: {chosen_command}")
+    # 解析 JSON，转换为环境可用的格式
+    env.update_game_state(game_state)
+    obs = env.flatten_observation(game_state)
+    obs_tensor = {key: th.tensor(value, dtype=th.float32).unsqueeze(0).to(device) for key, value in obs.items()}
 
+    action_mask = env.get_invalid_action_mask(game_state)
+    action_mask_tensor = th.tensor(action_mask, dtype=th.bool).unsqueeze(0).to(device)
+    obs_numpy = {key: value.cpu().numpy() for key, value in obs_tensor.items()}
+    action_mask_numpy = action_mask_tensor.cpu().numpy()
+
+    action, _states = model.predict(obs_numpy, action_masks=action_mask_numpy)
+    action = int(action)
+    chosen_command = env.actions[action]
+    print(chosen_command)
+
+    game_state['game_state']['screen_state']['chosen_command'] = chosen_command
+    print(game_state)
     print("pipeline定义")
     pipeline_override = {
         "ADBAction": {"action": "custom", "custom_action": "ADBAction", "custom_action_param": game_state},
@@ -251,6 +255,24 @@ def main():
     #     # 这里可以根据游戏状态执行相应的策略
 
 
+def fill_index(input_list):
+    pattern = re.compile(r'^[\[［【](.*?)[\]］】](.*)$')
+    result_list = []
+
+    for item in input_list:
+        match = pattern.match(item)
+        if match:
+            key = match.group(1)  # 括号内的内容（索引）
+            value = match.group(2).strip()  # 括号外的内容（选项名称）
+            result_list.append({"index": key, "text": value})  # 存入列表
+
+    return result_list
+
+
+
+
+
+
 @resource.custom_action("ADBAction")
 class ADBAction(CustomAction):
     def run(self, context: Context, argv: CustomAction.RunArg) ->bool:
@@ -260,17 +282,17 @@ class ADBAction(CustomAction):
         :return: RunResult(success=True/False)
         """
         print("开始执行 ADBAction 自定义动作")
-        command = "PLAY 1"
         game_state = argv.custom_action_param
-
         game_state = json.loads(game_state)
         game_state = game_state["game_state"]
-        print(game_state)
+
+        screen_state =  game_state.get("screen_state", {})
+        command = screen_state.get("chosen_command", {})
+
         combat_state = game_state.get("combat_state", {})
         monsters = combat_state.get("monsters", [])
-
         cards = combat_state.get("hand", [])
-        # print(cards)
+
         parts = command.split()
         action_type = parts[0]
 
@@ -411,18 +433,89 @@ class ADBAction(CustomAction):
             )
 
         elif action_type == "CHOOSE":
+
+            img = context.tasker.controller.post_screencap().wait().get()
+            event = Event()
+            best_match = {
+                "card": [],
+                "count": 0,
+                "box": (0, 0, 0, 0)
+            }
+            # 当没有识别到怪物时停止匹配
+
+            reco_detail = context.run_recognition(
+                 "事件识别_ocr",  # 流水线名称
+                 img,  # 输入图像
+                 pipeline_override={
+                     "事件识别_ocr": {
+                         "recognition": "OCR",
+                         "expected": "",  # 每次只匹配一个模板
+                        # "green_mask": True
+                     }
+                 }
+             )
+
+            eventname_detail = context.run_recognition(
+                "事件名称识别_ocr",  # 流水线名称
+                img,  # 输入图像
+                pipeline_override={
+                    "事件名称识别_ocr": {
+                        "recognition": "OCR",
+                         "expected": "",  # 每次只匹配一个模板
+                        "roi": [200, 150, 400, 50]
+                        # "green_mask": True
+                    }
+                  }
+             )
+
+            bracket_pattern = re.compile(r'^[\[【［]')
+
+             # 按y坐标分组
+            groups = defaultdict(list)
+            for result in reco_detail.all_results:
+                y = result.box[1]
+                groups[y].append(result)
+
+            result_list = []
+
+            for y in groups:
+                current_group = groups[y]
+                bracket_items = []
+                non_bracket_items = []
+
+                # 分类
+                for item in current_group:
+                    if bracket_pattern.search(item.text):
+                        bracket_items.append(item)
+                    else:
+                        non_bracket_items.append(item)
+
+                # 按x坐标排序（从左到右）
+                bracket_sorted = sorted(bracket_items, key=lambda x: x.box[0])
+                non_bracket_sorted = sorted(non_bracket_items, key=lambda x: x.box[0])
+
+                # 合并文本
+                combined_text = ''.join([item.text for item in bracket_sorted + non_bracket_sorted])
+                result_list.append(combined_text)
+
+            list0 = fill_index(result_list)
+            print(list0)
+            index_value = list0[0]["index"]
+            print(index_value)
+
             """选择事件中的某个选项"""
             context.run_task(
                 "choose_option",
                 pipeline_override={
                     "choose_option": {
-                        "recognition": "TemplateMatch",
-                        "template": "option.png",
-                        "index": int(parts[1]),
+                        "recognition": "OCR",
+                        "roi": [200, 150, 400, 50],
+                        "expected": index_value,
                         "action": "Click"
                     }
                 }
             )
+
         else:
             print(f"未知的命令: {command}")
         # **调用 execute() 来处理**
