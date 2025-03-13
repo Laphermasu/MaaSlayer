@@ -147,7 +147,7 @@ def main():
         adb_path=device.adb_path,
         address=device.address,
         screencap_methods=device.screencap_methods,
-        input_methods= device.input_methods,
+        input_methods= 1,
         config=device.config,
     )
     controller.post_connection().wait()
