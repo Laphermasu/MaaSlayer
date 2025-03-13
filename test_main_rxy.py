@@ -1,9 +1,7 @@
 from maa.tasker import Tasker
 from maa.toolkit import Toolkit
-from maa.context import Context
 from maa.resource import Resource
 from maa.controller import AdbController
-from maa.custom_action import CustomAction
 from src.core.data_models import Monster, Cards ,Event
 from src.core.data_models import Player
 from src.custom_recognition.monster_recognition import MonsterRecognition
@@ -11,82 +9,10 @@ from src.custom_recognition.player_recognition import PlayerRecognition
 from src.custom_recognition.event_recognition import EventRecognition
 from src.custom_recognition.cards_recogntion import CardRecognition
 from src.utils.json_utils import JsonUtils
-from sb3_contrib.ppo_mask import MaskablePPO
-from SlayTheSpireRL.slay_the_spire_env import SlayTheSpireEnv
-import json
 import threading
-import torch as th
-from func import (
-    get_available_commands,
-    get_deck,
-    get_relics,
-    get_map
-)
+from src.AI_model.model_run import *
 
 resource = Resource()
-
-
-def generate_json(screen_type ,monsters = None,events = None,cards= None,player=None):
-    deck = get_deck()
-    relics = get_relics()
-    game_map = get_map()
-    if screen_type == "NONE":
-        available_commands = get_available_commands()
-        combat_state = {
-            "monsters": [{k: v for k, v in monster.__dict__.items() if k != "box"} for monster in monsters],
-            "hand": [card.__dict__ for card in cards],
-            "player": {
-                "block": player.block,
-                "energy": player.energy,
-                "powers": player.powers
-            }
-        }
-        game_state = {
-            "screen_type": screen_type,
-            "screen_state": {},
-            "combat_state": combat_state,
-            "deck": deck,
-            "relics": relics,
-            "max_hp": player.max_hp,
-            "gold": player.gold,
-            "potions": [],
-            "current_hp": player.current_hp,
-            "floor": player.floor,
-            "map": game_map,
-            "ascension_level": 0,
-        }
-
-        json_data = {
-            "available_commands": available_commands,
-            "ready_for_command": True,
-            "in_game": True,
-            "game_state": game_state
-        }
-        json_result = json.dumps(json_data)
-    elif screen_type == "EVENT":
-        game_state = {
-            "screen_type": screen_type,
-            "screen_state": {
-                "event_id": events.event_id,
-                "options": events.options,
-                "deck": deck,
-                "relics": relics,
-                "max_hp": player.max_hp,
-                "gold": player.gold,
-                "potions": [],
-                "current_hp": player.current_hp,
-                "floor": player.floor,
-                "map": game_map,
-                "ascension_level": 0,
-            }
-        }
-
-        json_data = {
-            "game_state": game_state
-        }
-
-        json_result = json.dumps(json_data)
-    return json_result
 
 
 def recognize_monsters(tasker, result_dict):
@@ -171,7 +97,6 @@ def main():
 
     print("初始化tasker")
     tasker = Tasker()
-    # tasker = Tasker(notification_handler=MyNotificationHandler())
     tasker.bind(resource, controller)
 
     if not tasker.inited:
@@ -183,7 +108,6 @@ def main():
     resource.register_custom_recognition("playerRecognition", PlayerRecognition())
     resource.register_custom_recognition("eventRecognition", EventRecognition())
     resource.register_custom_recognition("cardRecognition", CardRecognition())
-
 
     # 共享字典存储识别结果
     result_dict = {}
@@ -209,29 +133,13 @@ def main():
     players = result_dict.get("players", [])
     events = result_dict.get("events", [])
     cards = result_dict.get("cards", [])
-    game_state = json.loads(generate_json(screen_type="EVENT",monsters=monsters,events=events,cards=cards,player=players))
-    print(game_state)
-    # env = SlayTheSpireEnv({})
-    # device = th.device("cuda" if th.cuda.is_available() else "cpu")
-    # model = MaskablePPO.load("maskable_ppo_slay_the_spire1.zip", env=env, device=device)
-    #
-    # # 解析 JSON，转换为环境可用的格式
-    # env.update_game_state(game_state)
-    # obs = env.flatten_observation(game_state)
-    # obs_tensor = {key: th.tensor(value, dtype=th.float32).unsqueeze(0).to(device) for key, value in obs.items()}
-    #
-    # action_mask = env.get_invalid_action_mask(game_state)
-    # action_mask_tensor = th.tensor(action_mask, dtype=th.bool).unsqueeze(0).to(device)
-    # obs_numpy = {key: value.cpu().numpy() for key, value in obs_tensor.items()}
-    # action_mask_numpy = action_mask_tensor.cpu().numpy()
-    #
-    # action, _states = model.predict(obs_numpy, action_masks=action_mask_numpy)
-    # action = int(action)
-    # chosen_command = env.actions[action]
-    #
-    # print(f"Action: {chosen_command}")
-    #
-    # env.close()
+
+    env,model,device = initialize_model()
+
+    chosen_command = predict_action("NONE",monsters,events,cards,players,env,model,device)
+    print(f"Action: {chosen_command}")
+
+    close_model(env)
 
 
 
