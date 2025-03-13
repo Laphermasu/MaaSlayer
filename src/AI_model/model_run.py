@@ -27,8 +27,10 @@ def predict_action(screen_type, monsters, events, cards, player, env, model, dev
     action_mask_numpy = action_mask_tensor.cpu().numpy()
 
     action, _states = model.predict(obs_numpy, action_masks=action_mask_numpy)
+    action = int(action)
+    chosen_command = env.actions[action]
 
-    return env.actions[int(action)]
+    return chosen_command
 
 
 def close_model(env):

@@ -9,80 +9,10 @@ from src.custom_recognition.player_recognition import PlayerRecognition
 from src.custom_recognition.event_recognition import EventRecognition
 from src.custom_recognition.cards_recogntion import CardRecognition
 from src.utils.json_utils import JsonUtils
-import json
 import threading
-from func import (
-    get_available_commands,
-    get_deck,
-    get_relics,
-    get_map
-)
 from src.AI_model.model_run import *
 
 resource = Resource()
-
-
-def generate_json(screen_type ,monsters = None,events = None,cards= None,player=None):
-    deck = get_deck()
-    relics = get_relics()
-    game_map = get_map()
-    if screen_type == "NONE":
-        available_commands = get_available_commands()
-        combat_state = {
-            "monsters": [{k: v for k, v in monster.__dict__.items() if k != "box"} for monster in monsters],
-            "hand": [card.__dict__ for card in cards],
-            "player": {
-                "block": player.block,
-                "energy": player.energy,
-                "powers": player.powers
-            }
-        }
-        game_state = {
-            "screen_type": screen_type,
-            "screen_state": {},
-            "combat_state": combat_state,
-            "deck": deck,
-            "relics": relics,
-            "max_hp": player.max_hp,
-            "gold": player.gold,
-            "potions": [],
-            "current_hp": player.current_hp,
-            "floor": player.floor,
-            "map": game_map,
-            "ascension_level": 0,
-        }
-
-        json_data = {
-            "available_commands": available_commands,
-            "ready_for_command": True,
-            "in_game": True,
-            "game_state": game_state
-        }
-        json_result = json.dumps(json_data)
-    elif screen_type == "Event":
-        game_state = {
-            "screen_type": screen_type,
-            "screen_state": {
-                "event_id": events.event_id,
-                "options": events.options,
-                "deck": deck,
-                "relics": relics,
-                "max_hp": player.max_hp,
-                "gold": player.gold,
-                "potions": [],
-                "current_hp": player.current_hp,
-                "floor": player.floor,
-                "map": game_map,
-                "ascension_level": 0,
-            }
-        }
-
-        json_data = {
-            "game_state": game_state
-        }
-
-        json_result = json.dumps(json_data)
-    return json_result
 
 
 def recognize_monsters(tasker, result_dict):
@@ -167,7 +97,6 @@ def main():
 
     print("初始化tasker")
     tasker = Tasker()
-    # tasker = Tasker(notification_handler=MyNotificationHandler())
     tasker.bind(resource, controller)
 
     if not tasker.inited:
@@ -179,7 +108,6 @@ def main():
     resource.register_custom_recognition("playerRecognition", PlayerRecognition())
     resource.register_custom_recognition("eventRecognition", EventRecognition())
     resource.register_custom_recognition("cardRecognition", CardRecognition())
-
 
     # 共享字典存储识别结果
     result_dict = {}
@@ -205,10 +133,8 @@ def main():
     players = result_dict.get("players", [])
     events = result_dict.get("events", [])
     cards = result_dict.get("cards", [])
-    game_state = json.loads(generate_json(screen_type="NONE",monsters=monsters,events=events,cards=cards,player=players))
-    print(game_state)
 
-    env,device,model = initialize_model()
+    env,model,device = initialize_model()
 
     chosen_command = predict_action("NONE",monsters,events,cards,players,env,model,device)
     print(f"Action: {chosen_command}")
