@@ -147,11 +147,14 @@ def main():
 
     chosen_command,game_state = predict_action("NONE",monsters,events,cards,players,env,model,device)
     print(f"Action: {chosen_command}")
-
-    monster_json = json.dumps([monster.__dict__ for monster in monsters])
-
     game_state['game_state']['screen_state']['chosen_command'] = chosen_command
-    game_state['game_state']['combat_state']['monster_box'] = monster_json
+
+    part = chosen_command.split()
+    action_type = part[0]
+    if action_type == "PLAY":
+        monster_json = json.dumps([monster.__dict__ for monster in monsters])
+        game_state['game_state']['combat_state']['monster_box'] = monster_json
+
     print(game_state)
     print("pipeline定义")
     pipeline_override = {
@@ -203,12 +206,12 @@ class ADBAction(CustomAction):
 
         screen_state =  game_state.get("screen_state", {})
         command = screen_state.get("chosen_command", {})
-        command = "PLAY 1 1"
+        command = "PLAY 2 0"
 
         combat_state = game_state.get("combat_state", {})
         monsters = combat_state.get("monster_box", [])
         cards = combat_state.get("hand", [])
-        print(monsters)
+        # print(monsters)
         parts = command.split()
         action_type = parts[0]
 
@@ -253,15 +256,17 @@ class ADBAction(CustomAction):
             card_info = cards[card_index]
             card_name = card_info.get("name", None)
             converted_monster_box = []
-            print(card_name)
+            monster_box ={}
+            # print(card_name)
+            if isinstance(monsters, str):
+                monsters = json.loads(monsters)
             if len(parts) > 2:
-                target_index = int(parts[2]) - 1
+                target_index = int(parts[2])
                 if target_index == 0:
                     converted_monster_box = [467, 180, 40, 40]
                 elif target_index >0:
-                    monster_info = monsters[target_index - 1]
-                    monster_box = monster_info.get("box", None)
-                    converted_monster_box = [monster_box["x"], monster_box["y"], monster_box["w"], monster_box["h"]]
+                    monster_box = monsters[target_index - 1].get("box", None)
+                    converted_monster_box = [monster_box["x"], monster_box["y"], monster_box["w"]/2, monster_box["h"]/2]
             # print(converted_monster_box)
             # img = context.tasker.controller.post_screencap().wait().get()
             print(converted_monster_box)
@@ -271,8 +276,9 @@ class ADBAction(CustomAction):
                     "Click1": {
                         "recognition": "OCR",
                         "expected": card_name,
-                        "action": "Click",
-                        "next": "Click2"
+                        "action": "Swipe",
+                        "end": converted_monster_box,
+                        "end_offset":[converted_monster_box[2]/2,0,0,0]
                     },
                     "Click2": {
                         "action": "Click",
@@ -280,7 +286,7 @@ class ADBAction(CustomAction):
                     }
                 }
             )
-            print("123")
+            # print("123")
 
         elif action_type == "END":
             """结束回合"""
