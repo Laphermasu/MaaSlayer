@@ -63,7 +63,7 @@ def generate_json(screen_type ,monsters = None,events = None,cards= None,player=
             "game_state": game_state
         }
         json_result = json.dumps(json_data)
-    elif screen_type == "EVENT":
+    elif screen_type == "Event":
         game_state = {
             "screen_type": screen_type,
             "screen_state": {
@@ -209,7 +209,7 @@ def main():
     players = result_dict.get("players", [])
     events = result_dict.get("events", [])
     cards = result_dict.get("cards", [])
-    game_state = json.loads(generate_json(screen_type="EVENT",monsters=monsters,events=events,cards=cards,player=players))
+    game_state = json.loads(generate_json(screen_type="Event",monsters=monsters,events=events,cards=cards,players=players))
     print(game_state)
     # env = SlayTheSpireEnv({})
     # device = th.device("cuda" if th.cuda.is_available() else "cpu")
