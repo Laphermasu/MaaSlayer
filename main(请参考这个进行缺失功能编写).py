@@ -70,7 +70,7 @@ def main():
             if event_type == "event":
                 run_task("事件流程")
             elif event_type == "monster":
-                while run_task("怪物识别"):
+                while monsters = run_task("怪物识别"):
                     player = run_task("角色信息识别")
                     command = ai_command(monsters, player)
                     perform_command(command)
