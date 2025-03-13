@@ -6,6 +6,8 @@ from maa.tasker import Tasker
 from maa.toolkit import Toolkit
 from maa.resource import Resource
 from maa.controller import AdbController
+from sympy import print_rcode
+
 from src.core.data_models import Monster, Cards ,Event
 from src.core.data_models import Player
 from src.custom_recognition.monster_recognition import MonsterRecognition
@@ -136,6 +138,7 @@ def main():
 
     # 解析 JSON
     monsters = result_dict.get("monsters", [])
+    print(monsters)
     players = result_dict.get("players", [])
     events = result_dict.get("events", [])
     cards = result_dict.get("cards", [])
@@ -145,8 +148,10 @@ def main():
     chosen_command,game_state = predict_action("NONE",monsters,events,cards,players,env,model,device)
     print(f"Action: {chosen_command}")
 
+    monster_json = json.dumps([monster.__dict__ for monster in monsters])
 
     game_state['game_state']['screen_state']['chosen_command'] = chosen_command
+    game_state['game_state']['combat_state']['monster_box'] = monster_json
     print(game_state)
     print("pipeline定义")
     pipeline_override = {
@@ -199,11 +204,11 @@ class ADBAction(CustomAction):
         screen_state =  game_state.get("screen_state", {})
         command = screen_state.get("chosen_command", {})
         command = "PLAY 1 1"
-        print(command)
-        combat_state = game_state.get("combat_state", {})
-        monsters = combat_state.get("monsters", [])
-        cards = combat_state.get("hand", [])
 
+        combat_state = game_state.get("combat_state", {})
+        monsters = combat_state.get("monster_box", [])
+        cards = combat_state.get("hand", [])
+        print(monsters)
         parts = command.split()
         action_type = parts[0]
 
