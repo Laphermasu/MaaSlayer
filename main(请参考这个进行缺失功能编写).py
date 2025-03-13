@@ -55,37 +55,47 @@ def main():
         exit()
     print("tasker初始化完成")
 
-    # 注册自定义识别器
-    resource.register_custom_recognition("monsterRecognition", MonsterRecognition())
-    # resource.register_custom_recognition("playerRecognition", PlayerRecognition())
-    # resource.register_custom_recognition("eventRecognition", EventRecognition())
-    resource.register_custom_recognition("cardRecognition", CardRecognition())
-
-    print("重写pipeline")
-    pipeline_override = {
-        "monsterRecognition": {"recognition": "custom", "custom_recognition": "monsterRecognition"},
-        # "StartGame": {
-        #         "recognition": "OCR",
-        #         "expected": "Play",
-        #         "action": "Click",
-        # }
-    }
-    print("开始执行pipeline中选中任务")
-    task_detail = tasker.post_task("monsterRecognition", pipeline_override).wait().get()
-    print("任务执行完成")
-    monsters = JsonUtils.deserialize_from_str(
-        JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail),Monster
-    )
-
-    print(monsters)
-
-    # 主循环
-    # while True:
-    #     game_state_manager.update_state()
-    #     current_state = game_state_manager.get_state()
-    #     print("Current Game State:", current_state)
-    #     # 这里可以根据游戏状态执行相应的策略
-
+    Boss_exist = True
+    # 以下为伪代码
+    while Boss_exist: # 主流程
+        map_type = run_task("随机选择可用地图节点")
+        if map_type == "chest":
+            run_task("宝箱自动流程")
+            continue
+        elif map_type == "shop":
+            run_task("商人自动流程")
+            continue
+        elif map_type == "问号":
+            event_type = run_task("问号识别")
+            if event_type == "event":
+                run_task("事件流程")
+            elif event_type == "monster":
+                while run_task("怪物识别"):
+                    player = run_task("角色信息识别")
+                    command = ai_command(monsters, player)
+                    perform_command(command)
+                run_task("奖励领取")
+            continue
+        elif map_type == "rest":
+            run_task("休息流程")
+            continue
+        elif map_type == "monster":
+            while run_task("怪物识别"):
+                player = run_task("角色信息识别")
+                command = ai_command(monsters, player)
+                perform_command(command)
+            run_task("奖励领取")
+            continue
+        elif map_type == "BOSS":
+            while run_task("怪物识别"):
+                player = run_task("角色信息识别")
+                command = ai_command(monsters, player)
+                perform_command(command)
+            run_task("奖励领取")
+            run_task("BOSS遗物领取")
+            Boss_exist = False
+            continue
+    print("一层战斗结束")
 
 if __name__ == "__main__":
     main()
