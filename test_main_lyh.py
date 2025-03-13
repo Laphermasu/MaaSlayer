@@ -167,7 +167,7 @@ def main():
         adb_path=device.adb_path,
         address=device.address,
         screencap_methods=device.screencap_methods,
-        input_methods=device.input_methods,
+        input_methods=1,
         config=device.config,
     )
     controller.post_connection().wait()
@@ -241,12 +241,13 @@ def main():
     print(game_state)
     print("pipeline定义")
     pipeline_override = {
+        # "ADBAction": {"action": "custom", "custom_action": "ADBAction"},
         "ADBAction": {"action": "custom", "custom_action": "ADBAction", "custom_action_param": game_state},
     }
     print("pipeline选中任务执行")
     tasker.post_task("ADBAction", pipeline_override).wait().get()
     print("任务执行完成")
-    # env.close()
+    env.close()
     # 主循环
     # while True:
     #     game_state_manager.update_state()
@@ -287,7 +288,8 @@ class ADBAction(CustomAction):
         game_state = game_state["game_state"]
 
         screen_state =  game_state.get("screen_state", {})
-        command = screen_state.get("chosen_command", {})
+        # command = screen_state.get("chosen_command", {})
+        command = "PLAY 1 1"
 
         combat_state = game_state.get("combat_state", {})
         monsters = combat_state.get("monsters", [])
@@ -345,10 +347,10 @@ class ADBAction(CustomAction):
                 converted_monster_box = [monster_box["x"], monster_box["y"], monster_box["w"], monster_box["h"]]
                 # print(converted_monster_box)
             elif len(parts) < 3:
-                converted_monster_box = [643,414, 40, 40]  # 默认目标
-                # converted_monster_box = [100, 575, 40, 40]  # 默认目
+                converted_monster_box = [100, 575, 40, 40]  # 默认目
             # img = context.tasker.controller.post_screencap().wait().get()
-            context.run_task(
+            print(converted_monster_box)
+            retail = context.run_task(
                 "Click1",
                 pipeline_override={
                     "Click1": {
