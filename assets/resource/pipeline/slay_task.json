@@ -19,7 +19,8 @@
         "recognition": "OCR",
         "action": "Click",
         "expected": [
-            "Skip"
+            "Skip",
+            "Proceed"
         ]
     },
     "宝箱界面操作": {
@@ -30,6 +31,36 @@
             "../image/map/宝箱3.png"
         ],
         "action": "Click",
-        "next": "点击跳过"
+        "next": "补充点击"
+    },
+    "补充点击": {
+        "action": "Click",
+        "next": "遗物领取",
+        "target": [770,323,200,200],
+        "post_delay":1000
+    },
+    "遗物领取": {
+        "action": "Click",
+        "next": "遗物领取2",
+        "target": [630,275,1,1],
+        "post_delay":1000
+    },
+    "遗物领取2": {
+        "action": "Click",
+        "next": "遗物领取3",
+        "post_delay":1000,
+        "target": [630,275,1,1]
+    },
+    "遗物领取3": {
+        "action": "Click",
+        "target": [630,275,1,1],
+        "next": "点击继续"
+    },
+    "点击继续": {
+        "recognition": "OCR",
+        "action": "Click",
+        "expected": [
+            "Proceed"
+        ]
     }
 }
