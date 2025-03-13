@@ -53,7 +53,7 @@ def main():
     if not tasker.inited:
         print("Failed to init MAA.")
         exit()
-    print("tasker初始化完成")
+    print("tasker初始化完成")    
 
     # 注册自定义识别器
     resource.register_custom_recognition("monsterRecognition", MonsterRecognition())
