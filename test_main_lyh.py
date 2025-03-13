@@ -206,8 +206,11 @@ class ADBAction(CustomAction):
 
         screen_state =  game_state.get("screen_state", {})
         command = screen_state.get("chosen_command", {})
-        command = "PLAY 2 0"
 
+
+        command = "PLAY 1 1"
+ 
+        print(command)
         combat_state = game_state.get("combat_state", {})
         monsters = combat_state.get("monster_box", [])
         cards = combat_state.get("hand", [])

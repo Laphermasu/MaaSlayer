@@ -8,6 +8,15 @@ import numpy as np
 from ..utils.json_utils import JsonUtils
 from ..core.data_models import Player
 
+def is_integer(s):
+    if not s:
+        return False
+    if s[0] == '-':
+        if len(s) == 1:
+            return False
+        return s[1:].isdigit()
+    return s.isdigit()
+
 class PlayerRecognition(CustomRecognition):
     def analyze(
             self,
@@ -117,7 +126,7 @@ class PlayerRecognition(CustomRecognition):
 
 
             player.block = 0
-            if best_match["card"]:
+            if True:
                 if health_detail and health_detail.best_result:
                     current_health = health_detail.all_results[0].text
                     current_health = re.sub(r'\D', '', current_health)
@@ -129,7 +138,8 @@ class PlayerRecognition(CustomRecognition):
                 if energy_detail and energy_detail.best_result:
                     current_energy = energy_detail.all_results[0].text
                     current_energy = re.sub(r'\D', '', current_energy)
-                    player.energy = int(current_energy)
+                    if is_integer(current_energy):
+                        player.energy = int(current_energy)
                 if block_detail and block_detail.best_result:
                     if block_detail.all_results[0].text.isdigit():
                         player.block = int(block_detail.all_results[0].text)
@@ -142,8 +152,6 @@ class PlayerRecognition(CustomRecognition):
                 print(player)
                 break
 
-            else:
-                hp_exist = False
 
         print(player)
         player_str = JsonUtils.serialize_to_str(player)
