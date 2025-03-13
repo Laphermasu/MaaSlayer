@@ -1,9 +1,7 @@
 from maa.tasker import Tasker
 from maa.toolkit import Toolkit
-from maa.context import Context
 from maa.resource import Resource
 from maa.controller import AdbController
-from maa.custom_action import CustomAction
 from src.core.data_models import Monster, Cards ,Event
 from src.core.data_models import Player
 from src.custom_recognition.monster_recognition import MonsterRecognition
@@ -11,17 +9,15 @@ from src.custom_recognition.player_recognition import PlayerRecognition
 from src.custom_recognition.event_recognition import EventRecognition
 from src.custom_recognition.cards_recogntion import CardRecognition
 from src.utils.json_utils import JsonUtils
-from sb3_contrib.ppo_mask import MaskablePPO
-from SlayTheSpireRL.slay_the_spire_env import SlayTheSpireEnv
 import json
 import threading
-import torch as th
 from func import (
     get_available_commands,
     get_deck,
     get_relics,
     get_map
 )
+from src.AI_model.model_run import *
 
 resource = Resource()
 
@@ -209,29 +205,15 @@ def main():
     players = result_dict.get("players", [])
     events = result_dict.get("events", [])
     cards = result_dict.get("cards", [])
-    game_state = json.loads(generate_json(screen_type="Event",monsters=monsters,events=events,cards=cards,players=players))
+    game_state = json.loads(generate_json(screen_type="NONE",monsters=monsters,events=events,cards=cards,player=players))
     print(game_state)
-    # env = SlayTheSpireEnv({})
-    # device = th.device("cuda" if th.cuda.is_available() else "cpu")
-    # model = MaskablePPO.load("maskable_ppo_slay_the_spire1.zip", env=env, device=device)
-    #
-    # # 解析 JSON，转换为环境可用的格式
-    # env.update_game_state(game_state)
-    # obs = env.flatten_observation(game_state)
-    # obs_tensor = {key: th.tensor(value, dtype=th.float32).unsqueeze(0).to(device) for key, value in obs.items()}
-    #
-    # action_mask = env.get_invalid_action_mask(game_state)
-    # action_mask_tensor = th.tensor(action_mask, dtype=th.bool).unsqueeze(0).to(device)
-    # obs_numpy = {key: value.cpu().numpy() for key, value in obs_tensor.items()}
-    # action_mask_numpy = action_mask_tensor.cpu().numpy()
-    #
-    # action, _states = model.predict(obs_numpy, action_masks=action_mask_numpy)
-    # action = int(action)
-    # chosen_command = env.actions[action]
-    #
-    # print(f"Action: {chosen_command}")
-    #
-    # env.close()
+
+    env,device,model = initialize_model()
+
+    chosen_command = predict_action("NONE",monsters,events,cards,players,env,model,device)
+    print(f"Action: {chosen_command}")
+
+    close_model(env)
 
 
 
