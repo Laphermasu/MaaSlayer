@@ -69,7 +69,10 @@ class CardRecognition(CustomRecognition):
                     card.exhausts = data.get("exhausts", False)
                     card.is_playable = data.get("is_playable", False)
                     card.ethereal = data.get("ethereal", False)
-                    card.upgrades = data.get("upgrades", 0)
+                    if '+' in strs:
+                        card.upgrades = 1
+                    else:
+                        card.upgrades = data.get("upgrades", 0)
                     card.has_target = data.get("has_target", False)
                     cards.append(card)
                     break

@@ -3,23 +3,33 @@
         "recognition": "TemplateMatch",
         "action": "Click",
         "template": [
-            "/map/宝箱.png",
-            "/map/商店.png",
-            "/map/问号.png",
-            "/map/小怪.png",
-            "/map/休息.png"
+            "../image/map/宝箱.png",
+            "../image/map/商店.png",
+            "../image/map/问号.png",
+            "../image/map/小怪.png",
+            "../image/map/休息.png"
         ]
     },
     "商人界面操作": {
         "recognition": "FeatureMatch",
-        "template": "/map/商人.png",
+        "template": "../image/map/商人.png",
         "next": "点击跳过"
     },
     "点击跳过": {
         "recognition": "OCR",
+        "action": "Click",
         "expected": [
-            "Skip",
-            "Proceed"
+            "Skip"
         ]
+    },
+    "宝箱界面操作": {
+        "recognition": "FeatureMatch",
+                "template": [
+            "../image/map/宝箱1.png",
+            "../image/map/宝箱2.png",
+            "../image/map/宝箱3.png"
+        ],
+        "action": "Click",
+        "next": "点击跳过"
     }
 }
