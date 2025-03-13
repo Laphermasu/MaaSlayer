@@ -12,24 +12,24 @@ from src.custom_recognition.player_recognition import PlayerRecognition
 from src.custom_recognition.event_recognition import EventRecognition
 from src.custom_recognition.cards_recogntion import CardRecognition
 from src.utils.json_utils import JsonUtils
-from sb3_contrib.ppo_mask import MaskablePPO
-from src.custom_action.adb_action import ADBAction
-from SlayTheSpireRL.slay_the_spire_env import SlayTheSpireEnv
+# from sb3_contrib.ppo_mask import MaskablePPO
+# from src.custom_action.adb_action import ADBAction
+# from SlayTheSpireRL.slay_the_spire_env import SlayTheSpireEnv
 import json
 import threading
-import torch as th
-from func import (
-    get_available_commands,
-    get_screen,
-    get_hand,
-    get_monsters,
-    get_player,
-    get_deck,
-    get_relics,
-    get_potions,
-    get_map,
-    get_info
-)
+# import torch as th
+# from func import (
+#     get_available_commands,
+#     get_screen,
+#     get_hand,
+#     get_monsters,
+#     get_player,
+#     get_deck,
+#     get_relics,
+#     get_potions,
+#     get_map,
+#     get_info
+# )
 
 resource = Resource()
 
@@ -215,12 +215,14 @@ def main():
     # chosen_command = env.actions[action]
     # print(f"Action: {chosen_command}")
     # adb_action.execute(chosen_command, cards, monsters)
+    print("pipeline定义")
     pipeline_override = {
         "ADBAction": {"action": "custom", "custom_action": "ADBAction"},
     }
     # "ADBAction": {"action": "custom", "custom_action": "ADBAction", "custom_action_param": game_state},
+    print("pipeline选中任务执行")
     tasker.post_task("ADBAction", pipeline_override).wait().get()
-
+    print("任务执行完成")
     # env.close()
     # 主循环
     # while True:
@@ -246,9 +248,10 @@ class ADBAction(CustomAction):
 
         if action_type == "START":
             """点击开始游戏按钮"""
-            print("1234")
+            print("开始游戏")
             img = context.tasker.controller.post_screencap().wait().get()
-            context.run_task("Click",pipeline_override={
+            # 下面这个run_task是能够成功点击到Play的
+            context.run_task("StartGame",pipeline_override={
                     "Click": {
                         "action": "Click",
                         "target": [72,423,86,49]
@@ -258,6 +261,7 @@ class ADBAction(CustomAction):
                         "expected": "Play",
                         "action": "Click"
                 }})
+            # 下面的只做了识别，没有点击到Play
             reco_detail = context.run_recognition(
                 "StartGame",  # 流水线名称
                 img,  # 输入图像
@@ -268,10 +272,9 @@ class ADBAction(CustomAction):
                         "action": "Click"
                 }}
             )
+            # 下面的只做了点击[0,0,0,0]，没有识别到Play
             detail = context.run_action(
                 "StartGame",
-                # [0,0,0,0],
-                # "",
                 pipeline_override={
                     "StartGame": {
                         "recognition": "OCR",
