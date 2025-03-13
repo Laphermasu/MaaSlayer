@@ -5,23 +5,16 @@ from maa.resource import Resource
 from maa.controller import AdbController
 from maa.custom_action import CustomAction
 from src.core.data_models import Monster, Cards
-from src.core.data_models import Player
-from src.custom_recognition.monster_recognition import MonsterRecognition
-from src.custom_recognition.player_recognition import PlayerRecognition
 from src.custom_recognition.event_recognition import EventRecognition
-from src.custom_recognition.cards_recogntion import CardRecognition
 from src.utils.json_utils import JsonUtils
 from sb3_contrib.ppo_mask import MaskablePPO
-from SlayTheSpireRL.slay_the_spire_env import SlayTheSpireEnv
+from src.AI_model.SlayTheSpireRL.slay_the_spire_env import SlayTheSpireEnv
 import json
 import threading
 import torch as th
 from func import (
     get_available_commands,
     get_screen,
-    get_hand,
-    get_monsters,
-    get_player,
     get_deck,
     get_relics,
     get_potions,
