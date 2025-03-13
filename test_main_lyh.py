@@ -1,9 +1,11 @@
+from maa.context import Context
+from maa.custom_action import CustomAction
+from collections import defaultdict
+import re
 from maa.tasker import Tasker
 from maa.toolkit import Toolkit
-from maa.context import Context
 from maa.resource import Resource
 from maa.controller import AdbController
-from maa.custom_action import CustomAction
 from src.core.data_models import Monster, Cards ,Event
 from src.core.data_models import Player
 from src.custom_recognition.monster_recognition import MonsterRecognition
@@ -11,86 +13,11 @@ from src.custom_recognition.player_recognition import PlayerRecognition
 from src.custom_recognition.event_recognition import EventRecognition
 from src.custom_recognition.cards_recogntion import CardRecognition
 from src.utils.json_utils import JsonUtils
-from collections import defaultdict
-from sb3_contrib.ppo_mask import MaskablePPO
-from src.AI_model.SlayTheSpireRL.slay_the_spire_env import SlayTheSpireEnv
-import re
-import json
 import threading
-import torch as th
-from func import (
-    get_available_commands,
-    get_deck,
-    get_relics,
-    get_map
-)
+from src.AI_model.model_run import *
+import json
 
 resource = Resource()
-
-
-def generate_json(screen_type ,monsters = None,events = None,cards= None,player=None):
-    deck = get_deck()
-    relics = get_relics()
-    game_map = get_map()
-    if screen_type == "NONE":
-        available_commands = get_available_commands()
-        combat_state = {
-            "monsters": [monster.__dict__ for monster in monsters],
-            "hand": [card.__dict__ for card in cards],
-            "player": {
-                "block": player.block,
-                "energy": player.energy,
-                "powers": player.powers
-            }
-        }
-        game_state = {
-            "screen_type": screen_type,
-            "screen_state": {},
-            "combat_state": combat_state,
-            "deck": deck,
-            "relics": relics,
-            "max_hp": player.max_hp,
-            "gold": player.gold,
-            "potions": [],
-            "current_hp": player.current_hp,
-            "floor": player.floor,
-            "map": game_map,
-            "ascension_level": 0,
-        }
-
-        json_data = {
-            "available_commands": available_commands,
-            "ready_for_command": True,
-            "in_game": True,
-            "game_state": game_state
-        }
-        json_result = json.dumps(json_data)
-
-    elif screen_type == "EVENT":
-        game_state = {
-            "screen_type": screen_type,
-            "screen_state": {
-                "event_id": events.event_id,
-                "options": events.options,
-                "deck": deck,
-                "relics": relics,
-                "max_hp": player.max_hp,
-                "gold": player.gold,
-                "potions": [],
-                "current_hp": player.current_hp,
-                "floor": player.floor,
-                "map": game_map,
-                "ascension_level": 0,
-            }
-        }
-
-        json_data = {
-            "game_state": game_state
-        }
-
-        json_result = json.dumps(json_data)
-
-    return json_result
 
 
 def recognize_monsters(tasker, result_dict):
@@ -167,7 +94,7 @@ def main():
         adb_path=device.adb_path,
         address=device.address,
         screencap_methods=device.screencap_methods,
-        input_methods=1,
+        input_methods= 1 ,
         config=device.config,
     )
     controller.post_connection().wait()
@@ -175,7 +102,6 @@ def main():
 
     print("初始化tasker")
     tasker = Tasker()
-    # tasker = Tasker(notification_handler=MyNotificationHandler())
     tasker.bind(resource, controller)
 
     if not tasker.inited:
@@ -188,7 +114,6 @@ def main():
     resource.register_custom_recognition("eventRecognition", EventRecognition())
     resource.register_custom_recognition("cardRecognition", CardRecognition())
     resource.register_custom_action("ADBAction", ADBAction())
-
 
     # 共享字典存储识别结果
     result_dict = {}
@@ -211,31 +136,15 @@ def main():
 
     # 解析 JSON
     monsters = result_dict.get("monsters", [])
-    # print(monsters)
     players = result_dict.get("players", [])
     events = result_dict.get("events", [])
     cards = result_dict.get("cards", [])
-    game_state = json.loads(generate_json(screen_type="NONE",monsters=monsters,events=events,cards=cards,player=players))
-    print(game_state)
 
-    env = SlayTheSpireEnv({})
-    device = th.device("cuda" if th.cuda.is_available() else "cpu")
-    model = MaskablePPO.load("src/AI_model/maskable_ppo_slay_the_spire.zip", env=env, device=device)
+    env,model,device = initialize_model()
 
-    # 解析 JSON，转换为环境可用的格式
-    env.update_game_state(game_state)
-    obs = env.flatten_observation(game_state)
-    obs_tensor = {key: th.tensor(value, dtype=th.float32).unsqueeze(0).to(device) for key, value in obs.items()}
+    chosen_command,game_state = predict_action("NONE",monsters,events,cards,players,env,model,device)
+    print(f"Action: {chosen_command}")
 
-    action_mask = env.get_invalid_action_mask(game_state)
-    action_mask_tensor = th.tensor(action_mask, dtype=th.bool).unsqueeze(0).to(device)
-    obs_numpy = {key: value.cpu().numpy() for key, value in obs_tensor.items()}
-    action_mask_numpy = action_mask_tensor.cpu().numpy()
-
-    action, _states = model.predict(obs_numpy, action_masks=action_mask_numpy)
-    action = int(action)
-    chosen_command = env.actions[action]
-    print(chosen_command)
 
     game_state['game_state']['screen_state']['chosen_command'] = chosen_command
     print(game_state)
@@ -247,7 +156,7 @@ def main():
     print("pipeline选中任务执行")
     tasker.post_task("ADBAction", pipeline_override).wait().get()
     print("任务执行完成")
-    env.close()
+    close_model(env)
     # 主循环
     # while True:
     #     game_state_manager.update_state()
@@ -288,9 +197,9 @@ class ADBAction(CustomAction):
         game_state = game_state["game_state"]
 
         screen_state =  game_state.get("screen_state", {})
-        # command = screen_state.get("chosen_command", {})
+        command = screen_state.get("chosen_command", {})
         command = "PLAY 1 1"
-
+        print(command)
         combat_state = game_state.get("combat_state", {})
         monsters = combat_state.get("monsters", [])
         cards = combat_state.get("hand", [])
@@ -341,13 +250,14 @@ class ADBAction(CustomAction):
             converted_monster_box = []
             print(card_name)
             if len(parts) > 2:
-                target_index = int(parts[2])
-                monster_info = monsters[target_index - 1]
-                monster_box = monster_info.get("box", None)
-                converted_monster_box = [monster_box["x"], monster_box["y"], monster_box["w"], monster_box["h"]]
-                # print(converted_monster_box)
-            elif len(parts) < 3:
-                converted_monster_box = [100, 575, 40, 40]  # 默认目
+                target_index = int(parts[2]) - 1
+                if target_index == 0:
+                    converted_monster_box = [467, 180, 40, 40]
+                elif target_index >0:
+                    monster_info = monsters[target_index - 1]
+                    monster_box = monster_info.get("box", None)
+                    converted_monster_box = [monster_box["x"], monster_box["y"], monster_box["w"], monster_box["h"]]
+            # print(converted_monster_box)
             # img = context.tasker.controller.post_screencap().wait().get()
             print(converted_monster_box)
             retail = context.run_task(

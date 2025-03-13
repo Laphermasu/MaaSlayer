@@ -208,7 +208,7 @@ def generate_json(screen_type, monsters=None, events=None, cards=None, player=No
     if screen_type == "NONE":
         available_commands = get_available_commands()
         combat_state = {
-            "monsters": [{k: v for k, v in monster.__dict__.items() if k != "box"} for monster in monsters],
+            "monsters": [monster.__dict__ for monster in monsters],
             "hand": [card.__dict__ for card in cards],
             "player": {
                 "block": player.block,
