@@ -30,7 +30,7 @@ def predict_action(screen_type, monsters, events, cards, player, env, model, dev
     action = int(action)
     chosen_command = env.actions[action]
 
-    return chosen_command
+    return chosen_command,game_state
 
 
 def close_model(env):

@@ -203,7 +203,15 @@ class ADBAction(CustomAction):
 
         screen_state =  game_state.get("screen_state", {})
         command = screen_state.get("chosen_command", {})
+<<<<<<< Updated upstream
         command = "PLAY 1 1"
+=======
+        # command = "PLAY 1 1"
+        print(command)
+        combat_state = game_state.get("combat_state", {})
+        monsters = combat_state.get("monsters", [])
+        cards = combat_state.get("hand", [])
+>>>>>>> Stashed changes
 
         combat_state = game_state.get("combat_state", {})
         monsters = combat_state.get("monster_box", [])

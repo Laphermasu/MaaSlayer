@@ -117,7 +117,7 @@ class PlayerRecognition(CustomRecognition):
 
 
             player.block = 0
-            if best_match["card"]:
+            if True:
                 if health_detail and health_detail.best_result:
                     current_health = health_detail.all_results[0].text
                     current_health = re.sub(r'\D', '', current_health)
