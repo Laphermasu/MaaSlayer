@@ -234,7 +234,7 @@ class MonsterRecognition(CustomRecognition):
         else:
             return "DEBUG", 0, 0  # 如果识别失败，返回默认值
 
-    def parse_attack_string(attack_str):
+    def parse_attack_string(self, attack_str):
         """
         解析攻击字符串为攻击伤害和攻击次数。
         
