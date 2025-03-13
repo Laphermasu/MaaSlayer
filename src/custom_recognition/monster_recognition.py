@@ -81,7 +81,10 @@ class MonsterRecognition(CustomRecognition):
                 # plt.imshow(health_img, cmap='gray' if len(img.shape) == 2 else None)
                 # plt.axis('off')  # 关闭坐标轴
                 # plt.show()
-
+                best_score = 0
+                # for result in health_detail.all_results:
+                #     if reslut.
+                #     monster.health = health_detail.best_result.text
                 monsters.append(monster)
 
                 # 去掉匹配区域
@@ -94,6 +97,8 @@ class MonsterRecognition(CustomRecognition):
                 monster_exist = False
 
         monsters_str =  JsonUtils.serialize_to_str(monsters)
+        print(monsters)
+        # print(monsters_str)
         return CustomRecognition.AnalyzeResult(
             box=best_match["box"], detail=monsters_str
         )
@@ -179,7 +184,7 @@ class MonsterRecognition(CustomRecognition):
                         "recognition": "FeatureMatch",
                         "template": [template],  # 每次只匹配一个模板
                         "roi": [x, y, w, h],
-                        "roi_offset": [0, -80, 0, 80],
+                        "roi_offset": [0, -80, 0, -h+80],
                         "green_mask": True
                     }
                 }

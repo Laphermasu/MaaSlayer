@@ -39,7 +39,7 @@ def main():
         adb_path=device.adb_path,
         address=device.address,
         screencap_methods=device.screencap_methods,
-        input_methods=1,
+        input_methods=device.input_methods,
         config=device.config,
     )
     controller.post_connection().wait()
@@ -61,18 +61,10 @@ def main():
     # resource.register_custom_recognition("eventRecognition", EventRecognition())
     resource.register_custom_recognition("cardRecognition", CardRecognition())
 
-    print("重写pipeline")
     pipeline_override = {
         "monsterRecognition": {"recognition": "custom", "custom_recognition": "monsterRecognition"},
-        # "StartGame": {
-        #         "recognition": "OCR",
-        #         "expected": "Play",
-        #         "action": "Click",
-        # }
     }
-    print("开始执行pipeline中选中任务")
     task_detail = tasker.post_task("monsterRecognition", pipeline_override).wait().get()
-    print("任务执行完成")
     monsters = JsonUtils.deserialize_from_str(
         JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail),Monster
     )
