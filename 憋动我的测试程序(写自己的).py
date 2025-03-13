@@ -58,9 +58,6 @@ def main():
 
     # 注册自定义识别器
     resource.register_custom_recognition("monsterRecognition", MonsterRecognition())
-    # resource.register_custom_recognition("playerRecognition", PlayerRecognition())
-    # resource.register_custom_recognition("eventRecognition", EventRecognition())
-    resource.register_custom_recognition("cardRecognition", CardRecognition())
     resource.register_custom_recognition("MapRecognition", MapRecognition())
 
     print("重写pipeline")
@@ -74,15 +71,15 @@ def main():
         "MapRecognition": {"recognition": "custom", "custom_recognition": "MapRecognition"},
     }
     print("开始执行pipeline中选中任务")
-    # task_detail = tasker.post_task("monsterRecognition", pipeline_override).wait().get()
-    task_detail = tasker.post_task("MapRecognition", pipeline_override).wait().get()
+    task_detail = tasker.post_task("monsterRecognition", pipeline_override).wait().get()
+    # task_detail = tasker.post_task("MapRecognition", pipeline_override).wait().get()
     print("任务执行完成")
-    # monsters = JsonUtils.deserialize_from_str(
-    #     JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail),Monster
-    # )
+    monsters = JsonUtils.deserialize_from_str(
+        JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail),Monster
+    )
 
-    # print(monsters)
-    print(task_detail.nodes[0].recognition.best_result.detail)
+    print(monsters)
+    # print(task_detail.nodes[0].recognition.best_result.detail)
     
     # 主循环
     # while True:
