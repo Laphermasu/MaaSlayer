@@ -78,8 +78,8 @@ def main():
     }
     print("开始执行pipeline中选中任务")
     # task_detail = tasker.post_task("monsterRecognition", pipeline_override).wait().get()
-    task_detail = tasker.post_task("EndTurnRecognition", pipeline_override).wait().get()
-    # task_detail = tasker.post_task("MapRecognition", pipeline_local).wait().get()
+    # task_detail = tasker.post_task("EndTurnRecognition", pipeline_override).wait().get()
+    task_detail = tasker.post_task("商人界面操作", pipeline_local).wait().get()
     print("任务执行完成")
     # monsters = JsonUtils.deserialize_from_str(
     #     JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail),Monster

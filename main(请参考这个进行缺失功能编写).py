@@ -83,60 +83,47 @@ def main():
             tasker.post_task("商人界面操作", pipeline_local).wait()
             continue
         elif map_type == "问号":
-            #
-            #
+            #↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+            #↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
             # 待实现
             event_type = run_task("问号识别")
+            #↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+            #↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+
             if event_type == "event":
                 run_task("事件流程")
             elif event_type == "monster":
                 while end_turn_exist(tasker):
+                    #↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+                    # 战斗流程根据实际代码实现下面功能
                     monsters = run_task("怪物识别")
                     player = run_task("角色信息识别")
                     command = ai_command(monsters, player)
                     perform_command(command)
-                tasker.post_task("奖励领取1", pipeline_local).wait()
-                cards = run_task("卡牌奖励识别")
-                command = ai_command(cards)
-                tasker.post_task("选择卡牌", 
-                                 pipeline = {
-                                    "选择卡牌": {
-                                        "recognition": "OCR",
-                                        "expected": command,
-                                        "action": "Click",
-                                        "next": "确认"
-                                        },
-                                    "点击确认": {
-                                        "recognition": "OCR",
-                                        "action": "Click",
-                                        "expected": [
-                                            "Proceed"
-                                        ]
-                                    }
-                                }).wait()
-                tasker.post_task("点击跳过", pipeline_local).wait()
+                # 战斗结束后奖励领取
+                get_reward(tasker, pipeline_local)
             continue
-            #
-            #
-            #
         elif map_type == "休息":
             tasker.post_task("点击睡觉", pipeline_local).wait()
             continue
         elif map_type == "小怪":
             while end_turn_exist(tasker):
-                # 待实现
+                # 战斗流程
                 monsters = run_task("怪物识别")
                 player = run_task("角色信息识别")
                 command = ai_command(monsters, player)
                 perform_command(command)
-            run_task("奖励领取")
+            # 战斗结束后奖励领取
+            get_reward(tasker, pipeline_local)
             continue
         elif map_type == "BOSS":
             while end_turn_exist(tasker):
+                # 战斗流程
                 player = run_task("角色信息识别")
                 command = ai_command(monsters, player)
                 perform_command(command)
-            run_task("奖励领取")
+            # 战斗结束后奖励领取
+            get_reward(tasker, pipeline_local)
             run_task("BOSS遗物领取")
             Boss_exist = False
             continue
@@ -152,6 +139,28 @@ def end_turn_exist(tasker: Tasker) -> bool:
                 }
             }).wait().get()
     return bool(detail.nodes[0].recognition.best_result.detail)
+
+def get_reward(tasker: Tasker, pipeline_local: dict):
+    tasker.post_task("奖励领取1", pipeline_local).wait()
+    cards = run_task("卡牌奖励识别")  # 超
+    chosen_card = AI解析手牌(cards)   #任
+    tasker.post_task("选择卡牌", 
+                    pipeline = {
+                        "选择卡牌": {
+                            "recognition": "OCR",
+                            "expected": chosen_card,
+                            "action": "Click",
+                            "next": "确认"
+                            },
+                        "点击确认": {
+                            "recognition": "OCR",
+                            "action": "Click",
+                            "expected": [
+                                "Proceed"
+                            ]
+                        }
+                    }).wait()
+    tasker.post_task("点击跳过", pipeline_local).wait()
 
 if __name__ == "__main__":
     main()
