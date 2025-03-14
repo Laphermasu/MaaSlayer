@@ -12,7 +12,8 @@ from src.custom_recognition.cards_rewards_recognition import CardrewardRecogniti
 from src.utils.json_utils import JsonUtils
 from src.AI_model.model_run import *
 from src.custom_recognition.recognition import recognize
-
+from src.custom_action.abd_action import ADBAction
+import json
 
 resource = Resource()
 
@@ -64,6 +65,7 @@ def main():
     resource.register_custom_recognition("cardRecognition", CardRecognition())
     resource.register_custom_recognition("CardrewardRecognition",CardrewardRecognition())
     resource.register_custom_recognition("UnknownRecognition", UnknownRecognition())
+    resource.register_custom_action("ADBAction", ADBAction())
 
     # 读取本地pipeline
     pipeline_local = JsonUtils.load_json("./assets/resource/pipelin/slay_task.json")
@@ -96,18 +98,18 @@ def main():
                 run_task("事件流程")
                 event = recognize(tasker,"event")
                 player = recognize(tasker,"player")
-                command = predict_action("EVENT", {}, event,{}, player, env, model, device)
-                perform_command(command)
+                command,game_state= predict_action("EVENT", {}, event,{}, player, env, model, device)
+                perform_command(tasker,command,game_state)
             elif event_type == "monster":
-                command = predict_action("EVENT", {}, event, player, env, model, device)
-                perform_command(command)
+                command,game_state = predict_action("EVENT", {}, event, player, env, model, device)
+                perform_command(tasker,command,game_state)
             elif event_type == "战斗":
                 while end_turn_exist(tasker):
                     monsters = recognize(tasker,"monster")
                     player = recognize(tasker,"player")
                     cards = recognize(tasker,"card")
-                    command = predict_action("NONE", monsters, {}, cards, player, env, model, device)
-                    perform_command(command)
+                    command,game_state = predict_action("NONE", monsters, {}, cards, player, env, model, device)
+                    perform_command(tasker,command,game_state,monsters)
                 # 战斗结束后奖励领取
                 get_reward(tasker, pipeline_local ,env,model,device)
             elif event_type == "宝箱":
@@ -124,8 +126,8 @@ def main():
                 monsters = recognize(tasker,"monster")
                 player = recognize(tasker,"player")
                 cards = recognize(tasker,"card")
-                command = predict_action("NONE", monsters, {}, cards, player, env, model, device)
-                perform_command(command)
+                command,game_state = predict_action("NONE", monsters, {}, cards, player, env, model, device)
+                perform_command(tasker,command,game_state,monsters)
             # 战斗结束后奖励领取
             get_reward(tasker, pipeline_local,env,model,device)
             continue
@@ -135,8 +137,8 @@ def main():
                 monsters = recognize(tasker, "monster")
                 player = recognize(tasker, "player")
                 cards = recognize(tasker, "card")
-                command = predict_action("NONE",monsters,{},cards ,player,env,model,device)
-                perform_command(command)
+                command,game_state = predict_action("NONE",monsters,{},cards ,player,env,model,device)
+                perform_command(tasker,command,game_state,monsters)
             # 战斗结束后奖励领取
             get_reward(tasker, pipeline_local ,env,model,device)
             run_task("BOSS遗物领取")
@@ -177,6 +179,26 @@ def get_reward(tasker: Tasker, pipeline_local: dict ,env,model,device):
                         }
                     }).wait()
     tasker.post_task("点击跳过", pipeline_local).wait()
+
+def perform_command(tasker: Tasker,command,game_state,monsters=None):
+    # command = "PLAY 1 0"
+    game_state['game_state']['screen_state']['chosen_command'] = command
+    part = command.split()
+    action_type = part[0]
+    if action_type == "PLAY":
+        monster_json = json.dumps([monster.__dict__ for monster in monsters])
+        game_state['game_state']['combat_state']['monster_box'] = monster_json
+
+    print(game_state)
+    pipeline_override = {
+        # "ADBAction": {"action": "custom", "custom_action": "ADBAction"},
+        "ADBAction": {"action": "custom", "custom_action": "ADBAction", "custom_action_param": game_state},
+    }
+    print("pipeline选中任务执行")
+    tasker.post_task("ADBAction", pipeline_override).wait().get()
+
+
+
 
 if __name__ == "__main__":
     main()
