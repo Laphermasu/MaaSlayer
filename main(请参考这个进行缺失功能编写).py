@@ -10,6 +10,7 @@ from src.custom_recognition.monster_recognition import MonsterRecognition
 from src.custom_recognition.player_recognition import PlayerRecognition
 from src.custom_recognition.event_recognition import EventRecognition
 from src.custom_recognition.cards_recogntion import CardRecognition
+from src.custom_recognition.end_turn_recognition import EndTurnRecognition
 from src.utils.json_utils import JsonUtils
 
 import json
@@ -55,39 +56,83 @@ def main():
         exit()
     print("tasker初始化完成")
 
+    # 注册自定义行为
+    resource.register_custom_recognition("EndTurnRecognition", EndTurnRecognition())
+    resource.register_custom_recognition("monsterRecognition", MonsterRecognition())
+    resource.register_custom_recognition("playerRecognition", PlayerRecognition())
+    resource.register_custom_recognition("eventRecognition", EventRecognition())
+    resource.register_custom_recognition("cardRecognition", CardRecognition())
+
+    # 读取本地pipeline
+    pipeline_local = JsonUtils.load_json("./assets/resource/pipelin/slay_task.json")
+
+    # 定义pipeline_override
+    pipeline_override = {
+            "monsterRecognition": {"recognition": "custom", "custom_recognition": "monsterRecognition"},
+            "MapRecognition": {"recognition": "custom", "custom_recognition": "MapRecognition"},
+        }
+
     Boss_exist = True
     # 以下为伪代码
     while Boss_exist: # 主流程
-        map_type = run_task("随机选择可用地图节点")
-        if map_type == "chest":
-            run_task("宝箱自动流程")
+        map_type = (tasker.post_task("MapRecognition", pipeline_override).wait().get()).nodes[0].recognition.best_result.detail
+        if map_type == "宝箱":
+            tasker.post_task("宝箱界面操作", pipeline_local).wait()
             continue
-        elif map_type == "shop":
-            run_task("商人自动流程")
+        elif map_type == "商店":
+            tasker.post_task("商人界面操作", pipeline_local).wait()
             continue
         elif map_type == "问号":
+            #
+            #
+            # 待实现
             event_type = run_task("问号识别")
             if event_type == "event":
                 run_task("事件流程")
             elif event_type == "monster":
-                while monsters = run_task("怪物识别"):
+                while end_turn_exist(tasker):
+                    monsters = run_task("怪物识别")
                     player = run_task("角色信息识别")
                     command = ai_command(monsters, player)
                     perform_command(command)
-                run_task("奖励领取")
+                tasker.post_task("奖励领取1", pipeline_local).wait()
+                cards = run_task("卡牌奖励识别")
+                command = ai_command(cards)
+                tasker.post_task("选择卡牌", 
+                                 pipeline = {
+                                    "选择卡牌": {
+                                        "recognition": "OCR",
+                                        "expected": command,
+                                        "action": "Click",
+                                        "next": "确认"
+                                        },
+                                    "点击确认": {
+                                        "recognition": "OCR",
+                                        "action": "Click",
+                                        "expected": [
+                                            "Proceed"
+                                        ]
+                                    }
+                                }).wait()
+                tasker.post_task("点击跳过", pipeline_local).wait()
             continue
-        elif map_type == "rest":
-            run_task("休息流程")
+            #
+            #
+            #
+        elif map_type == "休息":
+            tasker.post_task("点击睡觉", pipeline_local).wait()
             continue
-        elif map_type == "monster":
-            while run_task("怪物识别"):
+        elif map_type == "小怪":
+            while end_turn_exist(tasker):
+                # 待实现
+                monsters = run_task("怪物识别")
                 player = run_task("角色信息识别")
                 command = ai_command(monsters, player)
                 perform_command(command)
             run_task("奖励领取")
             continue
         elif map_type == "BOSS":
-            while run_task("怪物识别"):
+            while end_turn_exist(tasker):
                 player = run_task("角色信息识别")
                 command = ai_command(monsters, player)
                 perform_command(command)
@@ -96,6 +141,17 @@ def main():
             Boss_exist = False
             continue
     print("一层战斗结束")
+
+def end_turn_exist(tasker: Tasker) -> bool:
+    detail = tasker.post_task(
+        "EndTurnRecognition", 
+        pipeline_override= {
+            "EndTurnRecognition": {
+                "recognition": "custom", 
+                "custom_recognition": "EndTurnRecognition"
+                }
+            }).wait().get()
+    return bool(detail.nodes[0].recognition.best_result.detail)
 
 if __name__ == "__main__":
     main()

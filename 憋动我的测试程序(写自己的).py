@@ -11,6 +11,7 @@ from src.custom_recognition.player_recognition import PlayerRecognition
 from src.custom_recognition.event_recognition import EventRecognition
 from src.custom_recognition.cards_recogntion import CardRecognition
 from src.custom_recognition.map_recognition import MapRecognition
+from src.custom_recognition.end_turn_recognition import EndTurnRecognition
 from src.utils.json_utils import JsonUtils
 
 import json
@@ -59,6 +60,7 @@ def main():
     # 注册自定义识别器
     resource.register_custom_recognition("monsterRecognition", MonsterRecognition())
     resource.register_custom_recognition("MapRecognition", MapRecognition())
+    resource.register_custom_recognition("EndTurnRecognition", EndTurnRecognition())
 
     print("重写pipeline")
     pipeline_override = {
