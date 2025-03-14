@@ -61,7 +61,10 @@ def main():
     resource.register_custom_recognition("monsterRecognition", MonsterRecognition())
     resource.register_custom_recognition("MapRecognition", MapRecognition())
     resource.register_custom_recognition("EndTurnRecognition", EndTurnRecognition())
+    
 
+    # 读取本地pipeline
+    pipeline_local = JsonUtils.load_json("./assets/resource/pipelin/slay_task.json")
     print("重写pipeline")
     pipeline_override = {
         "monsterRecognition": {"recognition": "custom", "custom_recognition": "monsterRecognition"},
@@ -71,16 +74,18 @@ def main():
         #         "action": "Click",
         # }
         "MapRecognition": {"recognition": "custom", "custom_recognition": "MapRecognition"},
+        "EndTurnRecognition": {"recognition": "custom", "custom_recognition": "EndTurnRecognition"}
     }
     print("开始执行pipeline中选中任务")
-    task_detail = tasker.post_task("monsterRecognition", pipeline_override).wait().get()
-    # task_detail = tasker.post_task("MapRecognition", pipeline_override).wait().get()
+    # task_detail = tasker.post_task("monsterRecognition", pipeline_override).wait().get()
+    task_detail = tasker.post_task("EndTurnRecognition", pipeline_override).wait().get()
+    # task_detail = tasker.post_task("MapRecognition", pipeline_local).wait().get()
     print("任务执行完成")
-    monsters = JsonUtils.deserialize_from_str(
-        JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail),Monster
-    )
+    # monsters = JsonUtils.deserialize_from_str(
+    #     JsonUtils.serialize_to_str(task_detail.nodes[0].recognition.best_result.detail),Monster
+    # )
 
-    print(monsters)
+    # print(monsters)
     # print(task_detail.nodes[0].recognition.best_result.detail)
     
     # 主循环

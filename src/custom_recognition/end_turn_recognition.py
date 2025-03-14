@@ -20,7 +20,7 @@ class EndTurnRecognition(CustomRecognition):
                     }
                 }
             )
-        if not reco_detail or not reco_detail.best_result:
+        if reco_detail:
             exist = str(True)
         else:
             exist = str(False)
