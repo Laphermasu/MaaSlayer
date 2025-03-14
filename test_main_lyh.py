@@ -8,7 +8,7 @@ from maa.resource import Resource
 from maa.controller import AdbController
 from sympy import print_rcode
 
-from src.core.data_models import Monster, Cards ,Event
+from src.core.data_models import Monster, Cards, Event
 from src.core.data_models import Player
 from src.custom_recognition.monster_recognition import MonsterRecognition
 from src.custom_recognition.player_recognition import PlayerRecognition
@@ -96,7 +96,7 @@ def main():
         adb_path=device.adb_path,
         address=device.address,
         screencap_methods=device.screencap_methods,
-        input_methods= 1 ,
+        input_methods=1,
         config=device.config,
     )
     controller.post_connection().wait()
@@ -143,9 +143,9 @@ def main():
     events = result_dict.get("events", [])
     cards = result_dict.get("cards", [])
 
-    env,model,device = initialize_model()
+    env, model, device = initialize_model()
 
-    chosen_command,game_state = predict_action("NONE",monsters,events,cards,players,env,model,device)
+    chosen_command, game_state = predict_action("NONE", monsters, events, cards, players, env, model, device)
     print(f"Action: {chosen_command}")
     game_state['game_state']['screen_state']['chosen_command'] = chosen_command
 
@@ -187,13 +187,9 @@ def fill_index(input_list):
     return result_list
 
 
-
-
-
-
 @resource.custom_action("ADBAction")
 class ADBAction(CustomAction):
-    def run(self, context: Context, argv: CustomAction.RunArg) ->bool:
+    def run(self, context: Context, argv: CustomAction.RunArg) -> bool:
         """
         :param context: 运行的 Context
         :param argv: 自定义参数
@@ -204,12 +200,11 @@ class ADBAction(CustomAction):
         game_state = json.loads(game_state)
         game_state = game_state["game_state"]
 
-        screen_state =  game_state.get("screen_state", {})
+        screen_state = game_state.get("screen_state", {})
         command = screen_state.get("chosen_command", {})
 
-
         command = "PLAY 1 1"
- 
+
         print(command)
         combat_state = game_state.get("combat_state", {})
         monsters = combat_state.get("monster_box", [])
@@ -247,7 +242,7 @@ class ADBAction(CustomAction):
                     "embark": {
                         "recognition": "OCR",
                         "expected": "Embark",
-                        "roi": [1000,500,250,250],
+                        "roi": [1000, 500, 250, 250],
                         "action": "Click",
                     }
                 }
@@ -259,7 +254,7 @@ class ADBAction(CustomAction):
             card_info = cards[card_index]
             card_name = card_info.get("name", None)
             converted_monster_box = []
-            monster_box ={}
+            monster_box = {}
             # print(card_name)
             if isinstance(monsters, str):
                 monsters = json.loads(monsters)
@@ -267,9 +262,10 @@ class ADBAction(CustomAction):
                 target_index = int(parts[2])
                 if target_index == 0:
                     converted_monster_box = [467, 180, 40, 40]
-                elif target_index >0:
+                elif target_index > 0:
                     monster_box = monsters[target_index - 1].get("box", None)
-                    converted_monster_box = [monster_box["x"], monster_box["y"], monster_box["w"]/2, monster_box["h"]/2]
+                    converted_monster_box = [monster_box["x"], monster_box["y"], monster_box["w"] / 2,
+                                             monster_box["h"] / 2]
             # print(converted_monster_box)
             # img = context.tasker.controller.post_screencap().wait().get()
             print(converted_monster_box)
@@ -281,7 +277,7 @@ class ADBAction(CustomAction):
                         "expected": card_name,
                         "action": "Swipe",
                         "end": converted_monster_box,
-                        "end_offset":[converted_monster_box[2]/2,0,0,0]
+                        "end_offset": [converted_monster_box[2] / 2, 0, 0, 0]
                     },
                     "Click2": {
                         "action": "Click",
@@ -370,16 +366,16 @@ class ADBAction(CustomAction):
             # 当没有识别到怪物时停止匹配
 
             reco_detail = context.run_recognition(
-                 "事件识别_ocr",  # 流水线名称
-                 img,  # 输入图像
-                 pipeline_override={
-                     "事件识别_ocr": {
-                         "recognition": "OCR",
-                         "expected": "",  # 每次只匹配一个模板
+                "事件识别_ocr",  # 流水线名称
+                img,  # 输入图像
+                pipeline_override={
+                    "事件识别_ocr": {
+                        "recognition": "OCR",
+                        "expected": "",  # 每次只匹配一个模板
                         # "green_mask": True
-                     }
-                 }
-             )
+                    }
+                }
+            )
 
             eventname_detail = context.run_recognition(
                 "事件名称识别_ocr",  # 流水线名称
@@ -387,16 +383,16 @@ class ADBAction(CustomAction):
                 pipeline_override={
                     "事件名称识别_ocr": {
                         "recognition": "OCR",
-                         "expected": "",  # 每次只匹配一个模板
+                        "expected": "",  # 每次只匹配一个模板
                         "roi": [200, 150, 400, 50]
                         # "green_mask": True
                     }
-                  }
-             )
+                }
+            )
 
             bracket_pattern = re.compile(r'^[\[【［]')
 
-             # 按y坐标分组
+            # 按y坐标分组
             groups = defaultdict(list)
             for result in reco_detail.all_results:
                 y = result.box[1]
@@ -446,10 +442,7 @@ class ADBAction(CustomAction):
             print(f"未知的命令: {command}")
         # **调用 execute() 来处理**
 
-
         return True
-
-
 
 
 if __name__ == "__main__":
