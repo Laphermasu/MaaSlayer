@@ -1,14 +1,7 @@
 import json
 
 def get_available_commands():
-    return [
-        "play",
-        "end",
-        "key",
-        "click",
-        "wait",
-        "state"
-    ]
+    return ['choose', 'potion', 'key', 'click', 'wait', 'state']
 
 def get_screen():
     return {

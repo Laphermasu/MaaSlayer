@@ -132,8 +132,8 @@ class SlayTheSpireEnv(gym.Env):
         relic_observation = get_relic_observation(game_state)
         extra_info_observation = get_extra_info_observation(game_state)
         hand_observation = get_hand_observation(combat_state)
-        deck_observation = get_deck_observation(state)
-        screen_observation = get_screen_observation(state)
+        deck_observation = get_deck_observation(game_state)
+        screen_observation = get_screen_observation(game_state)
 
         # Combine them into a full observation
         return {
