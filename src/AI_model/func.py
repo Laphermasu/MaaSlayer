@@ -192,7 +192,9 @@ def generate_json(screen_type, monsters=None, events=None, cards=None, player=No
     if screen_type == "NONE":
         combat_state = {
             "monsters": [{k: v for k, v in monster.__dict__.items() if k != "box"} for monster in monsters],
-            "hand": [card.__dict__ for card in cards],
+            "hand": [
+                {**card.__dict__, "is_playable": card.cost <= player.energy} for card in cards
+            ],
             "player": {
                 "block": player.block,
                 "energy": player.energy,
@@ -213,13 +215,20 @@ def generate_json(screen_type, monsters=None, events=None, cards=None, player=No
             "map": game_map,
             "ascension_level": 0,
         }
-
-        json_data = {
-            "available_commands":  ['play', 'end', 'key', 'click', 'wait', 'state'],
-            "ready_for_command": True,
-            "in_game": True,
-            "game_state": game_state
-        }
+        if player.energy == 0:
+            json_data = {
+                "available_commands":  ['end', 'key', 'click', 'wait', 'state'],
+                "ready_for_command": True,
+                "in_game": True,
+                "game_state": game_state
+            }
+        else:
+            json_data = {
+                "available_commands": ['play', 'end', 'key', 'click', 'wait', 'state'],
+                "ready_for_command": True,
+                "in_game": True,
+                "game_state": game_state
+            }
         json_result = json.dumps(json_data)
     elif screen_type == "EVENT":
         game_state = {

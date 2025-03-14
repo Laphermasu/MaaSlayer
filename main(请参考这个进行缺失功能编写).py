@@ -190,7 +190,7 @@ def perform_command(tasker: Tasker,command,game_state,monsters=None):
         monster_json = json.dumps([monster.__dict__ for monster in monsters])
         game_state['game_state']['combat_state']['monster_box'] = monster_json
 
-    print(game_state)
+    # print(game_state)
     pipeline_override = {
         # "ADBAction": {"action": "custom", "custom_action": "ADBAction"},
         "ADBAction": {"action": "custom", "custom_action": "ADBAction", "custom_action_param": game_state},

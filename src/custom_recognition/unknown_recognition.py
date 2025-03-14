@@ -43,7 +43,7 @@ class UnknownRecognition(CustomRecognition):
 
         if best_match["template_index"] != -1:
             template_index = best_match["template_index"]
-            type = unknown_type[template_index]
+            type = unknown_type.get(str(template_index), "事件")
         
         else:
             type = "事件"

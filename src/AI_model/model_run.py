@@ -29,7 +29,9 @@ def predict_action(screen_type, monsters, events, cards, player, env, model, dev
     action, _states = model.predict(obs_numpy, action_masks=action_mask_numpy)
     action = int(action)
     chosen_command = env.actions[action]
-
+    print("************")
+    print(chosen_command)
+    print("************")
     return chosen_command,game_state
 
 
