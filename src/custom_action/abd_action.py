@@ -95,20 +95,25 @@ class ADBAction(CustomAction):
 
         elif action_type == "PLAY":
             card_index = int(parts[1]) - 1
+            target_index = int(parts[2])
             # print(f"打出卡牌：索引 {card_index}")
             card_info = cards[card_index]
             card_name = card_info.get("name", None)
+            card_type = card_info.get("type", None)
+            # print(card_type)
+            if card_type == "Attack":
+                target_index = target_index + 1
             converted_monster_box = []
             monster_box = {}
-            # print(card_name)
+
             if isinstance(monsters, str):
                 monsters = json.loads(monsters)
             if len(parts) > 2:
-                target_index = int(parts[2])
                 if target_index == 0:
                     converted_monster_box = [467, 180, 40, 40]
                 elif target_index > 0:
                     monster_box = monsters[target_index - 1].get("box", None)
+                    print(monster_box)
                     converted_monster_box = [monster_box["x"], monster_box["y"], monster_box["w"] / 2,
                                              monster_box["h"] / 2]
             # print(converted_monster_box)
