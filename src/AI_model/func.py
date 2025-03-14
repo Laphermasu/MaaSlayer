@@ -200,7 +200,6 @@ def generate_json(screen_type, monsters=None, events=None, cards=None, player=No
     game_map = get_map()
     if screen_type == "NONE":
         available_commands = get_available_commands()
-        available_commands = get_available_commands()
         combat_state = {
             "monsters": [{k: v for k, v in monster.__dict__.items() if k != "box"} for monster in monsters],
             "hand": [card.__dict__ for card in cards],
@@ -238,18 +237,39 @@ def generate_json(screen_type, monsters=None, events=None, cards=None, player=No
             "screen_state": {
                 "event_id": events.event_id,
                 "options": events.options,
-                "deck": deck,
-                "relics": relics,
-                "max_hp": player.max_hp,
-                "gold": player.gold,
-                "potions": [],
-                "current_hp": player.current_hp,
-                "floor": player.floor,
-                "map": game_map,
-                "ascension_level": 0,
-            }
+            },
+            "deck": deck,
+            "relics": relics,
+            "max_hp": player.max_hp,
+            "gold": player.gold,
+            "potions": [],
+            "current_hp": player.current_hp,
+            "floor": player.floor,
+            "map": game_map,
+            "ascension_level": 0
         }
 
+        json_data = {
+            "game_state": game_state
+        }
+
+        json_result = json.dumps(json_data)
+    elif screen_type == "CARD_REWARD":
+        game_state = {
+            "screen_type": screen_type,
+            "screen_state": {
+                "cards": [card.__dict__ for card in cards]
+            },
+            "deck": deck,
+            "relics": relics,
+            "max_hp": player.max_hp,
+            "gold": player.gold,
+            "potions": [],
+            "current_hp": player.current_hp,
+            "floor": player.floor,
+            "map": game_map,
+            "ascension_level": 0,
+        }
         json_data = {
             "game_state": game_state
         }

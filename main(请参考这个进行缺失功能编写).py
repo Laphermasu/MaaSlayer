@@ -95,17 +95,19 @@ def main():
             if event_type == "event":
                 event = run_task("事件流程")
                 player = run_task("角色信息识别")
-                command = predict_action("EVENT", {}, event, player, env, model, device)
+                command = predict_action("EVENT", {}, event,{}, player, env, model, device)
+                perform_command(command)
             elif event_type == "monster":
                 while end_turn_exist(tasker):
                     #↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
                     # 战斗流程根据实际代码实现下面功能
                     monsters = run_task("怪物识别")
                     player = run_task("角色信息识别")
-                    command = predict_action("NONE",monsters,{}, player,env,model,device)
+                    cards = run_task("卡牌识别")
+                    command = predict_action("NONE", monsters, {}, cards, player, env, model, device)
                     perform_command(command)
                 # 战斗结束后奖励领取
-                get_reward(tasker, pipeline_local)
+                get_reward(tasker, pipeline_local ,env,model,device)
             continue
         elif map_type == "休息":
             tasker.post_task("点击睡觉", pipeline_local).wait()
@@ -115,20 +117,22 @@ def main():
                 # 战斗流程
                 monsters = run_task("怪物识别")
                 player = run_task("角色信息识别")
-                command = predict_action("NONE",monsters,{}, player,env,model,device)
+                cards = run_task("卡牌识别")
+                command = predict_action("NONE", monsters, {}, cards, player, env, model, device)
                 perform_command(command)
             # 战斗结束后奖励领取
-            get_reward(tasker, pipeline_local)
+            get_reward(tasker, pipeline_local,env,model,device)
             continue
         elif map_type == "BOSS":
             while end_turn_exist(tasker):
                 # 战斗流程
                 player = run_task("角色信息识别")
                 monsters = run_task("怪物识别")
-                command = predict_action("NONE",monsters,{}, player,env,model,device)
+                cards = run_task("卡牌识别")
+                command = predict_action("NONE",monsters,{},cards ,player,env,model,device)
                 perform_command(command)
             # 战斗结束后奖励领取
-            get_reward(tasker, pipeline_local)
+            get_reward(tasker, pipeline_local ,env,model,device)
             run_task("BOSS遗物领取")
             Boss_exist = False
             continue
@@ -145,10 +149,11 @@ def end_turn_exist(tasker: Tasker) -> bool:
             }).wait().get()
     return bool(detail.nodes[0].recognition.best_result.detail)
 
-def get_reward(tasker: Tasker, pipeline_local: dict):
+def get_reward(tasker: Tasker, pipeline_local: dict ,env,model,device):
     tasker.post_task("奖励领取1", pipeline_local).wait()
-    cards = run_task("卡牌奖励识别")  # 超
-    chosen_card = AI解析手牌(cards)   #任
+    cards = run_task("卡牌识别")  # 超
+    player = run_task("角色信息识别")  # 超
+    chosen_card = predict_action("CARD_REWARD",{}, {}, cards,player,env,model,device)
     tasker.post_task("选择卡牌", 
                     pipeline = {
                         "选择卡牌": {
