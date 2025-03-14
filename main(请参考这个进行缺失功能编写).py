@@ -11,6 +11,7 @@ from src.custom_recognition.player_recognition import PlayerRecognition
 from src.custom_recognition.event_recognition import EventRecognition
 from src.custom_recognition.cards_recogntion import CardRecognition
 from src.custom_recognition.end_turn_recognition import EndTurnRecognition
+from src.custom_recognition.unknown_recognition import UnknownRecognition
 from src.utils.json_utils import JsonUtils
 
 import json
@@ -62,6 +63,7 @@ def main():
     resource.register_custom_recognition("playerRecognition", PlayerRecognition())
     resource.register_custom_recognition("eventRecognition", EventRecognition())
     resource.register_custom_recognition("cardRecognition", CardRecognition())
+    resource.register_custom_recognition("UnknownRecognition", UnknownRecognition())
 
     # 读取本地pipeline
     pipeline_local = JsonUtils.load_json("./assets/resource/pipelin/slay_task.json")
@@ -70,6 +72,11 @@ def main():
     pipeline_override = {
             "monsterRecognition": {"recognition": "custom", "custom_recognition": "monsterRecognition"},
             "MapRecognition": {"recognition": "custom", "custom_recognition": "MapRecognition"},
+            "EndTurnRecognition": {"recognition": "custom", "custom_recognition": "EndTurnRecognition"},
+            "playerRecognition": {"recognition": "custom", "custom_recognition": "playerRecognition"},
+            "eventRecognition": {"recognition": "custom", "custom_recognition": "eventRecognition"},
+            "cardRecognition": {"recognition": "custom", "custom_recognition": "cardRecognition"},
+            "UnknownRecognition": {"recognition": "custom", "custom_recognition": "UnknownRecognition"}
         }
 
     Boss_exist = True
@@ -83,16 +90,11 @@ def main():
             tasker.post_task("商人界面操作", pipeline_local).wait()
             continue
         elif map_type == "问号":
-            #↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-            #↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-            # 待实现
-            event_type = run_task("问号识别")
-            #↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-            #↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-
-            if event_type == "event":
+            # 识别未知内容
+            event_type = (tasker.post_task("UnknownRecognition", pipeline_override).wait().get()).nodes[0].recognition.best_result.detail
+            if event_type == "事件":
                 run_task("事件流程")
-            elif event_type == "monster":
+            elif event_type == "战斗":
                 while end_turn_exist(tasker):
                     #↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
                     # 战斗流程根据实际代码实现下面功能
@@ -102,6 +104,10 @@ def main():
                     perform_command(command)
                 # 战斗结束后奖励领取
                 get_reward(tasker, pipeline_local)
+            elif event_type == "宝箱":
+                tasker.post_task("宝箱界面操作", pipeline_local).wait()
+            elif event_type == "商店":
+                tasker.post_task("商人界面操作", pipeline_local).wait()
             continue
         elif map_type == "休息":
             tasker.post_task("点击睡觉", pipeline_local).wait()
