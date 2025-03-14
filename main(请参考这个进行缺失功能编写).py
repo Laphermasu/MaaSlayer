@@ -1,20 +1,17 @@
 from maa.tasker import Tasker
 from maa.toolkit import Toolkit
-from maa.context import Context
 from maa.resource import Resource
 from maa.controller import AdbController
-from maa.custom_action import CustomAction
-from src.core.data_models import Monster, Cards
-from src.core.data_models import Player
 from src.custom_recognition.monster_recognition import MonsterRecognition
 from src.custom_recognition.player_recognition import PlayerRecognition
 from src.custom_recognition.event_recognition import EventRecognition
 from src.custom_recognition.cards_recogntion import CardRecognition
 from src.custom_recognition.end_turn_recognition import EndTurnRecognition
 from src.custom_recognition.unknown_recognition import UnknownRecognition
+from src.custom_recognition.cards_rewards_recognition import CardrewardRecognition
 from src.utils.json_utils import JsonUtils
 from src.AI_model.model_run import *
-import json
+from src.custom_recognition.recognition import recognize
 
 
 resource = Resource()
@@ -65,6 +62,7 @@ def main():
     resource.register_custom_recognition("playerRecognition", PlayerRecognition())
     resource.register_custom_recognition("eventRecognition", EventRecognition())
     resource.register_custom_recognition("cardRecognition", CardRecognition())
+    resource.register_custom_recognition("CardrewardRecognition",CardrewardRecognition())
     resource.register_custom_recognition("UnknownRecognition", UnknownRecognition())
 
     # 读取本地pipeline
@@ -96,8 +94,8 @@ def main():
             event_type = (tasker.post_task("UnknownRecognition", pipeline_override).wait().get()).nodes[0].recognition.best_result.detail
             if event_type == "事件":
                 run_task("事件流程")
-                event = run_task("事件流程")
-                player = run_task("角色信息识别")
+                event = recognize(tasker,"event")
+                player = recognize(tasker,"player")
                 command = predict_action("EVENT", {}, event,{}, player, env, model, device)
                 perform_command(command)
             elif event_type == "monster":
@@ -105,9 +103,9 @@ def main():
                 perform_command(command)
             elif event_type == "战斗":
                 while end_turn_exist(tasker):
-                    monsters = run_task("怪物识别")
-                    player = run_task("角色信息识别")
-                    cards = run_task("卡牌识别")
+                    monsters = recognize(tasker,"monster")
+                    player = recognize(tasker,"player")
+                    cards = recognize(tasker,"card")
                     command = predict_action("NONE", monsters, {}, cards, player, env, model, device)
                     perform_command(command)
                 # 战斗结束后奖励领取
@@ -123,9 +121,9 @@ def main():
         elif map_type == "小怪":
             while end_turn_exist(tasker):
                 # 战斗流程
-                monsters = run_task("怪物识别")
-                player = run_task("角色信息识别")
-                cards = run_task("卡牌识别")
+                monsters = recognize(tasker,"monster")
+                player = recognize(tasker,"player")
+                cards = recognize(tasker,"card")
                 command = predict_action("NONE", monsters, {}, cards, player, env, model, device)
                 perform_command(command)
             # 战斗结束后奖励领取
@@ -134,9 +132,9 @@ def main():
         elif map_type == "BOSS":
             while end_turn_exist(tasker):
                 # 战斗流程
-                player = run_task("角色信息识别")
-                monsters = run_task("怪物识别")
-                cards = run_task("卡牌识别")
+                monsters = recognize(tasker, "monster")
+                player = recognize(tasker, "player")
+                cards = recognize(tasker, "card")
                 command = predict_action("NONE",monsters,{},cards ,player,env,model,device)
                 perform_command(command)
             # 战斗结束后奖励领取
@@ -159,9 +157,9 @@ def end_turn_exist(tasker: Tasker) -> bool:
 
 def get_reward(tasker: Tasker, pipeline_local: dict ,env,model,device):
     tasker.post_task("奖励领取1", pipeline_local).wait()
-    cards = run_task("卡牌识别")  # 超
-    player = run_task("角色信息识别")  # 超
-    chosen_card = predict_action("CARD_REWARD",{}, {}, cards,player,env,model,device)
+    cardreward = recognize(tasker, "cardreward")
+    player = recognize(tasker, "player")
+    chosen_card = predict_action("CARD_REWARD",{}, {}, cardreward,player,env,model,device)
     tasker.post_task("选择卡牌", 
                     pipeline = {
                         "选择卡牌": {
