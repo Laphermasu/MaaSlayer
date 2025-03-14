@@ -1,14 +1,5 @@
 import json
 
-def get_available_commands():
-    return ['choose', 'potion', 'key', 'click', 'wait', 'state']
-
-def get_screen():
-    return {
-        "type": "NONE",
-        "state": {}
-    }
-
 
 def get_deck():
     return [
@@ -199,7 +190,6 @@ def generate_json(screen_type, monsters=None, events=None, cards=None, player=No
     relics = get_relics()
     game_map = get_map()
     if screen_type == "NONE":
-        available_commands = get_available_commands()
         combat_state = {
             "monsters": [{k: v for k, v in monster.__dict__.items() if k != "box"} for monster in monsters],
             "hand": [card.__dict__ for card in cards],
@@ -225,7 +215,7 @@ def generate_json(screen_type, monsters=None, events=None, cards=None, player=No
         }
 
         json_data = {
-            "available_commands": available_commands,
+            "available_commands":  ['play', 'end', 'key', 'click', 'wait', 'state'],
             "ready_for_command": True,
             "in_game": True,
             "game_state": game_state
@@ -250,6 +240,9 @@ def generate_json(screen_type, monsters=None, events=None, cards=None, player=No
         }
 
         json_data = {
+            "available_commands": ['choose', 'potion', 'key', 'click', 'wait', 'state'],
+            "ready_for_command": True,
+            "in_game": True,
             "game_state": game_state
         }
 
@@ -271,6 +264,9 @@ def generate_json(screen_type, monsters=None, events=None, cards=None, player=No
             "ascension_level": 0,
         }
         json_data = {
+            "available_commands": ['choose', 'skip', 'key', 'click', 'wait', 'state'],
+            "ready_for_command": True,
+            "in_game": True,
             "game_state": game_state
         }
 

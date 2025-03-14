@@ -9,6 +9,7 @@ from src.custom_recognition.cards_recogntion import CardRecognition
 from src.custom_recognition.end_turn_recognition import EndTurnRecognition
 from src.custom_recognition.unknown_recognition import UnknownRecognition
 from src.custom_recognition.cards_rewards_recognition import CardrewardRecognition
+from src.custom_recognition.map_recognition import MapRecognition
 from src.utils.json_utils import JsonUtils
 from src.AI_model.model_run import *
 from src.custom_recognition.recognition import recognize
@@ -65,10 +66,11 @@ def main():
     resource.register_custom_recognition("cardRecognition", CardRecognition())
     resource.register_custom_recognition("CardrewardRecognition",CardrewardRecognition())
     resource.register_custom_recognition("UnknownRecognition", UnknownRecognition())
+    resource.register_custom_recognition("MapRecognition",MapRecognition())
     resource.register_custom_action("ADBAction", ADBAction())
 
     # 读取本地pipeline
-    pipeline_local = JsonUtils.load_json("./assets/resource/pipelin/slay_task.json")
+    pipeline_local = JsonUtils.load_json("./assets/resource/pipeline/slay_task.json")
 
     # 定义pipeline_override
     pipeline_override = {
@@ -95,7 +97,6 @@ def main():
             # 识别未知内容
             event_type = (tasker.post_task("UnknownRecognition", pipeline_override).wait().get()).nodes[0].recognition.best_result.detail
             if event_type == "事件":
-                run_task("事件流程")
                 event = recognize(tasker,"event")
                 player = recognize(tasker,"player")
                 command,game_state= predict_action("EVENT", {}, event,{}, player, env, model, device)
@@ -141,7 +142,7 @@ def main():
                 perform_command(tasker,command,game_state,monsters)
             # 战斗结束后奖励领取
             get_reward(tasker, pipeline_local ,env,model,device)
-            run_task("BOSS遗物领取")
+            # run_task("BOSS遗物领取")
             Boss_exist = False
             continue
     print("一层战斗结束")
