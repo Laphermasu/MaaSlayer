@@ -12,7 +12,7 @@ from src.custom_recognition.event_recognition import EventRecognition
 from src.custom_recognition.cards_recogntion import CardRecognition
 from src.custom_recognition.end_turn_recognition import EndTurnRecognition
 from src.utils.json_utils import JsonUtils
-
+from src.AI_model.model_run import *
 import json
 
 
@@ -56,6 +56,8 @@ def main():
         exit()
     print("tasker初始化完成")
 
+    env, model, device = initialize_model()
+
     # 注册自定义行为
     resource.register_custom_recognition("EndTurnRecognition", EndTurnRecognition())
     resource.register_custom_recognition("monsterRecognition", MonsterRecognition())
@@ -91,14 +93,16 @@ def main():
             #↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
             if event_type == "event":
-                run_task("事件流程")
+                event = run_task("事件流程")
+                player = run_task("角色信息识别")
+                command = predict_action("EVENT", {}, event, player, env, model, device)
             elif event_type == "monster":
                 while end_turn_exist(tasker):
                     #↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
                     # 战斗流程根据实际代码实现下面功能
                     monsters = run_task("怪物识别")
                     player = run_task("角色信息识别")
-                    command = ai_command(monsters, player)
+                    command = predict_action("NONE",monsters,{}, player,env,model,device)
                     perform_command(command)
                 # 战斗结束后奖励领取
                 get_reward(tasker, pipeline_local)
@@ -111,7 +115,7 @@ def main():
                 # 战斗流程
                 monsters = run_task("怪物识别")
                 player = run_task("角色信息识别")
-                command = ai_command(monsters, player)
+                command = predict_action("NONE",monsters,{}, player,env,model,device)
                 perform_command(command)
             # 战斗结束后奖励领取
             get_reward(tasker, pipeline_local)
@@ -120,7 +124,8 @@ def main():
             while end_turn_exist(tasker):
                 # 战斗流程
                 player = run_task("角色信息识别")
-                command = ai_command(monsters, player)
+                monsters = run_task("怪物识别")
+                command = predict_action("NONE",monsters,{}, player,env,model,device)
                 perform_command(command)
             # 战斗结束后奖励领取
             get_reward(tasker, pipeline_local)
