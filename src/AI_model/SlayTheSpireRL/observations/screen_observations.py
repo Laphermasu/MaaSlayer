@@ -21,9 +21,10 @@ def get_screen_observation(game_state):
     elif screen_type == "MAP":
         observation = handle_map_screen(screen_state, screen_type_token)
     elif screen_type == "HAND_SELECT":
-        observation = handle_hand_select_screen(screen_state, screen_type_token)
+        observation = handle_hand_select_screen(screen_state)
     elif screen_type == "EVENT":
-        observation = handle_event_screen(screen_state, screen_type_token)
+        # observation = handle_event_screen(screen_state, screen_type_token)
+        observation = handle_event_screen(screen_state)
     elif screen_type == "CHEST":
         observation = handle_chest_screen(screen_state, screen_type_token)
     elif screen_type == "COMBAT_REWARD":
