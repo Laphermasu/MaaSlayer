@@ -1,3 +1,5 @@
+import time
+
 from maa.tasker import Tasker
 from maa.toolkit import Toolkit
 from maa.resource import Resource
@@ -105,7 +107,7 @@ def main():
                 command,game_state = predict_action("EVENT", {}, event, player, env, model, device)
                 perform_command(tasker,command,game_state)
             elif event_type == "战斗":
-                while end_turn_exist(tasker):
+                while end_turn_exist(tasker) == "True":
                     monsters = recognize(tasker,"monster")
                     player = recognize(tasker,"player")
                     cards = recognize(tasker,"card")
@@ -122,18 +124,19 @@ def main():
             tasker.post_task("点击睡觉", pipeline_local).wait()
             continue
         elif map_type == "小怪":
-            while end_turn_exist(tasker):
+            while end_turn_exist(tasker) == "True":
                 # 战斗流程
                 monsters = recognize(tasker,"monster")
                 player = recognize(tasker,"player")
                 cards = recognize(tasker,"card")
                 command,game_state = predict_action("NONE", monsters, {}, cards, player, env, model, device)
                 perform_command(tasker,command,game_state,monsters)
+                time.sleep(0.5)
             # 战斗结束后奖励领取
             get_reward(tasker, pipeline_local,env,model,device)
             continue
         elif map_type == "BOSS":
-            while end_turn_exist(tasker):
+            while end_turn_exist(tasker) == "True":
                 # 战斗流程
                 monsters = recognize(tasker, "monster")
                 player = recognize(tasker, "player")
@@ -156,7 +159,9 @@ def end_turn_exist(tasker: Tasker) -> bool:
                 "custom_recognition": "EndTurnRecognition"
                 }
             }).wait().get()
-    return bool(detail.nodes[0].recognition.best_result.detail)
+    print("***************************************")
+    print(detail.nodes[0].recognition.best_result.detail)
+    return detail.nodes[0].recognition.best_result.detail
 
 def get_reward(tasker: Tasker, pipeline_local: dict ,env,model,device):
     tasker.post_task("奖励领取1", pipeline_local).wait()

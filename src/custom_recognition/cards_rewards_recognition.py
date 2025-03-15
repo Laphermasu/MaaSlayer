@@ -54,7 +54,7 @@ class CardrewardRecognition(CustomRecognition):
                 break
 
             else:
-                cards_exist = False
+                card_exist = False
         cards = []
         for strs in filtered_list:
             for data in cards_list:

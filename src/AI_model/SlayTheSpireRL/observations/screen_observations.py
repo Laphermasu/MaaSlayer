@@ -202,9 +202,10 @@ def handle_hand_select_screen(screen_state):
 
 def handle_event_screen(screen_state):
     # Tokenize the event_id
+    print("Event ID:", screen_state.get("event_id", "UNKNOWN"))
+    print("Tokenized Event ID:", event_id_tokenizer.texts_to_sequences([screen_state.get("event_id", "UNKNOWN")]))
     event_id_token = event_id_tokenizer.texts_to_sequences([screen_state.get("event_id", "UNKNOWN")])[0][
         0] if event_id_tokenizer.texts_to_sequences([screen_state.get("event_id", "UNKNOWN")]) else 0
-
     # Process options
     options = screen_state.get("options", [])
     max_options = 5  # Assume a maximum of 5 options for flexibility

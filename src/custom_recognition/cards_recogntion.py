@@ -27,6 +27,7 @@ class CardRecognition(CustomRecognition):
             "count": 0,  # 匹配点数
             "box": (0, 0, 0, 0)  # 匹配区域
         }
+        # 当没有识别到卡牌时停止匹配
         cards_exist = True
         filtered_list = []
         while cards_exist:
