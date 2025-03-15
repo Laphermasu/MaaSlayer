@@ -101,12 +101,16 @@ def main():
             if event_type == "事件":
                 event = recognize(tasker,"event")
                 player = recognize(tasker,"player")
-                command,game_state= predict_action("EVENT", {}, event,{}, player, env, model, device)
+                chosen_number = 5
+                while chosen_number >= len(event.options):
+                    command,game_state= predict_action("EVENT", {}, event,{}, player, env, model, device)
+                    chosen_number = int(command.split()[-1])
                 perform_command(tasker,command,game_state)
             elif event_type == "monster":
                 command,game_state = predict_action("EVENT", {}, event, player, env, model, device)
                 perform_command(tasker,command,game_state)
             elif event_type == "战斗":
+                time.sleep(2)
                 while end_turn_exist(tasker) == "True":
                     monsters = recognize(tasker,"monster")
                     player = recognize(tasker,"player")
@@ -124,6 +128,7 @@ def main():
             tasker.post_task("点击睡觉", pipeline_local).wait()
             continue
         elif map_type == "小怪":
+            time.sleep(2)
             while end_turn_exist(tasker) == "True":
                 # 战斗流程
                 monsters = recognize(tasker,"monster")
@@ -131,11 +136,12 @@ def main():
                 cards = recognize(tasker,"card")
                 command,game_state = predict_action("NONE", monsters, {}, cards, player, env, model, device)
                 perform_command(tasker,command,game_state,monsters)
-                time.sleep(0.5)
+
             # 战斗结束后奖励领取
             get_reward(tasker, pipeline_local,env,model,device)
             continue
         elif map_type == "BOSS":
+            time.sleep(2)
             while end_turn_exist(tasker) == "True":
                 # 战斗流程
                 monsters = recognize(tasker, "monster")
@@ -159,28 +165,31 @@ def end_turn_exist(tasker: Tasker) -> bool:
                 "custom_recognition": "EndTurnRecognition"
                 }
             }).wait().get()
-    print("***************************************")
-    print(detail.nodes[0].recognition.best_result.detail)
     return detail.nodes[0].recognition.best_result.detail
 
 def get_reward(tasker: Tasker, pipeline_local: dict ,env,model,device):
     tasker.post_task("奖励领取1", pipeline_local).wait()
     cardreward = recognize(tasker, "cardreward")
     player = recognize(tasker, "player")
-    chosen_card = predict_action("CARD_REWARD",{}, {}, cardreward,player,env,model,device)
+    chosen_number = 5
+    while chosen_number >= len(cardreward):
+        chosen_card, game_state = predict_action("CARD_REWARD", {}, {}, cardreward, player, env, model, device)
+        chosen_number = int(chosen_card.split()[-1])
+    chosen_card = cardreward[chosen_number].name
+    print(chosen_card)
     tasker.post_task("选择卡牌", 
-                    pipeline = {
+                    {
                         "选择卡牌": {
                             "recognition": "OCR",
                             "expected": chosen_card,
                             "action": "Click",
-                            "next": "确认"
+                            "next": "点击确认"
                             },
                         "点击确认": {
                             "recognition": "OCR",
                             "action": "Click",
                             "expected": [
-                                "Proceed"
+                                "Proceed","Confirm"
                             ]
                         }
                     }).wait()

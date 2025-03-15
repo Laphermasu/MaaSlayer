@@ -260,17 +260,10 @@ def generate_json(screen_type, monsters=None, events=None, cards=None, player=No
         game_state = {
             "screen_type": screen_type,
             "screen_state": {
-                "cards": [card.__dict__ for card in cards]
+                'cards': [
+                    {**card.__dict__, "is_playable": False} for card in cards
+                ]
             },
-            "deck": deck,
-            "relics": relics,
-            "max_hp": player.max_hp,
-            "gold": player.gold,
-            "potions": [],
-            "current_hp": player.current_hp,
-            "floor": player.floor,
-            "map": game_map,
-            "ascension_level": 0,
         }
         json_data = {
             "available_commands": ['choose', 'skip', 'key', 'click', 'wait', 'state'],
