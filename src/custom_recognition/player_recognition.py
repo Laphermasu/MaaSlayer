@@ -160,8 +160,8 @@ class PlayerRecognition(CustomRecognition):
                     "card": [result.text for result in reco_detail.all_results],
                     "box": reco_detail.box
                 }
-            player.block = 0
 
+            player.block = 0
             if True:
                 if health_detail and health_detail.best_result:
                     current_health = health_detail.all_results[0].text
@@ -205,6 +205,7 @@ class PlayerRecognition(CustomRecognition):
                         player.floor = int(floor_detail.all_results[0].text)
                 print(player)
                 break
+
         print(player)
         player_str = JsonUtils.serialize_to_str(player)
         return CustomRecognition.AnalyzeResult(

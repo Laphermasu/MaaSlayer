@@ -27,9 +27,11 @@ class CardrewardRecognition(CustomRecognition):
             "count": 0,  # 匹配点数
             "box": (0, 0, 0, 0)  # 匹配区域
         }
+
         cards_exist = True
         filtered_list = []
         while cards_exist:
+
             reco_detail = context.run_recognition(
                     "卡牌识别_ocr",  # 流水线名称
                     img,  # 输入图像
