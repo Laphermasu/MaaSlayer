@@ -85,6 +85,8 @@ def main():
             "UnknownRecognition": {"recognition": "custom", "custom_recognition": "UnknownRecognition"}
         }
 
+    print("开始游戏")
+    tasker.post_task("startgame", pipeline_local).wait()
     Boss_exist = True
     # 以下为伪代码
     while Boss_exist: # 主流程

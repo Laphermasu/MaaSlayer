@@ -133,5 +133,62 @@
             1,
             1
         ]
+    },
+    "startgame": {
+        "recognition": "OCR",
+        "template": "Play",
+        "action": "Click",
+        "next": [
+            "标准模式"
+        ]
+    },
+    "标准模式": {
+        "recognition": "OCR",
+        "expected": "Standard",
+        "action": "Click",
+        "next": [
+            "选择铁甲战士"
+        ]
+    },
+    "选择铁甲战士": {
+        "recognition": "TemplateMatch",
+        "template": "铁甲战士.png",
+        "action": "Click",
+        "next": [
+            "启程",
+            "选择铁甲战士"
+        ]
+    },
+    "启程": {
+        "recognition": "OCR",
+        "expected": "Embark",
+        "action": "Click",
+        "next": [
+            "对话",
+            "启程"
+        ]
+    },
+    "对话": {
+        "recognition": "OCR",
+        "expected": "Talk",
+        "action": "Click",
+        "next": [
+            "选择生命值",
+            "对话"
+        ]
+    },
+    "选择生命值": {
+        "recognition": "OCR",
+        "expected": "Enemies",
+        "action": "Click",
+        "next": [
+            "离开",
+            "选择生命值"
+        ]
+    },
+    "离开": {
+        "recognition": "OCR",
+        "expected": "Leave",
+        "action": "Click"
     }
 }
