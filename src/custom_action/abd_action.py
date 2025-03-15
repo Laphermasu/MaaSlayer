@@ -126,8 +126,7 @@ class ADBAction(CustomAction):
                         "recognition": "OCR",
                         "expected": card_name,
                         "action": "Swipe",
-                        "end": converted_monster_box,
-                        "end_offset": [converted_monster_box[2] / 2, 0, 0, 0]
+                        "end": converted_monster_box
                     },
                     "Click2": {
                         "action": "Click",

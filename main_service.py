@@ -115,7 +115,17 @@ def main():
                     monsters = recognize(tasker,"monster")
                     player = recognize(tasker,"player")
                     cards = recognize(tasker,"card")
-                    command,game_state = predict_action("NONE", monsters, {}, cards, player, env, model, device)
+                    card_number = len(cards)+1
+                    monster_number = len(monsters)+1
+                    while card_number > len(cards) and monster_number > len(monsters):
+                        command,game_state = predict_action("NONE", monsters, {}, cards, player, env, model, device)
+                        part = command.split()
+                        action_type = part[0]
+                        if action_type == "PLAY":
+                            card_number = int(part[1])
+                            monster_number = int(part[2])+1
+                        else:
+                            break
                     perform_command(tasker,command,game_state,monsters)
                 # 战斗结束后奖励领取
                 get_reward(tasker, pipeline_local ,env,model,device)
@@ -131,12 +141,21 @@ def main():
             time.sleep(2)
             while end_turn_exist(tasker) == "True":
                 # 战斗流程
-                monsters = recognize(tasker,"monster")
-                player = recognize(tasker,"player")
-                cards = recognize(tasker,"card")
-                command,game_state = predict_action("NONE", monsters, {}, cards, player, env, model, device)
-                perform_command(tasker,command,game_state,monsters)
-
+                monsters = recognize(tasker, "monster")
+                player = recognize(tasker, "player")
+                cards = recognize(tasker, "card")
+                card_number = len(cards) + 1
+                monster_number = len(monsters) + 1
+                while card_number > len(cards) and monster_number > len(monsters):
+                    command, game_state = predict_action("NONE", monsters, {}, cards, player, env, model, device)
+                    part = command.split()
+                    action_type = part[0]
+                    if action_type == "PLAY":
+                        card_number = int(part[1])
+                        monster_number = int(part[2]) + 1
+                    else:
+                        break
+                perform_command(tasker, command, game_state, monsters)
             # 战斗结束后奖励领取
             get_reward(tasker, pipeline_local,env,model,device)
             continue
@@ -147,8 +166,18 @@ def main():
                 monsters = recognize(tasker, "monster")
                 player = recognize(tasker, "player")
                 cards = recognize(tasker, "card")
-                command,game_state = predict_action("NONE",monsters,{},cards ,player,env,model,device)
-                perform_command(tasker,command,game_state,monsters)
+                card_number = len(cards) + 1
+                monster_number = len(monsters) + 1
+                while card_number > len(cards) and monster_number > len(monsters):
+                    command, game_state = predict_action("NONE", monsters, {}, cards, player, env, model, device)
+                    part = command.split()
+                    action_type = part[0]
+                    if action_type == "PLAY":
+                        card_number = int(part[1])
+                        monster_number = int(part[2]) + 1
+                    else:
+                        break
+                perform_command(tasker, command, game_state, monsters)
             # 战斗结束后奖励领取
             get_reward(tasker, pipeline_local ,env,model,device)
             # run_task("BOSS遗物领取")

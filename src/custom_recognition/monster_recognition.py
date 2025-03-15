@@ -8,11 +8,11 @@ from ..core.data_models import Monster
 class MonsterRecognition(CustomRecognition):
 
     def analyze(
-        self,
-        context,
-        argv: CustomRecognition.AnalyzeArg,
+            self,
+            context,
+            argv: CustomRecognition.AnalyzeArg,
     ) -> CustomRecognition.AnalyzeResult:
-        
+
         # 先确认怪物是否存在以及怪物的种类
         # 模板列表
         monster_list = JsonUtils.load_json("./assets/resource/image/monster/monster_list.json")
@@ -72,8 +72,9 @@ class MonsterRecognition(CustomRecognition):
 
                 # 获得怪物其他信息
                 monster.current_hp, monster.max_hp = self.recognize_health(context, img, best_match["box"])
-                monster.intent, monster.move_base_damage, monster.move_hits = self.recognize_intent(context, img, best_match["box"])
-                    
+                monster.intent, monster.move_base_damage, monster.move_hits = self.recognize_intent(context, img,
+                                                                                                    best_match["box"])
+
                 # 显示处理后的图像（用于调试）
                 # cv2.imshow("Thresholded Image", health_img)
                 # cv2.waitKey(0)
@@ -85,7 +86,7 @@ class MonsterRecognition(CustomRecognition):
                 monsters.append(monster)
 
                 # 去掉匹配区域
-                img[y:y+h, x:x+w] = 0  # 将匹配区域设置为黑色
+                img[y:y + h, x:x + w] = 0  # 将匹配区域设置为黑色
                 # plt.imshow(img, cmap='gray' if len(img.shape) == 2 else None)
                 # plt.axis('off')  # 关闭坐标轴
                 # plt.show()
@@ -93,11 +94,10 @@ class MonsterRecognition(CustomRecognition):
             else:
                 monster_exist = False
 
-        monsters_str =  JsonUtils.serialize_to_str(monsters)
+        monsters_str = JsonUtils.serialize_to_str(monsters)
         return CustomRecognition.AnalyzeResult(
             box=best_match["box"], detail=monsters_str
         )
-    
 
     def recognize_health(self, context, img: np.ndarray, box: tuple) -> tuple:
         """
@@ -146,7 +146,7 @@ class MonsterRecognition(CustomRecognition):
                 return 0, 0
         else:
             return 0, 0  # 如果识别失败，返回默认值
-        
+
     def recognize_intent(self, context, img: np.ndarray, box: tuple) -> tuple:
         """
         识别怪物动作
@@ -199,36 +199,36 @@ class MonsterRecognition(CustomRecognition):
         if best_match["template_index"] != -1:
             intent = intent_type.get(str(best_match["template_index"]), "DEBUG")
             if intent == "ATTACK":
-                x, y, w, h = best_match["box"]
-                attack_detail = context.run_recognition(
-                    "攻击伤害识别",  # 流水线名称
-                    img,  # 输入图像
-                    pipeline_override={
-                        "攻击伤害识别": {
-                            "recognition": "OCR",
-                            "roi": [x, y, w, h],
-                            "roi_offset": [-10, -10, 20, 20]
-                        }
-                    }
-                )
-                # 初始化最佳结果
-                best_result = {
-                    "best_score": 0,
-                    "attack": ""
-                }
-
-                # 遍历所有结果，找到最佳匹配
-                if attack_detail and attack_detail.all_results:
-                    for result in attack_detail.all_results:
-                        if best_result["best_score"] < result.score:
-                            best_result = {
-                                "best_score": result.score,
-                                "attack": result.text
-                            }
+                #     x, y, w, h = best_match["box"]
+                #     attack_detail = context.run_recognition(
+                #         "攻击伤害识别",  # 流水线名称
+                #         img,  # 输入图像
+                #         pipeline_override={
+                #             "攻击伤害识别": {
+                #                 "recognition": "OCR",
+                #                 "roi": [x, y, w, h],
+                #                 "roi_offset": [-10, -10, 20, 20]
+                #             }
+                #         }
+                #     )
+                #     # 初始化最佳结果
+                #     best_result = {
+                #         "best_score": 0,
+                #         "attack": ""
+                #     }
+                #
+                #     # 遍历所有结果，找到最佳匹配
+                #     if attack_detail and attack_detail.all_results:
+                #         for result in attack_detail.all_results:
+                #             if best_result["best_score"] < result.score:
+                #                 best_result = {
+                #                     "best_score": result.score,
+                #                     "attack": result.text
+                #                 }
 
                 # 解析攻击
-                damage, count = self.parse_attack_string(best_result["attack"])
-                return intent, damage, count
+                # damage, count = self.parse_attack_string(best_result["attack"])
+                return intent, 10, 1
             else:
                 return intent, 0, 0
         else:
@@ -243,7 +243,7 @@ class MonsterRecognition(CustomRecognition):
         """
         attack_str = attack_str.replace('×', '*')  # 将乘号替换为星号，便于计算
         attack_str = attack_str.replace('x', '*')  # 考虑可能的其他乘号形式
-        
+
         if '*' in attack_str:
             # 如果字符串包含乘号，分割并计算
             parts = attack_str.split('*')
