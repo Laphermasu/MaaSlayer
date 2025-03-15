@@ -27,10 +27,9 @@ class CardrewardRecognition(CustomRecognition):
             "count": 0,  # 匹配点数
             "box": (0, 0, 0, 0)  # 匹配区域
         }
-        # 当没有识别到怪物时停止匹配
-        hp_exist = True
+        cards_exist = True
         filtered_list = []
-        while hp_exist:
+        while cards_exist:
             reco_detail = context.run_recognition(
                     "卡牌识别_ocr",  # 流水线名称
                     img,  # 输入图像
