@@ -1,9 +1,7 @@
 import PyInstaller.__main__
-import os
 import site
 import shutil
 import zipfile
-import stable_baselines3
 import os
 # 获取当前工作目录
 current_dir = os.getcwd()
@@ -39,16 +37,12 @@ if maa_bin_path2 is None:
 # 构建 --add-data 参数
 add_data_param2 = f'{maa_bin_path2}{os.pathsep}MaaAgentBinary'
 
-sb3_version_path = os.path.join(os.path.dirname(stable_baselines3.__file__), "version.txt")
-add_data_sb3_version = f'{sb3_version_path}{os.pathsep}stable_baselines3/'
-
 PyInstaller.__main__.run([
     'main_service.py',
     '--onedir',
     '--name=MAA_Slay.exe',
     f'--add-data={add_data_param}',
     f'--add-data={add_data_param2}',
-    f'--add-data={add_data_sb3_version}',  # 添加 stable_baselines3 版本文件
     '--clean',
 ])
 

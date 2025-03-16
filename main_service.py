@@ -50,8 +50,10 @@ def main():
 
     print("初始化tasker")
     tasker = Tasker()
-    # tasker = Tasker(notification_handler=MyNotificationHandler())
+    # tasker = Tasker(notification_handler=MyNotificationHandler()
+    print("开始绑定资源和控制器")
     tasker.bind(resource, controller)
+    print("资源绑定结束")
 
     if not tasker.inited:
         print("Failed to init MAA.")
@@ -122,8 +124,11 @@ def main():
                         part = command.split()
                         action_type = part[0]
                         if action_type == "PLAY":
-                            card_number = int(part[1])
-                            monster_number = int(part[2])+1
+                            try:
+                                card_number = int(part[1])
+                                monster_number = int(part[2]) + 1
+                            except (IndexError, ValueError):
+                                continue  # 出错时继续循环
                         else:
                             break
                     perform_command(tasker,command,game_state,monsters)
@@ -151,8 +156,11 @@ def main():
                     part = command.split()
                     action_type = part[0]
                     if action_type == "PLAY":
-                        card_number = int(part[1])
-                        monster_number = int(part[2]) + 1
+                        try:
+                            card_number = int(part[1])
+                            monster_number = int(part[2]) + 1
+                        except (IndexError, ValueError):
+                            continue  # 出错时继续循环
                     else:
                         break
                 perform_command(tasker, command, game_state, monsters)
@@ -173,8 +181,11 @@ def main():
                     part = command.split()
                     action_type = part[0]
                     if action_type == "PLAY":
-                        card_number = int(part[1])
-                        monster_number = int(part[2]) + 1
+                        try:
+                            card_number = int(part[1])
+                            monster_number = int(part[2]) + 1
+                        except (IndexError, ValueError):
+                            continue  # 出错时继续循环
                     else:
                         break
                 perform_command(tasker, command, game_state, monsters)
