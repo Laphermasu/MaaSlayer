@@ -27,7 +27,7 @@
     "task": [
         {
             "name": "启动游戏",
-            "entry": "startgame"
+            "entry": "开始游戏"
         },
         {
             "name": "攻击回合1",

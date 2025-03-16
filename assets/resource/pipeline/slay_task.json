@@ -134,7 +134,7 @@
             1
         ]
     },
-    "startgame": {
+    "开始游戏": {
         "recognition": "OCR",
         "template": "Play",
         "action": "Click",

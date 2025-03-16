@@ -28,6 +28,9 @@ def log_message(msg):
     output_text.see(tk.END)
 
 def run_program():
+    threading.Thread(target=_run_program(), daemon=True).start()
+
+def _run_program():
     log_message("程序开始执行...")
     threading.Thread(target=main, daemon=True).start()
 
@@ -53,9 +56,7 @@ def run_program():
                 while chosen_number >= len(event.options):
                     command, game_state = predict_action("EVENT", {}, event, {}, player, env, model, device)
                     chosen_number = int(command.split()[-1])
-                perform_command(tasker, command, game_state)
-            elif event_type == "monster":
-                command, game_state = predict_action("EVENT", {}, event, player, env, model, device)
+                log_message(command)
                 perform_command(tasker, command, game_state)
             elif event_type == "战斗":
                 time.sleep(2)
@@ -77,6 +78,7 @@ def run_program():
                                 continue  # 出错时继续循环
                         else:
                             break
+                    log_message(command)
                     perform_command(tasker, command, game_state, monsters)
                 # 战斗结束后奖励领取
                 get_reward(tasker, pipeline_local, env, model, device)
@@ -109,6 +111,7 @@ def run_program():
                             continue  # 出错时继续循环
                     else:
                         break
+                log_message(command)
                 perform_command(tasker, command, game_state, monsters)
             # 战斗结束后奖励领取
             get_reward(tasker, pipeline_local, env, model, device)
@@ -134,6 +137,7 @@ def run_program():
                             continue  # 出错时继续循环
                     else:
                         break
+                log_message(command)
                 perform_command(tasker, command, game_state, monsters)
             # 战斗结束后奖励领取
             get_reward(tasker, pipeline_local, env, model, device)
@@ -143,10 +147,14 @@ def run_program():
     print("一层战斗结束")
 
 def select_map():
+    threading.Thread(target=_select_map, daemon=True).start()
+def _select_map():
     map_type = (tasker.post_task("MapRecognition", pipeline_override).wait().get()).nodes[0].recognition.best_result.detail
     log_message(f"地图选择：{map_type}")
 
 def auto_battle():
+    threading.Thread(target=_auto_battle, daemon=True).start()
+def _auto_battle():
     log_message("代理战斗开始...")
     time.sleep(2)
     while end_turn_exist(tasker) == "True":
@@ -171,6 +179,9 @@ def auto_battle():
     log_message("代理战斗结束")
 
 def handle_event():
+    threading.Thread(target=_handle_event, daemon=True).start()
+
+def _handle_event():
     log_message("处理事件...")
     event = recognize(tasker, "event")
     player = recognize(tasker, "player")
@@ -182,16 +193,25 @@ def handle_event():
     log_message("事件处理完成")
 
 def select_reward():
+    threading.Thread(target=_select_reward, daemon=True).start()
+
+def _select_reward():
     log_message("领取奖励...")
     get_reward(tasker, pipeline_local, env, model, device)
     log_message("奖励领取完成")
 
 def rest_decision():
+    threading.Thread(target=_rest_decision, daemon=True).start()
+
+def _rest_decision():
     log_message("执行休息决策...")
     tasker.post_task("点击睡觉", pipeline_local).wait()
     log_message("休息完成")
 
 def shop_purchase():
+    threading.Thread(target=_shop_purchase, daemon=True).start()
+
+def _shop_purchase():
     log_message("进入商店购买...")
     tasker.post_task("商人界面操作", pipeline_local).wait()
     log_message("商店购买完成")
@@ -220,7 +240,7 @@ def get_reward(tasker: Tasker, pipeline_local: dict ,env,model,device):
         chosen_card, game_state = predict_action("CARD_REWARD", {}, {}, cardreward, player, env, model, device)
         chosen_number = int(chosen_card.split()[-1])
     chosen_card = cardreward[chosen_number].name
-    print(chosen_card)
+    log_message(chosen_card)
     tasker.post_task("选择卡牌",
                     {
                         "选择卡牌": {
@@ -253,7 +273,7 @@ def perform_command(tasker: Tasker,command,game_state,monsters=None):
         # "ADBAction": {"action": "custom", "custom_action": "ADBAction"},
         "ADBAction": {"action": "custom", "custom_action": "ADBAction", "custom_action_param": game_state},
     }
-    print("pipeline选中任务执行")
+    log_message("pipeline选中任务执行")
     tasker.post_task("ADBAction", pipeline_override).wait().get()
 
 # 创建 GUI 窗口
