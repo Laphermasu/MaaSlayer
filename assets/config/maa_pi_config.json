@@ -4,21 +4,21 @@
         "name": "安卓端"
     },
     "adb": {
-        "adb_path": "E:/Program Files/Netease/MuMu Player 12/shell/adb.exe",
+        "adb_path": "D:/Program Files/Netease/MuMu Player 12/shell/adb.exe",
         "address": "127.0.0.1:16384",
         "config": {
             "extras": {
                 "mumu": {
                     "enable": true,
                     "index": 0,
-                    "path": "E:/Program Files/Netease/MuMu Player 12"
+                    "path": "D:/Program Files/Netease/MuMu Player 12"
                 }
             }
         }
     },
     "task": [
         {
-            "name": "宝箱点击",
+            "name": "睡觉",
             "option": []
         }
     ]
