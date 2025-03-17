@@ -257,7 +257,7 @@ def get_reward(tasker: Tasker, pipeline_local: dict ,env,model,device):
                             ]
                         }
                     }).wait()
-    tasker.post_task("点击跳过", pipeline_local).wait()
+    # tasker.post_task("点击跳过", pipeline_local).wait()
 
 def perform_command(tasker: Tasker,command,game_state,monsters=None):
     # command = "PLAY 1 0"

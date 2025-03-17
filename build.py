@@ -38,9 +38,9 @@ if maa_bin_path2 is None:
 add_data_param2 = f'{maa_bin_path2}{os.pathsep}MaaAgentBinary'
 
 PyInstaller.__main__.run([
-    'main_service.py',
+    'main_ui.py',
     '--onedir',
-    '--name=MAA_Slay.exe',
+    '--name=MAA_Slay',
     f'--add-data={add_data_param}',
     f'--add-data={add_data_param2}',
     '--clean',
