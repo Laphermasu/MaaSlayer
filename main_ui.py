@@ -19,7 +19,7 @@ from maa.tasker import Tasker
 from src.utils.json_utils import JsonUtils
 from src.AI_model.model_run import *
 from src.custom_recognition.recognition import recognize
-from main_service import main
+import sys
 
 resource = Resource()
 
@@ -27,16 +27,17 @@ def log_message(msg):
     output_text.insert(tk.END, msg + "\n")
     output_text.see(tk.END)
 
-def run_program():
-    threading.Thread(target=_run_program(), daemon=True).start()
+def run_in_thread(target):
+    thread = threading.Thread(target=target, daemon=True)  # 设置 daemon=True，保证程序退出时线程自动结束
+    thread.start()
+
 
 def _run_program():
     log_message("程序开始执行...")
-    threading.Thread(target=main, daemon=True).start()
 
     Boss_exist = True
     # 以下为伪代码
-    while Boss_exist:  # 主流程
+    while Boss_exist:
         map_type = (tasker.post_task("MapRecognition", pipeline_override).wait().get()).nodes[
             0].recognition.best_result.detail
         if map_type == "宝箱":
@@ -144,16 +145,13 @@ def _run_program():
             # run_task("BOSS遗物领取")
             Boss_exist = False
             continue
-    print("一层战斗结束")
+    log_message("一层战斗结束")
 
-def select_map():
-    threading.Thread(target=_select_map, daemon=True).start()
+
 def _select_map():
     map_type = (tasker.post_task("MapRecognition", pipeline_override).wait().get()).nodes[0].recognition.best_result.detail
     log_message(f"地图选择：{map_type}")
 
-def auto_battle():
-    threading.Thread(target=_auto_battle, daemon=True).start()
 def _auto_battle():
     log_message("代理战斗开始...")
     time.sleep(2)
@@ -175,11 +173,10 @@ def _auto_battle():
                     continue  # 出错时继续循环
             else:
                 break
+        log_message(command)
         perform_command(tasker, command, game_state, monsters)
     log_message("代理战斗结束")
 
-def handle_event():
-    threading.Thread(target=_handle_event, daemon=True).start()
 
 def _handle_event():
     log_message("处理事件...")
@@ -189,34 +186,29 @@ def _handle_event():
     while chosen_number >= len(event.options):
         command, game_state = predict_action("EVENT", {}, event, {}, player, env, model, device)
         chosen_number = int(command.split()[-1])
+    log_message(command)
     perform_command(tasker, command, game_state)
     log_message("事件处理完成")
 
-def select_reward():
-    threading.Thread(target=_select_reward, daemon=True).start()
 
 def _select_reward():
     log_message("领取奖励...")
     get_reward(tasker, pipeline_local, env, model, device)
     log_message("奖励领取完成")
 
-def rest_decision():
-    threading.Thread(target=_rest_decision, daemon=True).start()
 
 def _rest_decision():
     log_message("执行休息决策...")
     tasker.post_task("点击睡觉", pipeline_local).wait()
     log_message("休息完成")
 
-def shop_purchase():
-    threading.Thread(target=_shop_purchase, daemon=True).start()
 
 def _shop_purchase():
     log_message("进入商店购买...")
     tasker.post_task("商人界面操作", pipeline_local).wait()
     log_message("商店购买完成")
 
-def exit_program():
+def _exit_program():
     log_message("程序终止...")
     root.quit()
 
@@ -232,6 +224,7 @@ def end_turn_exist(tasker: Tasker) -> bool:
     return detail.nodes[0].recognition.best_result.detail
 
 def get_reward(tasker: Tasker, pipeline_local: dict ,env,model,device):
+    time.sleep(1)
     tasker.post_task("奖励领取1", pipeline_local).wait()
     cardreward = recognize(tasker, "cardreward")
     player = recognize(tasker, "player")
@@ -268,9 +261,7 @@ def perform_command(tasker: Tasker,command,game_state,monsters=None):
         monster_json = json.dumps([monster.__dict__ for monster in monsters])
         game_state['game_state']['combat_state']['monster_box'] = monster_json
 
-    # print(game_state)
     pipeline_override = {
-        # "ADBAction": {"action": "custom", "custom_action": "ADBAction"},
         "ADBAction": {"action": "custom", "custom_action": "ADBAction", "custom_action_param": game_state},
     }
     log_message("pipeline选中任务执行")
@@ -287,15 +278,21 @@ output_text.grid(row=0, column=0, rowspan=8, padx=10, pady=10)
 
 # 创建右侧按钮区域
 buttons = [
-    ("程序运行", run_program),
-    ("地图选择", select_map),
-    ("代理战斗", auto_battle),
-    ("事件处理", handle_event),
-    ("奖励选择", select_reward),
-    ("休息决策", rest_decision),
-    ("商店购买", shop_purchase),
-    ("程序退出", exit_program)
+    ("程序运行", _run_program),
+    ("地图选择", _select_map),
+    ("代理战斗", _auto_battle),
+    ("事件处理", _handle_event),
+    ("奖励选择", _select_reward),
+    ("休息决策", _rest_decision),
+    ("商店购买", _shop_purchase),
+    ("程序退出", _exit_program)
 ]
+for i, (text, command) in enumerate(buttons):
+    btn = tk.Button(root, text=text, width=15, command=lambda cmd=command: run_in_thread(cmd))
+    btn.grid(row=i, column=1, padx=10, pady=5)
+
+
+
 user_path = "./"
 resource_path = "./assets/resource"
 Toolkit.init_option(user_path)
@@ -304,10 +301,10 @@ res_job = resource.post_bundle(resource_path)
 res_job.wait()
 
 # 连接设备
-print("开始连接设备")
+log_message("开始连接设备")
 adb_devices = Toolkit.find_adb_devices()
 if not adb_devices:
-    print("No ADB device found.")
+    log_message("No ADB device found.")
     exit()
 
 device = adb_devices[0]
@@ -319,19 +316,19 @@ controller = AdbController(
     config=device.config,
 )
 controller.post_connection().wait()
-print("设备连接成功")
+log_message("设备连接成功")
 
-print("初始化tasker")
+log_message("初始化tasker")
 tasker = Tasker()
 # tasker = Tasker(notification_handler=MyNotificationHandler()
-print("开始绑定资源和控制器")
+log_message("开始绑定资源和控制器")
 tasker.bind(resource, controller)
-print("资源绑定结束")
+log_message("资源绑定结束")
 
 if not tasker.inited:
-    print("Failed to init MAA.")
-    exit()
-print("tasker初始化完成")
+    log_message("Failed to init MAA.")
+    sys.exit()
+log_message("tasker初始化完成")
 
 env, model, device = initialize_model()
 
@@ -360,7 +357,5 @@ pipeline_override = {
     "UnknownRecognition": {"recognition": "custom", "custom_recognition": "UnknownRecognition"}
 }
 
-for i, (text, command) in enumerate(buttons):
-    tk.Button(root, text=text, command=command, width=15).grid(row=i, column=1, padx=10, pady=5)
-
+# 运行主循环
 root.mainloop()

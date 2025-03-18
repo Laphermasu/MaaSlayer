@@ -1,8 +1,9 @@
 import PyInstaller.__main__
 import site
 import shutil
-import zipfile
 import os
+import zipfile
+
 # 获取当前工作目录
 current_dir = os.getcwd()
 
@@ -10,47 +11,38 @@ current_dir = os.getcwd()
 site_packages_paths = site.getsitepackages()
 
 # 查找包含 maa/bin 的路径
-maa_bin_path = None
-for path in site_packages_paths:
-    potential_path = os.path.join(path, 'maa', 'bin')
-    if os.path.exists(potential_path):
-        maa_bin_path = potential_path
-        break
+def find_path(sub_path):
+    for path in site_packages_paths:
+        potential_path = os.path.join(path, sub_path)
+        if os.path.exists(potential_path):
+            return potential_path
+    raise FileNotFoundError(f"Path containing {sub_path} not found")
 
-if maa_bin_path is None:
-    raise FileNotFoundError("Path containing maa/bin not found")
-
-# 构建 --add-data 参数
-add_data_param = f'{maa_bin_path}{os.pathsep}maa/bin'
-
-# 查找包含 MaaAgentBinary 的路径
-maa_bin_path2 = None
-for path in site_packages_paths:
-    potential_path = os.path.join(path, 'MaaAgentBinary')
-    if os.path.exists(potential_path):
-        maa_bin_path2 = potential_path
-        break
-
-if maa_bin_path2 is None:
-    raise FileNotFoundError("Path containing MaaAgentBinary not found")
+maa_bin_path = find_path('maa/bin')
+maa_agent_binary_path = find_path('MaaAgentBinary')
+sb3_contrib_path = find_path('sb3_contrib')
+stable_baselines3_path = find_path('stable_baselines3')
 
 # 构建 --add-data 参数
-add_data_param2 = f'{maa_bin_path2}{os.pathsep}MaaAgentBinary'
+add_data_params = [
+    f'{maa_bin_path}{os.pathsep}maa/bin',
+    f'{maa_agent_binary_path}{os.pathsep}MaaAgentBinary',
+    f'{sb3_contrib_path}{os.pathsep}sb3_contrib',
+    f'{stable_baselines3_path}{os.pathsep}stable_baselines3',
+]
 
 PyInstaller.__main__.run([
     'main_ui.py',
-    '--onedir',
-    '--name=MAA_Slay',
-    f'--add-data={add_data_param}',
-    f'--add-data={add_data_param2}',
+    '--onefile',
+    '--name=MAA_Slay.exe',
     '--clean',
-])
-
+] + [f'--add-data={param}' for param in add_data_params])
 
 # 复制 assets 文件夹到 dist 目录
 dist_dir = os.path.join(current_dir, 'dist')
 assets_source_path = os.path.join(current_dir, 'assets')
 assets_dest_path = os.path.join(dist_dir, 'assets')
+syc_bat_source_path = os.path.join(current_dir, 'syc.bat')
 
 if not os.path.exists(assets_source_path):
     raise FileNotFoundError("assets folder not found")
@@ -64,7 +56,7 @@ shutil.copytree(assets_source_path, assets_dest_path)
 
 
 # 压缩 dist 文件夹为 zip 文件，并保存在 dist 目录中
-zip_filename = 'MAA_slay.zip'
+zip_filename = 'MAA_SLAY.zip'
 zip_filepath = os.path.join(dist_dir, zip_filename)
 
 with zipfile.ZipFile(zip_filepath, 'w', zipfile.ZIP_DEFLATED) as zipf:
@@ -89,4 +81,3 @@ for root, dirs, files in os.walk(dist_dir):
         shutil.rmtree(os.path.join(root, dir), ignore_errors=True)
 
 print(f"Packaging and compression completed: {zip_filepath}")
-
