@@ -17,10 +17,11 @@ class CardRecognition(CustomRecognition):
             argv: CustomRecognition.AnalyzeArg,
     ) -> CustomRecognition.AnalyzeResult:
         # 获取当前屏幕图片
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        json_path = os.path.join(script_dir, '../../cards.json')
-        json_path = os.path.normpath(json_path)
-        cards_list = json.load(open(json_path))
+        # script_dir = os.path.dirname(os.path.abspath(__file__))
+        # json_path = os.path.join(script_dir, './assets/resource/cards.json')
+        # json_path = os.path.normpath(json_path)
+        # cards_list = json.load(open(json_path))
+        cards_list = JsonUtils.load_json('./assets/resource/cards.json')
         img = context.tasker.controller.post_screencap().wait().get()
         best_match = {
             "card": [],  # 匹配的模板索引

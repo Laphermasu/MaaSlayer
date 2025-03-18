@@ -114,8 +114,8 @@ class ADBAction(CustomAction):
                 elif target_index > 0:
                     monster_box = monsters[target_index - 1].get("box", None)
                     print(monster_box)
-                    converted_monster_box = [monster_box["x"], monster_box["y"], monster_box["w"] / 2,
-                                             monster_box["h"] / 2]
+                    converted_monster_box = [monster_box["x"] + monster_box["w"] / 4, monster_box["y"] + monster_box["h"] / 2, monster_box["w"] / 4,
+                                             monster_box["h"] / 4]
             # print(converted_monster_box)
             # img = context.tasker.controller.post_screencap().wait().get()
             print(converted_monster_box)
